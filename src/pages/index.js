@@ -9,6 +9,7 @@ export default function IndexPage({ data }) {
     <>
       <DoubleScrollSection data={data.sections} />
       <Marquee />
+      <Marquee right />
       <BlogPostMasonry />
     </>
   );

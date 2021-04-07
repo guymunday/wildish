@@ -6,6 +6,11 @@ const global = css`
     --white: #fff;
     --yellow: #fade2b;
   }
+
+  * {
+    font-family: "Mabry Pro";
+  }
+
   body {
     font-family: "Mabry Pro";
     font-style: normal;
@@ -39,6 +44,10 @@ const global = css`
     transform: translateX(-50%);
   }
 
+  button {
+    cursor: pointer;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
@@ -46,7 +55,6 @@ const global = css`
     position: relative;
     z-index: 1;
     &:hover {
-      color: #000;
       ::after {
         height: 100%;
       }
@@ -63,6 +71,17 @@ const global = css`
       /* transform: rotate(-1deg); */
       z-index: -1;
       transition: 0.3s ease;
+    }
+  }
+
+  a.nostyle {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    position: relative;
+    &::after {
+      content: "";
+      display: none;
     }
   }
 
@@ -102,6 +121,26 @@ const global = css`
       &:last-child {
         margin: 0;
       }
+    }
+  }
+
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-30%);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(30%);
     }
   }
 `;

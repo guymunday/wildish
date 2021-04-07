@@ -1,9 +1,8 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { motion, useAnimation } from "framer-motion";
 import Image from "../components/Image";
+import gsap from "gsap";
 
 const CasestudyGrid = styled.section`
   width: 100%;
@@ -33,20 +32,13 @@ const CasestudyGrid = styled.section`
 `;
 
 export default function Casestudies({ data: { cases } }) {
-  const animation = useAnimation();
-
   React.useEffect(() => {
-    const sequence = async () => {
-      await animation.start((i) => ({
-        opacity: 1,
-        transition: {
-          duration: 0.5,
-          delay: i * 0.2,
-        },
-      }));
-    };
-    sequence();
-  }, [animation]);
+    gsap.from(".grid-item", {
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.2,
+    });
+  }, []);
 
   return (
     <>
@@ -54,20 +46,15 @@ export default function Casestudies({ data: { cases } }) {
       <CasestudyGrid>
         {cases?.edges?.map((c, i) => (
           <>
-            <motion.div
-              key={i}
-              className="grid-item"
-              initial={{ opacity: 0 }}
-              animate={animation}
-              custom={i}
-            >
+            <div key={i} className="grid-item">
               <Link to={`/case-studies/${c?.node?.slug}`}>
                 <Image
                   image={c?.node?.case_study?.heroImage}
                   style={{ height: "100%" }}
                 />
+                <p></p>
               </Link>
-            </motion.div>
+            </div>
           </>
         ))}
       </CasestudyGrid>

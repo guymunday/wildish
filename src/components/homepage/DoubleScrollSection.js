@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import lobsterGif from "../../assets/images/Lobster_black.gif";
 import Image from "../Image";
-import gsap from "gsap";
+import { gsap } from "gsap";
 
 const HomepageSection = styled(motion.section)`
   position: sticky;
@@ -22,6 +22,14 @@ const HomepageSection = styled(motion.section)`
   ::-webkit-scrollbar {
     display: none;
   }
+  button.homepage-words {
+    cursor: pointer;
+    :hover {
+      .casestudy-title {
+        opacity: 1;
+      }
+    }
+  }
   .homepage-words {
     height: 100%;
     width: 100%;
@@ -33,6 +41,8 @@ const HomepageSection = styled(motion.section)`
     background: var(--yellow);
     position: relative;
     z-index: 1;
+    outline: none;
+    border: none;
     &.homepage-words-hero {
       background: #fff;
     }
@@ -47,17 +57,35 @@ const HomepageSection = styled(motion.section)`
       max-width: 600px;
       margin: auto;
     }
+    .casestudy-title {
+      position: absolute;
+      display: block;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1.2rem;
+      padding: 10px 0;
+      z-index: 2;
+      opacity: 0;
+      transition: 0.3s ease opacity;
+    }
   }
 `;
 
 export default function DoubleScrollSection({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
+  const [isHovered, setIsHovered] = React.useState(null);
 
   const animation = () => {
     let tl = gsap.timeline({ ease: "power1.in" });
 
     return tl
+      .to(".homepage-left", {
+        opacity: 0,
+      })
       .to(wordsRef.current, {
         width: 0,
         duration: 0.8,
@@ -77,7 +105,7 @@ export default function DoubleScrollSection({ data }) {
     <>
       <div style={{ display: "flex", position: "relative" }}>
         <HomepageSection ref={wordsRef}>
-          <div className="homepage-words-hero homepage-words">
+          <div className="homepage-words-hero homepage-words homepage-left">
             <img
               className="homepage-logo"
               src={fullLogo}
@@ -86,7 +114,7 @@ export default function DoubleScrollSection({ data }) {
           </div>
           {data?.homepage?.words?.map((w, i) => {
             return (
-              <div className="homepage-words" key={i}>
+              <div className="homepage-words homepage-left" key={i}>
                 <div
                   className="hompepage-words-copy html"
                   dangerouslySetInnerHTML={{ __html: w?.section }}
@@ -106,16 +134,18 @@ export default function DoubleScrollSection({ data }) {
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (
-              <div
+              <button
                 key={i}
                 className={`homepage-words`}
+                onMouseOver={() => setIsHovered(i)}
                 onClick={async () => {
                   await animation();
                   await navigate(`/case-studies/${c?.slug}`);
                 }}
               >
                 <Image image={c?.case_study?.heroImage} />
-              </div>
+                <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>
+              </button>
             );
           })}
         </HomepageSection>

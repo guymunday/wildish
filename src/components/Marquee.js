@@ -1,18 +1,22 @@
 import * as React from "react";
-import styled, { Keyframe } from "styled-components";
+import styled from "styled-components";
 
 const MarqueeStyles = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   white-space: nowrap;
   background: #000;
   color: #fff;
   .marquee-track {
     display: flex;
+    :hover {
+      animation-play-state: paused !important;
+    }
   }
 `;
 
-export default function Marquee() {
+export default function Marquee({ right }) {
   const words = {
     words: (
       <>
@@ -24,12 +28,25 @@ export default function Marquee() {
 
   return (
     <>
-      <MarqueeStyles>
-        <div className="marquee-track">
+      <MarqueeStyles right>
+        <div
+          className="marquee-track"
+          style={{
+            animation: right
+              ? "marquee-right 80s linear infinite"
+              : "marquee-left 80s linear infinite",
+          }}
+        >
           {Array.from({ length: 50 }, () => words).map((words, i) => (
-            <p key={i} style={{ margin: "0 10px" }}>
+            <a
+              href="https://www.instagram.com/wildishandco_studio"
+              target="_blank"
+              className="nostyle"
+              key={i}
+              style={{ margin: "0 10px" }}
+            >
               {words.words}
-            </p>
+            </a>
           ))}
         </div>
       </MarqueeStyles>
