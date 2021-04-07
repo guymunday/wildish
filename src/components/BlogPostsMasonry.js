@@ -1,5 +1,4 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import GlassesSvg from "../assets/svgs/glasses";
 import { MasonryWrapper, Masonry } from "../pages/blog";

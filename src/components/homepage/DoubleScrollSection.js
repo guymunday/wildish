@@ -1,13 +1,12 @@
 import React from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import lobsterGif from "../../assets/images/Lobster_black.gif";
 import Image from "../Image";
 import { gsap } from "gsap";
 
-const HomepageSection = styled(motion.section)`
+const HomepageSection = styled.section`
   position: sticky;
   bottom: 0;
   height: 100vh;

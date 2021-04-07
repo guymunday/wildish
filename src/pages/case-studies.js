@@ -90,5 +90,3 @@ export const caseQuery = graphql`
     }
   }
 `;
-
-// GatsbyImageSharpFluid_tracedSVG
