@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import reset from "../styles/reset";
 import global from "../styles/global";
 import "../styles/font.css";
-import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
 import Footer from "./Footer";
 
@@ -22,10 +22,8 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <GlobalStyle />
-      <AnimateSharedLayout type="crossfade">
-        <main key={location.pathname}>{children}</main>
-      </AnimateSharedLayout>
       <AnimatePresence>
+        <main key={location.pathname}>{children}</main>
         {menuOpen && <Menu setMenuOpen={setMenuOpen} />}
       </AnimatePresence>
       <button onClick={() => setMenuOpen(true)}>menu</button>

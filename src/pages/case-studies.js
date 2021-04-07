@@ -2,7 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Image from "../components/Image";
 
 const CasestudyGrid = styled.section`
@@ -10,7 +10,8 @@ const CasestudyGrid = styled.section`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
-  @media screen and (max-width: 480px) {
+  background: #000;
+  @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
   .grid-item {
@@ -32,6 +33,21 @@ const CasestudyGrid = styled.section`
 `;
 
 export default function Casestudies({ data: { cases } }) {
+  const animation = useAnimation();
+
+  React.useEffect(() => {
+    const sequence = async () => {
+      await animation.start((i) => ({
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          delay: i * 0.2,
+        },
+      }));
+    };
+    sequence();
+  }, [animation]);
+
   return (
     <>
       <div style={{ background: "#000", height: 100, width: "100%" }} />
@@ -41,7 +57,9 @@ export default function Casestudies({ data: { cases } }) {
             <motion.div
               key={i}
               className="grid-item"
-              layoutId={c?.node?.case_study?.heroImage?.sourceUrl}
+              initial={{ opacity: 0 }}
+              animate={animation}
+              custom={i}
             >
               <Link to={`/case-studies/${c?.node?.slug}`}>
                 <Image
@@ -68,8 +86,8 @@ export const caseQuery = graphql`
             heroText
             heroImage {
               altText
-              sourceUrl
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(
                     layout: FULL_WIDTH

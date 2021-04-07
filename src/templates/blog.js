@@ -40,9 +40,9 @@ export const BLOG_QUERY = graphql`
           }
           featuredImage {
             node {
-              sourceUrl
               altText
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(
                     layout: FULL_WIDTH

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { motion } from "framer-motion";
+import Image from "../Image";
 
 const HeroStyles = styled(motion.div)`
   width: 100%;
@@ -38,30 +38,19 @@ const HeroStyles = styled(motion.div)`
   }
 `;
 
-export default function HeroSection({ data, next }) {
+export default function HeroSection({ data, next, ...rest }) {
   return (
     <HeroStyles
       next={next}
-      layoutId={data?.heroImage?.sourceUrl}
+      // layoutId={data?.heroImage?.localFile?.publicURL}
       transition={{ duration: 0.6 }}
+      {...rest}
     >
-      <img src={data?.heroImage?.sourceUrl} alt={data?.heroImage?.sourceUrl} />
-      {data?.heroImage?.sourceUrl.includes(".gif") ? (
-        <img src={data?.heroImage?.sourceUrl} alt={data?.heroImage?.alt} />
-      ) : data?.heroImage?.sourceUrl.includes(".svg") ? (
-        <img src={data?.heroImage?.sourceUrl} alt={data?.heroImage?.alt} />
-      ) : (
-        <>
-          <GatsbyImage
-            image={data?.heroImage?.localFile?.childImageSharp?.gatsbyImageData}
-            alt={data?.heroImage?.alt}
-          />
-        </>
-      )}
+      <Image image={data?.heroImage} />
       <div className="hero-inner">
         <img
           className="brand-logo"
-          src={data?.heroLogo?.sourceUrl}
+          src={data?.heroLogo?.localFile?.publicURL}
           alt={data?.heroLogo?.alt}
         />
         <h2>{data?.heroText}</h2>

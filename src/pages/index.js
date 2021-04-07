@@ -1,34 +1,14 @@
 import React from "react";
 import { graphql } from "gatsby";
 import BlogPostMasonry from "../components/BlogPostsMasonry";
-import { motion } from "framer-motion";
-import styled from "styled-components";
 import DoubleScrollSection from "../components/homepage/DoubleScrollSection";
+import Marquee from "../components/Marquee";
 
-const HomepageSection = styled(motion.section)`
-  position: sticky;
-  bottom: 0;
-  height: 100vh;
-  position: relative;
-  scroll-snap-type: y mandatory;
-  overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  div {
-    height: 100%;
-    width: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-  }
-`;
-
-export default function IndexPage({ data: { sections } }) {
+export default function IndexPage({ data }) {
   return (
     <>
-      <DoubleScrollSection data={sections} />
+      <DoubleScrollSection data={data.sections} />
+      <Marquee />
       <BlogPostMasonry />
     </>
   );
@@ -46,13 +26,16 @@ export const indexQuery = graphql`
             case_study {
               heroText
               heroLogo {
-                sourceUrl
                 altText
+                localFile {
+                  publicURL
+                }
               }
               heroImage {
                 altText
                 sourceUrl
                 localFile {
+                  publicURL
                   childImageSharp {
                     gatsbyImageData(
                       layout: FULL_WIDTH

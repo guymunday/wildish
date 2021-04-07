@@ -51,6 +51,7 @@ export const Masonry = styled.div`
 `;
 
 export default function BlogPosts({ data }) {
+  console.log(data);
   return (
     <>
       <MasonryWrapper>
@@ -92,9 +93,9 @@ export const BLOGS_QUERY = graphql`
           }
           featuredImage {
             node {
-              sourceUrl
               altText
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(
                     layout: FULL_WIDTH

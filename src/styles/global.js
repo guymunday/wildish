@@ -46,6 +46,7 @@ const global = css`
     position: relative;
     z-index: 1;
     &:hover {
+      color: #000;
       ::after {
         height: 100%;
       }

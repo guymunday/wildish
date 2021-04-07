@@ -1,14 +1,17 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link, graphql, navigate } from "gatsby";
 import HeroSection from "../components/case-studies/HeroSection";
 import SliceZone from "../components/case-studies/SliceZone";
 import NextHeroSection from "../components/case-studies/NextHeroSection";
-import { navigate } from "@reach/router";
 
-const Casestudy = ({ data }) => {
+const Casestudy = ({ data, transitionStatus }) => {
   const [nextPage, setNextPage] = React.useState(false);
   const [hasScrolled, setHasScrolled] = React.useState(false);
   const [goBack, setGoBack] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("HomePage", transitionStatus);
+  }, [transitionStatus]);
 
   const handleScroll = () => {
     const scrolled = window.scrollY + window.innerHeight;
@@ -72,8 +75,8 @@ const Casestudy = ({ data }) => {
       <Link to="/">Home</Link>
       {data?.nextProject && (
         <>
-          <NextHeroSection data={data?.nextProject?.case_study} />
-          <Link to={`/case-studies/${data?.nextProject?.slug}`}>Link</Link>
+          {/* <NextHeroSection data={data?.nextProject?.case_study} />
+          <Link to={`/case-studies/${data?.nextProject?.slug}`}>Link</Link> */}
         </>
       )}
     </div>
@@ -91,8 +94,8 @@ export const CASE_STUDY_QUERY = graphql`
       case_study {
         heroImage {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
@@ -104,8 +107,8 @@ export const CASE_STUDY_QUERY = graphql`
         }
         heroLogo {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
@@ -125,8 +128,8 @@ export const CASE_STUDY_QUERY = graphql`
               text
               image {
                 altText
-                sourceUrl
                 localFile {
+                  publicURL
                   childImageSharp {
                     gatsbyImageData(
                       layout: FULL_WIDTH
@@ -157,8 +160,8 @@ export const CASE_STUDY_QUERY = graphql`
             fieldGroupName
             image {
               altText
-              sourceUrl
               localFile {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(
                     layout: FULL_WIDTH
@@ -179,8 +182,8 @@ export const CASE_STUDY_QUERY = graphql`
       case_study {
         heroImage {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
@@ -192,8 +195,8 @@ export const CASE_STUDY_QUERY = graphql`
         }
         heroLogo {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
@@ -213,8 +216,8 @@ export const CASE_STUDY_QUERY = graphql`
       case_study {
         heroImage {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
@@ -226,8 +229,8 @@ export const CASE_STUDY_QUERY = graphql`
         }
         heroLogo {
           altText
-          sourceUrl
           localFile {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
