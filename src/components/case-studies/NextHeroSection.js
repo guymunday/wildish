@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { motion } from "framer-motion";
 
-const HeroStyles = styled(motion.div)`
+const HeroStyles = styled.div`
   width: 100%;
   height: ${(props) => (props.next ? "200px" : "100vh")};
   min-height: ${(props) => (props.next ? "white" : "500px")};

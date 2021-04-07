@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import Image from "../Image";
 
-const HeroStyles = styled(motion.div)`
+const HeroStyles = styled.div`
   width: 100%;
   height: ${(props) => (props.next ? "200px" : "100vh")};
   min-height: ${(props) => (props.next ? "white" : "500px")};
@@ -40,12 +39,7 @@ const HeroStyles = styled(motion.div)`
 
 export default function HeroSection({ data, next, ...rest }) {
   return (
-    <HeroStyles
-      next={next}
-      // layoutId={data?.heroImage?.localFile?.publicURL}
-      transition={{ duration: 0.6 }}
-      {...rest}
-    >
+    <HeroStyles next={next} {...rest}>
       <Image image={data?.heroImage} />
       <div className="hero-inner">
         <img
