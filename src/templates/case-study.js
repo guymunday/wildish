@@ -100,7 +100,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }
@@ -113,7 +113,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }
@@ -134,7 +134,7 @@ export const CASE_STUDY_QUERY = graphql`
                     gatsbyImageData(
                       layout: FULL_WIDTH
                       quality: 90
-                      placeholder: DOMINANT_COLOR
+                      placeholder: BLURRED
                     )
                   }
                 }
@@ -166,7 +166,7 @@ export const CASE_STUDY_QUERY = graphql`
                   gatsbyImageData(
                     layout: FULL_WIDTH
                     quality: 90
-                    placeholder: DOMINANT_COLOR
+                    placeholder: BLURRED
                   )
                 }
               }
@@ -188,7 +188,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }
@@ -201,7 +201,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }
@@ -222,7 +222,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }
@@ -235,7 +235,7 @@ export const CASE_STUDY_QUERY = graphql`
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 90
-                placeholder: DOMINANT_COLOR
+                placeholder: BLURRED
               )
             }
           }

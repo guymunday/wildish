@@ -15,9 +15,7 @@ export default function FadeIn({ children, ...rest }) {
       scrollTrigger: fadeRef.current,
     });
   }, []);
-
-  console.log(fadeRef.current);
-
+  
   return (
     <div ref={fadeRef} style={{ overflow: "hidden" }} {...rest}>
       <div ref={fadeInnerRef}>{children}</div>

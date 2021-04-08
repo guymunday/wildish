@@ -4,6 +4,13 @@ import GlassesSvg from "../assets/svgs/glasses";
 import styled from "styled-components";
 import Image from "../components/Image";
 
+const BlogHeader = styled.div`
+  background: var(--black);
+  width: 100%;
+  padding: 30px;
+  color: var(--white);
+`;
+
 export const MasonryWrapper = styled.section`
   padding: 30px;
   background: var(--black);
@@ -51,9 +58,13 @@ export const Masonry = styled.div`
 `;
 
 export default function BlogPosts({ data }) {
-  console.log(data);
   return (
     <>
+      <BlogHeader>
+        <Link to="/">
+          This is too many words, I would like to leave &times;
+        </Link>
+      </BlogHeader>
       <MasonryWrapper>
         <Masonry>
           {data?.allWpPost?.edges.map((b, i) => (
@@ -100,7 +111,7 @@ export const BLOGS_QUERY = graphql`
                   gatsbyImageData(
                     layout: FULL_WIDTH
                     quality: 90
-                    placeholder: DOMINANT_COLOR
+                    placeholder: BLURRED
                   )
                 }
               }

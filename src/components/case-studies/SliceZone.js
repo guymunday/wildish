@@ -2,9 +2,9 @@ import React from "react";
 import FadeIn from "../FadeIn";
 import Image from "../Image";
 import Copy from "./slices/Copy";
+import Results from "./slices/Results";
 
 export default function SliceZone({ slices }) {
-  console.log(slices)
   const slice = slices.map((s, i) => {
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
@@ -22,7 +22,7 @@ export default function SliceZone({ slices }) {
       case "case_study_CaseStudy_PageContent_ResultsSection":
         return (
           <FadeIn key={i}>
-            <div>Results</div>
+            <Results results={s} />
           </FadeIn>
         );
       case "case_study_CaseStudy_PageContent_Video":

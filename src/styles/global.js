@@ -14,7 +14,7 @@ const global = css`
   body {
     font-family: "Mabry Pro";
     font-style: normal;
-    font-size: 18px;
+    font-size: 20px;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -121,6 +121,11 @@ const global = css`
       &:last-child {
         margin: 0;
       }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
   }
 

@@ -7,10 +7,10 @@ import { gsap } from "gsap";
 import Image from "../Image";
 
 const DoubleScrollStyles = styled.div`
-  display: flex;
+  display: none;
   position: relative;
   @media screen and (max-width: 768px) {
-    display: none;
+    display: flex;
   }
 `;
 
@@ -19,7 +19,6 @@ const HomepageSection = styled.section`
   bottom: 0;
   height: 100vh;
   position: relative;
-  width: 50%;
   scroll-snap-type: y mandatory;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
@@ -28,6 +27,11 @@ const HomepageSection = styled.section`
   will-change: width scroll-position;
   ::-webkit-scrollbar {
     display: none;
+  }
+  &.homepage-left {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
   .homepage-words {
     height: 100%;
@@ -71,47 +75,43 @@ const HomepageSection = styled.section`
       transition: 0.3s ease opacity;
       text-align: center;
     }
-    :hover {
-      .casestudy-title {
-        opacity: 1;
-      }
+  }
+  :hover {
+    .casestudy-title {
+      opacity: 1;
     }
   }
 `;
 
-export default function DoubleScrollSection({ data }) {
+const ToggleButton = styled.button`
+  width: 40px;
+  outline: none;
+  border: none;
+  :active,
+  :focus {
+    outline: none;
+  }
+  .toggle-words {
+    display: block;
+    transform: rotate(90deg);
+    white-space: nowrap;
+    font-size: 1.4rem;
+  }
+`;
+
+export default function DoubleScrollSectionMobile({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
-
-  const animation = () => {
-    let tl = gsap.timeline({ ease: "power1.in" });
-
-    return tl
-      .to(".homepage-left", {
-        opacity: 0,
-      })
-      .to(wordsRef.current, {
-        width: 0,
-        duration: 0.6,
-        ease: "power4.out",
-      })
-      .to(
-        picturesRef.current,
-        {
-          width: "100%",
-          duration: 0.6,
-          ease: "power4.out",
-        },
-        "<"
-      )
-      .add(function () {}, "+=0.3");
-  };
+  const [isWords, setIsWords] = React.useState(true);
 
   return (
     <>
       <DoubleScrollStyles>
-        <HomepageSection ref={wordsRef}>
-          <div className="homepage-words-hero homepage-words homepage-left">
+        <HomepageSection
+          ref={wordsRef}
+          style={{ width: isWords ? "100%" : "0%" }}
+        >
+          <div className="homepage-words-hero homepage-words">
             <img
               className="homepage-logo"
               src={fullLogo}
@@ -129,7 +129,21 @@ export default function DoubleScrollSection({ data }) {
             );
           })}
         </HomepageSection>
-        <HomepageSection ref={picturesRef}>
+        <ToggleButton
+          onClick={() => setIsWords(!isWords)}
+          style={{ background: isWords ? "var(--black)" : "var(--white)" }}
+        >
+          <span
+            className="toggle-words"
+            style={{ color: !isWords ? "var(--black)" : "var(--white)" }}
+          >
+            {isWords ? "Pictures ↑" : "Words ↓"}
+          </span>
+        </ToggleButton>
+        <HomepageSection
+          ref={picturesRef}
+          style={{ width: isWords ? "0%" : "100%" }}
+        >
           <div className="homepage-words homepage-images-hero">
             <img
               className="homepage-logo"
@@ -144,11 +158,6 @@ export default function DoubleScrollSection({ data }) {
                 to={`/case-studies/${c?.slug}`}
                 key={i}
                 className={`homepage-words`}
-                onClick={async (e) => {
-                  e.preventDefault();
-                  await animation();
-                  await navigate(`/case-studies/${c?.slug}`);
-                }}
               >
                 <Image image={c?.case_study?.heroImage} />
                 <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>

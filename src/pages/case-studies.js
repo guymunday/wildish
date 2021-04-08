@@ -79,7 +79,7 @@ export const caseQuery = graphql`
                   gatsbyImageData(
                     layout: FULL_WIDTH
                     quality: 90
-                    placeholder: DOMINANT_COLOR
+                    placeholder: BLURRED
                   )
                 }
               }

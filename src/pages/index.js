@@ -3,11 +3,13 @@ import { graphql } from "gatsby";
 import BlogPostMasonry from "../components/BlogPostsMasonry";
 import DoubleScrollSection from "../components/homepage/DoubleScrollSection";
 import Marquee from "../components/Marquee";
+import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectionMobile";
 
 export default function IndexPage({ data }) {
   return (
     <>
-      <DoubleScrollSection data={data.sections} />
+      <DoubleScrollSection data={data?.sections} />
+      <DoubleScrollSectionMobile data={data?.sections} />
       <Marquee />
       <Marquee right />
       <BlogPostMasonry />
@@ -41,7 +43,7 @@ export const indexQuery = graphql`
                     gatsbyImageData(
                       layout: FULL_WIDTH
                       quality: 90
-                      placeholder: DOMINANT_COLOR
+                      placeholder: BLURRED
                     )
                   }
                 }
