@@ -16,7 +16,7 @@ const Styles = styled(motion.div)`
 export default function CrossfadeImage({ initial, image }) {
   return (
     <Styles layoutId={image?.localFile?.publicURL} initial={initial}>
-      <img src={image?.localFile?.publicURL} alt={image?.altText} />
+      {/* <img src={image?.localFile?.publicURL} alt={image?.altText} /> */}
       <Image image={image} className="image" />
     </Styles>
   );
