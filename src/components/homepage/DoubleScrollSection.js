@@ -76,6 +76,7 @@ const HomepageSection = styled.section`
 export default function DoubleScrollSection({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
+  const [isWords, setIsWords] = React.useState(true);
 
   const animation = () => {
     let tl = gsap.timeline({ ease: "power1.in" });

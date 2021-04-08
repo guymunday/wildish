@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Image from "../Image";
-import { motion } from "framer-motion";
 import CrossfadeImage from "../CrossfadeImage";
 
 const HeroStyles = styled.div`
