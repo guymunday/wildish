@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "../Image";
+import { motion } from "framer-motion";
+import CrossfadeImage from "../CrossfadeImage";
 
 const HeroStyles = styled.div`
   width: 100%;
@@ -40,7 +42,7 @@ const HeroStyles = styled.div`
 export default function HeroSection({ data, next, ...rest }) {
   return (
     <HeroStyles next={next} {...rest}>
-      <Image image={data?.heroImage} />
+      <CrossfadeImage image={data?.heroImage} />
       <div className="hero-inner">
         <img
           className="brand-logo"

@@ -3,8 +3,8 @@ import { navigate } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import lobsterGif from "../../assets/images/Lobster_black.gif";
-import Image from "../Image";
 import { gsap } from "gsap";
+import CrossfadeImage from "../CrossfadeImage";
 
 const HomepageSection = styled.section`
   position: sticky;
@@ -76,7 +76,6 @@ const HomepageSection = styled.section`
 export default function DoubleScrollSection({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
-  const [isHovered, setIsHovered] = React.useState(null);
 
   const animation = () => {
     let tl = gsap.timeline({ ease: "power1.in" });
@@ -87,13 +86,15 @@ export default function DoubleScrollSection({ data }) {
       })
       .to(wordsRef.current, {
         width: 0,
-        duration: 0.8,
+        duration: 0.6,
+        ease: "power4.out",
       })
       .to(
         picturesRef.current,
         {
           width: "100%",
-          duration: 0.8,
+          duration: 0.6,
+          ease: "power4.out",
         },
         "<"
       )
@@ -136,13 +137,12 @@ export default function DoubleScrollSection({ data }) {
               <button
                 key={i}
                 className={`homepage-words`}
-                onMouseOver={() => setIsHovered(i)}
                 onClick={async () => {
                   await animation();
                   await navigate(`/case-studies/${c?.slug}`);
                 }}
               >
-                <Image image={c?.case_study?.heroImage} />
+                <CrossfadeImage initial image={c?.case_study?.heroImage} />
                 <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>
               </button>
             );

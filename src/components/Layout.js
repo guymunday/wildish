@@ -6,6 +6,8 @@ import "../styles/font.css";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import Hamburger from "./Hamburger";
+// import Transition from "./Transition";
+import { AnimateSharedLayout } from "framer-motion";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -18,7 +20,9 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <GlobalStyle />
-      <main key={location.pathname}>{children}</main>
+      <AnimateSharedLayout>
+        <main key={location.pathname}>{children}</main>
+      </AnimateSharedLayout>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
       <Footer />
