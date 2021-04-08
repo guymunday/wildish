@@ -20,7 +20,7 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <GlobalStyle />
-      <AnimateSharedLayout>
+      <AnimateSharedLayout type="crossfade">
         <main key={location.pathname}>{children}</main>
       </AnimateSharedLayout>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
