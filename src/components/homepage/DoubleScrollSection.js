@@ -1,10 +1,10 @@
 import React from "react";
-import { navigate } from "gatsby";
+import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import lobsterGif from "../../assets/images/Lobster_black.gif";
 import { gsap } from "gsap";
-import CrossfadeImage from "../CrossfadeImage";
+import Image from "../Image";
 
 const HomepageSection = styled.section`
   position: sticky;
@@ -135,17 +135,19 @@ export default function DoubleScrollSection({ data }) {
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (
-              <button
+              <Link
+                to={`/case-studies/${c?.slug}`}
                 key={i}
                 className={`homepage-words`}
-                onClick={async () => {
+                onClick={async (e) => {
+                  e.preventDefault();
                   await animation();
                   await navigate(`/case-studies/${c?.slug}`);
                 }}
               >
-                <CrossfadeImage initial image={c?.case_study?.heroImage} />
+                <Image image={c?.case_study?.heroImage} />
                 <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>
-              </button>
+              </Link>
             );
           })}
         </HomepageSection>
