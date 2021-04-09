@@ -3,7 +3,13 @@ import { graphql } from "gatsby";
 import SliceZone from "../components/pages/SliceZone";
 
 export default function PageTemplate({ data }) {
-  return <SliceZone slices={data?.page?.contentBlocks?.contentBlocks} />;
+  return (
+    <>
+      {data?.page?.contentBlocks?.contentBlocks && (
+        <SliceZone slices={data?.page?.contentBlocks?.contentBlocks} />
+      )}
+    </>
+  );
 }
 
 export const PAGE_QUERY = graphql`
