@@ -13,6 +13,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const casestudyTemplate = require.resolve("./src/templates/case-study.js");
   const blogTemplate = require.resolve("./src/templates/blog.js");
+  const pageTemplate = require.resolve("./src/templates/page.js");
 
   const result = await wrapper(
     graphql(`
@@ -44,12 +45,21 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        pageData: allWpGqlPage {
+          edges {
+            node {
+              slug
+              title
+            }
+          }
+        }
       }
     `)
   );
 
   const casestudyResults = result.data.casestudyData.edges;
   const blogResults = result.data.blogData.edges;
+  const pageResults = result.data.pageData.edges;
 
   casestudyResults.forEach((edge) => {
     createPage({
@@ -75,6 +85,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/blog/${edge.node.slug}`,
       component: blogTemplate,
+      context: {
+        slug: edge.node.slug,
+        title: edge.node.title,
+      },
+    });
+  });
+
+  pageResults.forEach((edge) => {
+    createPage({
+      path: `/${edge.node.slug}`,
+      component: pageTemplate,
       context: {
         slug: edge.node.slug,
         title: edge.node.title,

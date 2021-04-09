@@ -12,8 +12,26 @@ const FooterStyles = styled.footer`
     color: var(--white);
     justify-content: space-between;
     align-items: center;
-    img {
-      width: 50px;
+    position: relative;
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+    }
+    p {
+      color: gray;
+      font-size: 0.8rem;
+    }
+    .footer-logo {
+      width: 30px;
+      display: block;
+      @media screen and (max-width: 650px) {
+        order: -1;
+      }
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 `;
@@ -23,11 +41,18 @@ export default function Footer() {
     <>
       <FooterStyles>
         <div className="footer-inner">
-          <p>Something somthing {new Date().getFullYear()}</p>
-          <Link className="nostyle" to="/">
+          <p>
+            ©{new Date().getFullYear()} Wildish&Co LTD. All rights reserved.
+          </p>
+          <Link className="nostyle footer-logo" to="/">
             <img src={handLogo} alt="" />
           </Link>
-          <p>Something somthing {new Date().getFullYear()}</p>
+          <p>
+            <Link style={{ marginRight: 30 }} className="nostyle" to="/">
+              Privacy Policy
+            </Link>{" "}
+            Registered Company: 7799598
+          </p>
         </div>
       </FooterStyles>
     </>

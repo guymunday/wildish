@@ -94,19 +94,12 @@ const global = css`
     strong {
       position: relative;
       z-index: 1;
-      &::after {
-        content: "";
-        position: absolute;
-        display: block;
-        height: 80%;
-        width: 100%;
-        background: #fff;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        /* transform: rotate(-1deg); */
-        transition: 0.3s ease;
-      }
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 80%,
+        rgba(255, 255, 255, 0) 80%
+      );
     }
   }
 
@@ -146,6 +139,34 @@ const global = css`
 
     to {
       transform: translateX(30%);
+    }
+  }
+
+  li {
+    margin-left: 2rem;
+  }
+
+  .black {
+    background: var(--black);
+    color: var(--white);
+    strong {
+      color: var(--yellow);
+      background: transparent;
+    }
+  }
+
+  .yellow {
+    background: var(--yellow);
+  }
+  
+  .white {
+    strong {
+      background: rgba(250, 222, 43, 1);
+      background: linear-gradient(
+        0deg,
+        rgba(250, 222, 43, 1) 80%,
+        rgba(250, 222, 43, 0) 80%
+      );
     }
   }
 `;

@@ -1,8 +1,54 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import GlassesSvg from "../assets/svgs/glasses";
-import { MasonryWrapper, Masonry } from "../pages/blog";
 import Image from "./Image";
+import styled from "styled-components";
+
+export const MasonryWrapper = styled.section`
+  padding: 30px;
+  background: var(--black);
+  width: 100%;
+`;
+
+export const Masonry = styled.div`
+  columns: 3 300px;
+  column-gap: 70px;
+  color: var(--white);
+  max-width: 1100px;
+  margin: auto;
+  .blog-post-thumb {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    margin: 0 0 30px 0;
+    display: inline-block;
+    &:hover {
+      .blog-title {
+        color: var(--yellow);
+      }
+    }
+    .blog-title {
+      margin: 20px 0;
+      transition: 0.3s ease color;
+    }
+    .time-to-read {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      .glasses {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        svg {
+          max-width: 2rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+`;
 
 export default function BlogPostMasonry() {
   const blog = useStaticQuery(graphql`

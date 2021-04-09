@@ -4,8 +4,8 @@ import Image from "../Image";
 
 const HeroStyles = styled.div`
   width: 100%;
-  height: ${(props) => (props.next ? "200px" : "100vh")};
-  min-height: ${(props) => (props.next ? "white" : "500px")};
+  height: ${(props) => (props.next ? "300px" : "100vh")};
+  min-height: ${(props) => (props.next ? "" : "500px")};
   overflow: hidden;
   position: relative;
   color: var(--white);
@@ -41,14 +41,16 @@ export default function HeroSection({ data, next, ...rest }) {
   return (
     <HeroStyles next={next} {...rest}>
       <Image image={data?.heroImage} />
-      <div className="hero-inner">
-        <img
-          className="brand-logo"
-          src={data?.heroLogo?.localFile?.publicURL}
-          alt={data?.heroLogo?.alt}
-        />
-        <h2>{data?.heroText}</h2>
-      </div>
+      {!next && (
+        <div className="hero-inner">
+          <img
+            className="brand-logo"
+            src={data?.heroLogo?.localFile?.publicURL}
+            alt={data?.heroLogo?.alt}
+          />
+          <h2>{data?.heroText}</h2>
+        </div>
+      )}
     </HeroStyles>
   );
 }

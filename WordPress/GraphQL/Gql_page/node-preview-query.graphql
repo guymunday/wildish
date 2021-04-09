@@ -1,0 +1,110 @@
+query PREVIEW_QUERY($id: ID!) {
+  gql_page(id: $id, idType: ID, asPreview: true) {
+    ancestors(first: 100) {
+      nodes {
+        id
+        __typename
+      }
+    }
+    wpChildren: children(first: 100) {
+      nodes {
+        id
+        __typename
+      }
+    }
+    content
+    contentBlocks {
+      contentBlocks {
+        __typename
+        ... on Gql_page_Contentblocks_ContentBlocks_Hero {
+          colour
+          copy
+          fieldGroupName
+          image {
+            __typename
+            id
+          }
+          video
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_TwoColumnCopy {
+          colour
+          columnOne
+          columnTwo
+          fieldGroupName
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_CopyAndButtons {
+          buttons {
+            button {
+              buttonLabel
+              caseStudyLink {
+                __typename
+                ... on Case_study {
+                  id
+                }
+              }
+              fieldGroupName
+            }
+            fieldGroupName
+          }
+          colour
+          copy
+          fieldGroupName
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_ThreeColumnCopy {
+          colour
+          columnOne
+          columnThree
+          columnTwo
+          fieldGroupName
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_CopyAndImage {
+          colour
+          copy
+          fieldGroupName
+          image {
+            __typename
+            id
+          }
+        }
+      }
+      fieldGroupName
+    }
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    guid
+    id
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    modified
+    modifiedGmt
+    wpParent: parent {
+      node {
+        id
+        __typename
+      }
+    }
+    parentDatabaseId
+    parentId
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    __typename
+  }
+}

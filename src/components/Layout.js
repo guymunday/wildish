@@ -22,7 +22,7 @@ const Layout = ({ location, children }) => {
       <main key={location.pathname}>{children}</main>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
-      <Logo />
+      <Logo setMenuOpen={setMenuOpen} />
       <Footer />
     </>
   );

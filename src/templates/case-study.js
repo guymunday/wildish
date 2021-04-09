@@ -2,81 +2,52 @@ import React from "react";
 import { Link, graphql, navigate } from "gatsby";
 import HeroSection from "../components/case-studies/HeroSection";
 import SliceZone from "../components/case-studies/SliceZone";
-import NextHeroSection from "../components/case-studies/NextHeroSection";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-const Casestudy = ({ data, transitionStatus }) => {
-  const [nextPage, setNextPage] = React.useState(false);
-  const [hasScrolled, setHasScrolled] = React.useState(false);
-  const [goBack, setGoBack] = React.useState(false);
+gsap.registerPlugin(ScrollToPlugin);
 
-  React.useEffect(() => {
-    console.log("HomePage", transitionStatus);
-  }, [transitionStatus]);
-
-  const handleScroll = () => {
-    const scrolled = window.scrollY + window.innerHeight;
-    const height = document.body.clientHeight;
-
-    if (scrolled === height) {
-      setNextPage(true);
-    } else {
-      setNextPage(false);
-    }
-  };
-
-  const handleBackwardsScroll = () => {
-    const scrolled = window.scrollY;
-
-    if (scrolled > 400) {
-      setHasScrolled(true);
-    } else {
-      setHasScrolled(false);
-    }
-  };
-
-  const handleNavigateBackwards = () => {
-    const scrolled = window.scrollY;
-
-    if (hasScrolled && scrolled === 0) {
-      setGoBack(true);
-    }
-  };
+const Casestudy = ({ data }) => {
+  const paddingRef = React.useRef();
 
   React.useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
-    document.addEventListener("scroll", handleBackwardsScroll);
-    document.addEventListener("scroll", handleNavigateBackwards);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("scroll", handleBackwardsScroll);
-      document.removeEventListener("scroll", handleNavigateBackwards);
-    };
+    console.log(document.height);
   });
 
-  React.useEffect(() => {
-    if (nextPage && data?.nextProject) {
-      const goToNextPage = setTimeout(() => {
-        navigate(`/case-studies/${data?.nextProject?.slug}`);
-      }, 3000);
-      return () => clearTimeout(goToNextPage);
-    }
-  });
+  const scrollAni = () => {
+    let tl = gsap.timeline();
 
-  // React.useEffect(() => {
-  //   if (goBack) {
-  //     navigate(-1);
-  //   }
-  // });
+    return tl
+      .to(
+        "#next-project",
+        {
+          height: "100vh",
+          duration: 0.3,
+        },
+        "<"
+      )
+      .to(window, {
+        scrollTo: "#next-project",
+        duration: 0.3,
+      })
+      .add(function () {}, "+=0.6");
+  };
 
   return (
     <div>
       <HeroSection data={data?.project?.case_study} />
       <SliceZone slices={data?.project?.case_study?.pageContent} />
-      <Link to="/">Home</Link>
       {data?.nextProject && (
         <>
-          {/* <NextHeroSection data={data?.nextProject?.case_study} />
-          <Link to={`/case-studies/${data?.nextProject?.slug}`}>Link</Link> */}
+          <HeroSection
+            data={data?.nextProject?.case_study}
+            next
+            id="next-project"
+            onClick={async () => {
+              await scrollAni();
+              await navigate(`/case-studies/${data?.nextProject?.slug}`);
+            }}
+          />
         </>
       )}
     </div>

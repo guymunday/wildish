@@ -1,9 +1,10 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
-import { MasonryWrapper } from "../pages/blog";
+import { MasonryWrapper } from "../components/BlogPostsMasonry";
 import Image from "../components/Image";
 import GlassesSvg from "../assets/svgs/glasses";
+import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent";
 
 const BlogHeader = styled.div`
   width: 100%;
@@ -30,23 +31,25 @@ const Title = styled.div`
 `;
 
 const Html = styled.div`
-  padding: 30px;
-  * {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    max-width: 800px;
-  }
-  *:not(li) {
-    margin: 0 auto 20px auto;
-    &:last-child {
-      margin: 0 auto;
+  .html-inner {
+    padding: 30px;
+    * {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 800px;
     }
-  }
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    *:not(li) {
+      margin: 0 auto 20px auto;
+      &:last-child {
+        margin: 0 auto;
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -97,7 +100,6 @@ const RecentPosts = styled.div`
 `;
 
 export default function BlogPage({ data }) {
-  console.log(data);
   return (
     <>
       <BlogHeader className="glasses">
@@ -113,7 +115,12 @@ export default function BlogPage({ data }) {
       <Title>
         <h1>{data?.wpPost?.title}</h1>
       </Title>
-      <Html dangerouslySetInnerHTML={{ __html: data?.wpPost?.content }} />
+      <Html>
+        <DangerouslySetHtmlContent
+          className="html-inner"
+          html={data?.wpPost?.content}
+        />
+      </Html>
       <MasonryWrapper>
         <RecentPosts>
           {data?.recent?.edges.map((b, i) => (

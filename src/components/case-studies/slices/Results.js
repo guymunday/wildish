@@ -17,6 +17,7 @@ const ResultsStyles = styled.div`
   .results-thumb {
     flex: 1;
     max-width: 250px;
+    padding: 20px;
     img {
       display: block;
       width: 100%;

@@ -14,11 +14,11 @@ const LogoStyles = styled.div`
   }
 `;
 
-export default function Logo() {
+export default function Logo({ setMenuOpen }) {
   return (
     <>
       <LogoStyles>
-        <Link to="/">
+        <Link to="/" onClick={() => setMenuOpen(false)}>
           <img src={handLogo} alt="Wildish and Co hand logo" />
         </Link>
       </LogoStyles>

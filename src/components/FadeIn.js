@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FadeIn({ children, ...rest }) {
+export default function FadeIn({ children, addClass, ...rest }) {
   const fadeRef = React.useRef(null);
   const fadeInnerRef = React.useRef(null);
 
@@ -15,10 +15,12 @@ export default function FadeIn({ children, ...rest }) {
       scrollTrigger: fadeRef.current,
     });
   }, []);
-  
+
   return (
     <div ref={fadeRef} style={{ overflow: "hidden" }} {...rest}>
-      <div ref={fadeInnerRef}>{children}</div>
+      <div ref={fadeInnerRef} className={addClass}>
+        {children}
+      </div>
     </div>
   );
 }

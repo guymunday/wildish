@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import Image from "../components/Image";
+import Marquee from "../components/Marquee";
 import gsap from "gsap";
 
 const CasestudyGrid = styled.section`
@@ -58,6 +59,7 @@ export default function Casestudies({ data: { cases } }) {
           </>
         ))}
       </CasestudyGrid>
+      <Marquee />
     </>
   );
 }
