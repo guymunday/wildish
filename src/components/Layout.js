@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import Footer from "./Footer";
 import Hamburger from "./Hamburger";
 import Logo from "./Logo";
+import Transition from "./Transition";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,11 +16,16 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    console.log(ref);
+  });
 
   return (
     <>
       <GlobalStyle />
-      <main key={location.pathname}>{children}</main>
+      <Transition location={location}>{children}</Transition>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
       <Logo setMenuOpen={setMenuOpen} />
