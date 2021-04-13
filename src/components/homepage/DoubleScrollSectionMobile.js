@@ -145,12 +145,9 @@ export default function DoubleScrollSectionMobile({ data }) {
           style={{ width: isWords ? "0%" : "100%" }}
         >
           <div className="homepage-words homepage-images-hero">
-            <img
-              className="homepage-logo"
-              src={lobsterGif}
-              alt="Wildish & Co gif"
-              loading="lazy"
-            />
+            <div className="square-iframe-container">
+              <iframe src="https://player.vimeo.com/video/536273895?background=1" />
+            </div>
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (

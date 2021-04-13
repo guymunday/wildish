@@ -26,7 +26,6 @@ class Transition extends React.PureComponent {
           }}
         >
           {(status) => {
-            console.log(status);
             return (
               <main
                 style={{

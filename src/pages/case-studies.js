@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Image from "../components/Image";
 import Marquee from "../components/Marquee";
 import gsap from "gsap";
+import Filter from "../components/case-studies/Filter";
+import useQueryString from "../components/query-string/useQueryString";
 
 const CasestudyGrid = styled.section`
   width: 100%;
@@ -23,42 +25,108 @@ const CasestudyGrid = styled.section`
       display: block;
       height: 100%;
       width: 100%;
+      position: relative;
       img,
       .gatsby-image-wrapper {
         width: 100%;
         height: 100%;
       }
+      .casestudy-title {
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: var(--black);
+        color: var(--white);
+        padding: 10px 0;
+        z-index: 2;
+        opacity: 0;
+        transition: 0.3s ease opacity;
+        text-align: center;
+      }
+      :hover {
+        .casestudy-title {
+          opacity: 1;
+        }
+      }
     }
   }
 `;
 
-export default function Casestudies({ data: { cases } }) {
+export default function Casestudies({ data: { cases, tags } }) {
+  const [tagFilter, setTagFilter] = useQueryString("tagged", "all");
+
+  const animation = async () => {
+    return gsap.to(".grid-item", {
+      opacity: 1,
+      duration: 0.3,
+      stagger: {
+        each: 0.2,
+      },
+    });
+  };
+
+  const reverseAnimation = async () => {
+    return gsap.to(".grid-item", {
+      opacity: 0,
+      duration: 0.2,
+      stagger: {
+        each: 0.1,
+        from: "end",
+      },
+    });
+  };
+
   React.useEffect(() => {
     gsap.from(".grid-item", {
       opacity: 0,
       duration: 0.3,
-      stagger: 0.2,
+      stagger: {
+        each: 0.2,
+      },
     });
   }, []);
 
+  const handleClick = async (filter) => {
+    await reverseAnimation();
+    await setTagFilter(filter);
+    await animation();
+  };
+
   return (
     <>
-      <div style={{ background: "#000", height: 100, width: "100%" }} />
-      <CasestudyGrid>
-        {cases?.edges?.map((c, i) => (
-          <>
-            <div key={i} className="grid-item">
-              <Link to={`/case-studies/${c?.node?.slug}`}>
-                <Image
-                  image={c?.node?.case_study?.heroImage}
-                  style={{ height: "100%" }}
-                />
-                <p></p>
-              </Link>
-            </div>
-          </>
-        ))}
-      </CasestudyGrid>
+      <div style={{ background: "#000", minHeight: "100vh", width: "100%" }}>
+        <div style={{ background: "#000", height: 100, width: "100%" }} />
+        <Filter
+          tags={tags?.edges}
+          tagFilter={tagFilter}
+          handleClick={handleClick}
+        />
+        <CasestudyGrid>
+          {cases?.edges?.map((c, i) => {
+            const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name);
+            if (mappedFilter.includes(tagFilter) || tagFilter === "all") {
+              return (
+                <>
+                  <div key={i} className="grid-item">
+                    <Link
+                      className="nostyle"
+                      to={`/case-studies/${c?.node?.slug}`}
+                    >
+                      <Image
+                        image={c?.node?.case_study?.heroImage}
+                        style={{ height: "100%" }}
+                      />
+                      <p className="casestudy-title">{c?.node?.title} &rarr;</p>
+                    </Link>
+                  </div>
+                </>
+              );
+            }
+          })}
+        </CasestudyGrid>
+      </div>
       <Marquee />
     </>
   );
@@ -66,11 +134,31 @@ export default function Casestudies({ data: { cases } }) {
 
 export const caseQuery = graphql`
   query CasestudiesQuery {
+    tags: allWpTag {
+      edges {
+        node {
+          slug
+          name
+          case_studies {
+            nodes {
+              title
+              slug
+            }
+          }
+        }
+      }
+    }
     cases: allWpCaseStudy(sort: { order: ASC, fields: date }) {
       edges {
         node {
           title
           slug
+          tags {
+            nodes {
+              name
+              slug
+            }
+          }
           case_study {
             heroText
             heroImage {

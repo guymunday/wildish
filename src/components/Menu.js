@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
 import { gsap } from "gsap";
+import CalendlyButton from "./CalendlyButton";
 
 const MenuStyles = styled.nav`
   position: fixed;
@@ -62,8 +63,22 @@ const MenuStyles = styled.nav`
     .menu-contact-inner {
       padding: 30px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      .menu-address {
+        width: 25%;
+        padding: 20px;
+        h3 {
+          &:not(:first-child) {
+            margin-top: 30px;
+          }
+        }
+        @media screen and (max-width: 950px) {
+          width: 50%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 100%;
+        }
+      }
     }
   }
 `;
@@ -185,15 +200,46 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                 />
               );
             })}
-            {data?.menu?.menu?.addesses?.map((a, i) => {
-              return (
-                <div
-                  key={i}
-                  className="html menu-address"
-                  dangerouslySetInnerHTML={{ __html: a?.address }}
-                />
-              );
-            })}
+            <div className="menu-address">
+              <h3>Hire us</h3>
+              <a href="mailto:hello@wildishandco.co.uk">
+                hello@wildishandco.co.uk
+              </a>
+              <br />
+              <CalendlyButton />
+              <h3>Work with us</h3>
+              <a href="mailto:work@wildishandco.co.uk">
+                work@wildishandco.co.uk
+              </a>
+            </div>
+            <div className="menu-address">
+              <h3>Follow us</h3>
+              <a
+                className="nostyle"
+                href="https://www.instagram.com/wildishandco_studio/"
+                target="_blank"
+              >
+                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Instagram
+              </a>
+              <br />
+              <a
+                className="nostyle"
+                href="https://www.facebook.com/wildishandco/"
+                target="_blank"
+              >
+                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Facebook
+              </a>
+              <br />
+              <a
+                className="nostyle"
+                href="https://www.linkedin.com/company/wildish-&-co/"
+                target="_blank"
+              >
+                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Linkedin
+              </a>
+              {/* <h3>Keep up to date</h3>
+              <a href="">Sign up to our delicious spam</a> */}
+            </div>
           </div>
         </div>
       </MenuStyles>

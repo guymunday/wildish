@@ -90,6 +90,13 @@ export default function DoubleScrollSection({ data }) {
       .to(".homepage-left", {
         opacity: 0,
       })
+      .to(
+        ".casestudy-title",
+        {
+          opacity: 0,
+        },
+        "<"
+      )
       .to(wordsRef.current, {
         width: 0,
         duration: 0.6,
@@ -131,12 +138,9 @@ export default function DoubleScrollSection({ data }) {
         </HomepageSection>
         <HomepageSection ref={picturesRef}>
           <div className="homepage-words homepage-images-hero">
-            <img
-              className="homepage-logo"
-              src={lobsterGif}
-              alt="Wildish & Co gif"
-              loading="lazy"
-            />
+            <div className="square-iframe-container">
+              <iframe src="https://player.vimeo.com/video/536273895?background=1" />
+            </div>
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (

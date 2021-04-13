@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, graphql, navigate } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import HeroSection from "../components/case-studies/HeroSection";
 import SliceZone from "../components/case-studies/SliceZone";
 import { gsap } from "gsap";
@@ -8,8 +8,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Casestudy = ({ data }) => {
-  const paddingRef = React.useRef();
-
+  
   React.useEffect(() => {
     console.log(document.height);
   });
@@ -22,13 +21,13 @@ const Casestudy = ({ data }) => {
         "#next-project",
         {
           height: "100vh",
-          duration: 0.3,
+          duration: 0.5,
         },
         "<"
       )
       .to(window, {
         scrollTo: "#next-project",
-        duration: 0.3,
+        duration: 0.5,
       })
       .add(function () {}, "+=0.6");
   };
@@ -43,6 +42,7 @@ const Casestudy = ({ data }) => {
             data={data?.nextProject?.case_study}
             next
             id="next-project"
+            style={{ cursor: "pointer" }}
             onClick={async () => {
               await scrollAni();
               await navigate(`/case-studies/${data?.nextProject?.slug}`);
@@ -125,7 +125,6 @@ export const CASE_STUDY_QUERY = graphql`
           ... on WpCase_study_CaseStudy_PageContent_ContentSection {
             content
             fieldGroupName
-            title
           }
           ... on WpCase_study_CaseStudy_PageContent_ImageSection {
             fieldGroupName

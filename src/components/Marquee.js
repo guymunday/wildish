@@ -16,7 +16,7 @@ const MarqueeStyles = styled.div`
   }
 `;
 
-export default function Marquee({ right }) {
+export default function Marquee({ right, ...rest }) {
   const words = {
     words: (
       <>
@@ -28,7 +28,7 @@ export default function Marquee({ right }) {
 
   return (
     <>
-      <MarqueeStyles right>
+      <MarqueeStyles right {...rest}>
         <div
           className="marquee-track"
           style={{

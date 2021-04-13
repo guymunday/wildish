@@ -30,7 +30,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           ... on Case_study_CaseStudy_PageContent_ContentSection {
             content
             fieldGroupName
-            title
           }
           ... on Case_study_CaseStudy_PageContent_VideoSection {
             embedCode
@@ -55,6 +54,13 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
               text
             }
           }
+        }
+      }
+      case_study_tags {
+        fieldGroupName
+        tags {
+          fieldGroupName
+          tag
         }
       }
       wpChildren: children(first: 100) {
@@ -102,9 +108,20 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       parentId
       slug
       status
+      tags(first: 100) {
+        nodes {
+          id
+        }
+      }
       template {
         templateName
         __typename
+      }
+      terms(first: 100) {
+        nodes {
+          id
+          __typename
+        }
       }
       title
       uri

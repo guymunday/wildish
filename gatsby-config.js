@@ -30,6 +30,7 @@ module.exports = {
         },
         production: {
           hardCacheMediaFiles: true,
+          allow404Images: true,
         },
         debug: {
           graphql: {

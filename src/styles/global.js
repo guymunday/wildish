@@ -54,23 +54,27 @@ const global = css`
     font-size: inherit;
     position: relative;
     z-index: 1;
-    &:hover {
-      ::after {
-        height: 100%;
-      }
-    }
-    &::after {
-      content: "";
+    background: linear-gradient(
+      0deg,
+      rgba(250, 222, 43, 1) 10%,
+      rgba(250, 222, 43, 0) 10%
+    );
+    ::before {
       position: absolute;
+      content: "";
       display: block;
-      height: 2px;
-      width: 100%;
-      background: var(--yellow);
+      right: 0;
       bottom: 0;
       left: 0;
-      /* transform: rotate(-1deg); */
+      height: 2px;
+      background: var(--yellow);
       z-index: -1;
-      transition: 0.3s ease;
+      transition: height 0.3s ease;
+    }
+    &:hover {
+      ::before {
+        height: 100%;
+      }
     }
   }
 
@@ -79,7 +83,8 @@ const global = css`
     color: inherit;
     font-size: inherit;
     position: relative;
-    &::after {
+    background: none;
+    &::before {
       content: "";
       display: none;
     }
@@ -158,7 +163,7 @@ const global = css`
   .yellow {
     background: var(--yellow);
   }
-  
+
   .white {
     strong {
       background: rgba(250, 222, 43, 1);
@@ -167,6 +172,20 @@ const global = css`
         rgba(250, 222, 43, 1) 80%,
         rgba(250, 222, 43, 0) 80%
       );
+    }
+  }
+
+  .square-iframe-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   }
 `;
