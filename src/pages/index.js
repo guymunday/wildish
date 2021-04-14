@@ -4,11 +4,13 @@ import BlogPostMasonry from "../components/BlogPostsMasonry";
 import DoubleScrollSection from "../components/homepage/DoubleScrollSection";
 import Marquee from "../components/Marquee";
 import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectionMobile";
+import DoubleScrollSectionAlt from "../components/homepage/DoubleScrollSectionAlt";
 
 export default function IndexPage({ data }) {
   return (
     <>
-      <DoubleScrollSection data={data?.sections} />
+      {/* <DoubleScrollSection data={data?.sections} /> */}
+      <DoubleScrollSectionAlt data={data?.sections} />
       <DoubleScrollSectionMobile data={data?.sections} />
       <Marquee />
       <Marquee right />

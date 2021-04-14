@@ -36,6 +36,7 @@
     "react-helmet": "^6.1.0",
     "react-transition-group": "^4.4.1",
     "sanitize-html": "^2.3.2",
+    "scroll-snap": "^3.2.4",
     "styled-components": "^5.2.1"
   }
 }
