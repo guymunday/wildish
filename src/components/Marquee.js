@@ -8,6 +8,9 @@ const MarqueeStyles = styled.div`
   white-space: nowrap;
   background: #000;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   .marquee-track {
     display: flex;
     :hover {

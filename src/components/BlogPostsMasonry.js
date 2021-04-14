@@ -15,7 +15,8 @@ export const Masonry = styled.div`
   column-gap: 70px;
   color: var(--white);
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
+  position: relative;
   .blog-post-thumb {
     display: flex;
     flex-direction: column;
@@ -101,11 +102,15 @@ export default function BlogPostMasonry() {
   `);
 
   return (
-    <MasonryWrapper>
-      <Masonry>
-        {blog?.allWpPost?.edges.map((b, i) => (
-          <div key={i} className="blog-post-thumb">
-            <Link to={`/blog/${b?.node?.slug}`} className="nostyle">
+    <>
+      <MasonryWrapper>
+        <Masonry>
+          {blog?.allWpPost?.edges.map((b, i) => (
+            <Link
+              key={i}
+              to={`/blog/${b?.node?.slug}`}
+              className="blog-post-thumb nostyle"
+            >
               <Image image={b?.node?.featuredImage?.node} />
               <h3 className="blog-title" style={{ margin: "20px 0" }}>
                 {b?.node?.title}
@@ -120,9 +125,9 @@ export default function BlogPostMasonry() {
                 </div>
               </div>
             </Link>
-          </div>
-        ))}
-      </Masonry>
-    </MasonryWrapper>
+          ))}
+        </Masonry>
+      </MasonryWrapper>
+    </>
   );
 }

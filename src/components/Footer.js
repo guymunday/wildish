@@ -6,8 +6,6 @@ import handLogo from "../assets/images/hand-logo.svg";
 const FooterStyles = styled.footer`
   width: 100%;
   background: var(--black);
-  position: relative;
-  z-index: 11;
   .footer-inner {
     padding: 30px;
     display: flex;

@@ -1,7 +1,12 @@
 import * as React from "react";
+import { navigate } from "gatsby-link";
 
 const NotFoundPage = () => {
-  return <>Oh no you're lost</>;
+  React.useEffect(() => {
+    navigate("/");
+  });
+
+  return <></>;
 };
 
 export default NotFoundPage;
