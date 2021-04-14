@@ -45,6 +45,11 @@ export const PAGE_QUERY = graphql`
             columnTwo
             fieldGroupName
           }
+          ... on WpGql_page_Contentblocks_ContentBlocks_Copy {
+            colour
+            copy
+            fieldGroupName
+          }
           ... on WpGql_page_Contentblocks_ContentBlocks_CopyAndButtons {
             colour
             copy

@@ -4,6 +4,7 @@ import Hero from "./slices/Hero";
 import TwoColumn from "./slices/TwoColumn";
 import ThreeColumn from "./slices/ThreeColumn";
 import CopyImage from "./slices/CopyImage";
+import Copy from "./slices/Copy";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
@@ -11,6 +12,8 @@ export default function SliceZone({ slices }) {
     switch (s.fieldGroupName) {
       case "gql_page_Contentblocks_ContentBlocks_Hero":
         return <Hero key={i} input={s} />;
+      case "gql_page_Contentblocks_ContentBlocks_Copy":
+        return <Copy key={i} input={s} />;
       case "gql_page_Contentblocks_ContentBlocks_TwoColumnCopy":
         return <TwoColumn key={i} input={s} />;
       case "gql_page_Contentblocks_ContentBlocks_CopyAndButtons":

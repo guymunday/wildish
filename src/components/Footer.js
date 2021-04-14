@@ -55,7 +55,11 @@ export default function Footer() {
             <img src={handLogo} alt="" />
           </Link>
           <p>
-            <Link style={{ marginRight: 30 }} className="nostyle" to="/">
+            <Link
+              style={{ marginRight: 30 }}
+              className="nostyle"
+              to="/privacy-policy"
+            >
               Privacy Policy
             </Link>{" "}
             Registered Company: 7799598
