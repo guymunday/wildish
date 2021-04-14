@@ -12,7 +12,7 @@ const setQueryStringWithoutPageReload = (qsValue) => {
 
 export const getQueryStringValue = (
   key,
-  queryString = window.location.search
+  queryString = typeof window !== "undefined" && window.location.search
 ) => {
   const values = qs.parse(queryString);
   return values[key];
@@ -21,7 +21,7 @@ export const getQueryStringValue = (
 export const setQueryStringValue = (
   key,
   value,
-  queryString = window.location.search
+  queryString = typeof window !== "undefined" && window.location.search
 ) => {
   const values = qs.parse(queryString);
   const newQsValue = qs.stringify({
