@@ -6,6 +6,8 @@ import handLogo from "../assets/images/hand-logo.svg";
 const FooterStyles = styled.footer`
   width: 100%;
   background: var(--black);
+  position: relative;
+  z-index: 11;
   .footer-inner {
     padding: 30px;
     display: flex;
@@ -19,6 +21,11 @@ const FooterStyles = styled.footer`
     p {
       color: gray;
       font-size: 0.8rem;
+    }
+    .mobile-margin {
+      @media screen and (max-width: 650px) {
+        margin: 20px 0;
+      }
     }
     .footer-logo {
       width: 30px;
@@ -41,7 +48,7 @@ export default function Footer() {
     <>
       <FooterStyles>
         <div className="footer-inner">
-          <p>
+          <p className="mobile-margin">
             ©{new Date().getFullYear()} Wildish&Co LTD. All rights reserved.
           </p>
           <Link className="nostyle footer-logo" to="/">

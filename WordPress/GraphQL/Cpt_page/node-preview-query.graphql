@@ -32,6 +32,14 @@ query PREVIEW_QUERY($id: ID!) {
           id
         }
       }
+      picturesVideo {
+        backupImage {
+          __typename
+          id
+        }
+        fieldGroupName
+        video
+      }
       wordsScrollSections {
         fieldGroupName
         section

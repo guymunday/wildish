@@ -1,9 +1,7 @@
 import React from "react";
-import { Link, navigate } from "gatsby";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
-import lobsterGif from "../../assets/images/Lobster_black.gif";
-import { gsap } from "gsap";
 import Image from "../Image";
 
 const DoubleScrollStyles = styled.div`
@@ -145,9 +143,16 @@ export default function DoubleScrollSectionMobile({ data }) {
           style={{ width: isWords ? "0%" : "100%" }}
         >
           <div className="homepage-words homepage-images-hero">
-            <div className="square-iframe-container">
-              <iframe src="https://player.vimeo.com/video/536273895?background=1" />
-            </div>
+            {data?.homepage?.picturesVideo?.video ? (
+              <div className="square-iframe-container">
+                <iframe
+                  title="Wildish animation"
+                  src={data?.homepage?.picturesVideo?.video}
+                />
+              </div>
+            ) : (
+              <Image image={data?.homepage?.picturesVideo?.backupImage} />
+            )}
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (

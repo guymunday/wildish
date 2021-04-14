@@ -13,33 +13,35 @@ const MenuStyles = styled.nav`
   overflow: scroll;
   background: var(--yellow);
   z-index: 999;
-  .close-button {
-    display: flex;
-    justify-content: flex-end;
-    button {
-      background: transparent;
-      outline: none;
-      border: none;
-      padding: 10px 30px;
-      font-size: 50px;
-      margin: 0;
-      cursor: pointer;
-      transition: 0.3s ease;
-      :active {
-        transform: scale(0.8);
-      }
-    }
-  }
   .menu-container {
     min-height: 60vh;
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    .close-button {
+      display: flex;
+      justify-content: flex-end;
+      align-self: flex-start;
+      button {
+        background: transparent;
+        outline: none;
+        border: none;
+        padding: 10px 30px;
+        font-size: 50px;
+        margin: 0;
+        cursor: pointer;
+        transition: 0.3s ease;
+        :active {
+          transform: scale(0.8);
+        }
+      }
+    }
     .menu-list {
       display: flex;
       flex-direction: column;
       padding: 30px;
+      align-self: flex-end;
       .menu-item {
         display: inline-block;
         font-size: 4rem;
@@ -48,6 +50,9 @@ const MenuStyles = styled.nav`
         outline: none;
         border: none;
         text-align: left;
+        @media screen and (max-height: 768px) {
+          font-size: 3rem;
+        }
         .menu-arrow {
           display: inline-block;
           width: 70px;
@@ -155,9 +160,6 @@ export default function Menu({ setMenuOpen, menuOpen }) {
   return (
     <>
       <MenuStyles ref={menuRef}>
-        <div className="close-button">
-          <button onClick={handleCloseButton}>&times;</button>
-        </div>
         <div className="menu-container">
           <div className="menu-list">
             <button
@@ -187,6 +189,9 @@ export default function Menu({ setMenuOpen, menuOpen }) {
             <div className="menu-item">
               <span className="menu-arrow">↓</span> Contact
             </div>
+          </div>
+          <div className="close-button">
+            <button onClick={handleCloseButton}>&times;</button>
           </div>
         </div>
         <div className="menu-contact">

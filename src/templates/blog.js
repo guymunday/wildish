@@ -8,7 +8,7 @@ import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent";
 
 const BlogHeader = styled.div`
   width: 100%;
-  padding: 60px 30px 30px 30px;
+  padding: 130px 30px 0px 30px;
   .blog-header-inner {
     display: flex;
     max-width: 800px;

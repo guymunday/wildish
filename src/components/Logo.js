@@ -11,6 +11,10 @@ const LogoStyles = styled.div`
   img {
     display: block;
     width: 50px;
+    transition: 0.3s ease width;
+    @media screen and (max-width: 600px) {
+      width: 40px;
+    }
   }
 `;
 

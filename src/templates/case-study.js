@@ -8,7 +8,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Casestudy = ({ data }) => {
-  
   React.useEffect(() => {
     console.log(document.height);
   });
@@ -17,6 +16,9 @@ const Casestudy = ({ data }) => {
     let tl = gsap.timeline();
 
     return tl
+      .to(".brand-logo", {
+        opacity: 0,
+      })
       .to(
         "#next-project",
         {

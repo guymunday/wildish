@@ -21,6 +21,18 @@ export const indexQuery = graphql`
   query HomeQuery {
     sections: wpCptPage(slug: { eq: "homepage" }) {
       homepage {
+        picturesVideo {
+          video
+          backupImage {
+            altText
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
         cases: imageScrollSections {
           ... on WpCase_study {
             id

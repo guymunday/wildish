@@ -8,18 +8,35 @@ import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry";
 const BlogHeader = styled.div`
   background: var(--black);
   width: 100%;
-  padding: 30px;
+  max-width: 1160px;
+  margin: auto;
+  padding: 0 30px;
   color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 export default function BlogPosts({ data }) {
   return (
     <>
-      <BlogHeader>
-        <Link to="/">
-          This is too many words, I would like to leave &times;
-        </Link>
-      </BlogHeader>
+      <div
+        style={{
+          background: "var(--black)",
+          width: "100%",
+          padding: "120px 0 0 ",
+        }}
+      >
+        <BlogHeader>
+          <h1>Ideas</h1>
+          <Link to="/">
+            This is too many words, I would like to leave &times;
+          </Link>
+        </BlogHeader>
+      </div>
       <MasonryWrapper>
         <Masonry>
           {data?.allWpPost?.edges.map((b, i) => (
@@ -31,10 +48,12 @@ export default function BlogPosts({ data }) {
                   className="html"
                   dangerouslySetInnerHTML={{ __html: b?.node?.excerpt }}
                 />
-                <div className="time-to-read">
-                  <div className="hands">A</div>
-                  <div className="glasses">
-                    <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
+                <div className="time-to-read-container">
+                  <div className="time-to-read">
+                    <div className="hands">A</div>
+                    <div className="glasses">
+                      <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
+                    </div>
                   </div>
                 </div>
               </Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "../Image";
+import nextHand from "../../assets/images/next-hand.gif";
 
 const HeroStyles = styled.div`
   width: 100%;
@@ -41,16 +42,20 @@ export default function HeroSection({ data, next, ...rest }) {
   return (
     <HeroStyles next={next} {...rest}>
       <Image image={data?.heroImage} />
-      {!next && (
-        <div className="hero-inner">
-          <img
-            className="brand-logo"
-            src={data?.heroLogo?.localFile?.publicURL}
-            alt={data?.heroLogo?.alt}
-          />
-          <h2>{data?.heroText}</h2>
-        </div>
-      )}
+      <div className="hero-inner">
+        {!next ? (
+          <>
+            <img
+              className="brand-logo"
+              src={data?.heroLogo?.localFile?.publicURL}
+              alt={data?.heroLogo?.alt}
+            />
+            <h2>{data?.heroText}</h2>
+          </>
+        ) : (
+          <img className="brand-logo" src={nextHand} />
+        )}
+      </div>
     </HeroStyles>
   );
 }

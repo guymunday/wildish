@@ -26,24 +26,41 @@ export const Masonry = styled.div`
       .blog-title {
         color: var(--yellow);
       }
+      :hover {
+        .time-to-read-container {
+          .time-to-read {
+            width: 38%;
+          }
+        }
+      }
     }
     .blog-title {
       margin: 20px 0;
       transition: 0.3s ease color;
     }
-    .time-to-read {
-      display: flex;
-      justify-content: space-between;
+    .time-to-read-container {
       margin: 20px 0;
-      .glasses {
+      height: 30px;
+      width: 100%;
+      position: relative;
+      .time-to-read {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        svg {
-          max-width: 2rem;
-        }
-        p {
-          font-size: 0.9rem;
+        justify-content: space-between;
+        transition: 1s ease width;
+        .glasses {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          svg {
+            max-width: 2rem;
+          }
+          p {
+            font-size: 0.9rem;
+          }
         }
       }
     }
@@ -94,10 +111,12 @@ export default function BlogPostMasonry() {
                 {b?.node?.title}
               </h3>
               <div dangerouslySetInnerHTML={{ __html: b?.node?.excerpt }} />
-              <div className="time-to-read">
-                <div className="hands">A</div>
-                <div className="glasses">
-                  <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
+              <div className="time-to-read-container">
+                <div className="time-to-read">
+                  <div className="hands">A</div>
+                  <div className="glasses">
+                    <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
+                  </div>
                 </div>
               </div>
             </Link>

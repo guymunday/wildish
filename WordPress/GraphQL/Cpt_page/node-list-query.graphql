@@ -33,6 +33,14 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
             id
           }
         }
+        picturesVideo {
+          backupImage {
+            __typename
+            id
+          }
+          fieldGroupName
+          video
+        }
         wordsScrollSections {
           fieldGroupName
           section

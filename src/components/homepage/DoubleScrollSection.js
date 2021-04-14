@@ -2,7 +2,6 @@ import React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
-import lobsterGif from "../../assets/images/Lobster_black.gif";
 import { gsap } from "gsap";
 import Image from "../Image";
 
@@ -24,10 +23,15 @@ const HomepageSection = styled.section`
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  transition: width 0.3s ease;
   will-change: width scroll-position;
   ::-webkit-scrollbar {
     display: none;
+  }
+  &.transition {
+    transition: 0.3s ease width;
+  }
+  &:hover {
+    width: 55%;
   }
   .homepage-words {
     height: 100%;
@@ -87,26 +91,35 @@ export default function DoubleScrollSection({ data }) {
     let tl = gsap.timeline({ ease: "power1.in" });
 
     return tl
+      .to(".transition", {
+        duration: 0.2,
+        css: {
+          transition: "0.1s ease all",
+        },
+      })
       .to(".homepage-left", {
         opacity: 0,
+        duration: 0.3,
       })
       .to(
         ".casestudy-title",
         {
           opacity: 0,
+          duration: 0.3,
         },
         "<"
       )
       .to(wordsRef.current, {
         width: 0,
-        duration: 0.6,
+        duration: 1.2,
+        delay: 0.4,
         ease: "power4.out",
       })
       .to(
         picturesRef.current,
         {
           width: "100%",
-          duration: 0.6,
+          duration: 1.2,
           ease: "power4.out",
         },
         "<"
@@ -114,10 +127,38 @@ export default function DoubleScrollSection({ data }) {
       .add(function () {}, "+=0.3");
   };
 
+  const handleLeftHover = () => {
+    gsap.to(wordsRef.current, {
+      width: "55%",
+      duration: 0.1,
+    });
+  };
+
+  const removeLeftHover = () => {
+    gsap.to(wordsRef.current, {
+      width: "50%",
+      duration: 0.1,
+    });
+  };
+
+  const handleRightHover = () => {
+    gsap.to(picturesRef.current, {
+      width: "55%",
+      duration: 0.1,
+    });
+  };
+
+  const removeRightHover = () => {
+    gsap.to(picturesRef.current, {
+      width: "50%",
+      duration: 0.1,
+    });
+  };
+
   return (
     <>
       <DoubleScrollStyles>
-        <HomepageSection ref={wordsRef}>
+        <HomepageSection ref={wordsRef} className="left-side transition">
           <div className="homepage-words-hero homepage-words homepage-left">
             <img
               className="homepage-logo"
@@ -136,11 +177,19 @@ export default function DoubleScrollSection({ data }) {
             );
           })}
         </HomepageSection>
-        <HomepageSection ref={picturesRef}>
+        <HomepageSection ref={picturesRef} className="right-side transition">
           <div className="homepage-words homepage-images-hero">
-            <div className="square-iframe-container">
-              <iframe src="https://player.vimeo.com/video/536273895?background=1" />
-            </div>
+            {data?.homepage?.picturesVideo?.video ? (
+              <div className="square-iframe-container">
+                <iframe
+                  title="Wildish animation"
+                  loading="eager"
+                  src={data?.homepage?.picturesVideo?.video}
+                />
+              </div>
+            ) : (
+              <Image image={data?.homepage?.picturesVideo?.backupImage} />
+            )}
           </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (

@@ -35,7 +35,7 @@ export default function CopyButtons({ input: { copy, buttons, colour } }) {
                 : "";
               return (
                 <>
-                  <PillLink to={`/case-studies/${link}`}>
+                  <PillLink className="nostyle" to={`/case-studies/${link}`}>
                     {b?.button?.buttonLabel}
                   </PillLink>
                 </>

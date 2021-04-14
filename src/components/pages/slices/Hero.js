@@ -11,12 +11,19 @@ const HeroStyles = styled.section`
   }
 `;
 
-export default function Hero({ input: { colour, copy, image } }) {
+export default function Hero({ input: { colour, copy, image, video } }) {
+  console.log(video);
   return (
     <>
       <HeroStyles className={`${colour}`}>
         <div className="hero-inner">
-          <Image image={image} />
+          {video ? (
+            <div className="square-iframe-container">
+              <iframe title="animation" src={video} />
+            </div>
+          ) : (
+            <Image image={image} />
+          )}
           <div className="html" dangerouslySetInnerHTML={{ __html: copy }} />
         </div>
       </HeroStyles>
