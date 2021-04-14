@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import { gsap } from "gsap";
 import Image from "../Image";
@@ -14,7 +14,6 @@ const DoubleScrollStyles = styled.div`
 `;
 
 const HomepageSection = styled.section`
-  position: sticky;
   bottom: 0;
   height: 100vh;
   position: relative;
@@ -80,6 +79,19 @@ const HomepageSection = styled.section`
         opacity: 1;
       }
     }
+  }
+`;
+
+const Arrows = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  height: 30px;
+  z-index: 99;
+  p {
+    display: block;
+    transform: rotate(90deg);
+    transform-origin: 100% 0%;
   }
 `;
 
@@ -159,6 +171,9 @@ export default function DoubleScrollSection({ data }) {
     <>
       <DoubleScrollStyles>
         <HomepageSection ref={wordsRef} className="left-side transition">
+          <Arrows>
+            <p>About &rarr;</p>
+          </Arrows>
           <div className="homepage-words-hero homepage-words homepage-left">
             <img
               className="homepage-logo"
@@ -178,6 +193,9 @@ export default function DoubleScrollSection({ data }) {
           })}
         </HomepageSection>
         <HomepageSection ref={picturesRef} className="right-side transition">
+          <Arrows style={{ color: "var(--white)" }}>
+            <p>Showcase &rarr;</p>
+          </Arrows>
           <div className="homepage-words homepage-images-hero">
             {data?.homepage?.picturesVideo?.video ? (
               <div className="square-iframe-container">
@@ -204,7 +222,7 @@ export default function DoubleScrollSection({ data }) {
                 }}
               >
                 <Image image={c?.case_study?.heroImage} />
-                <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>
+                <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
             );
           })}
