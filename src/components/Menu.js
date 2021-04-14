@@ -223,6 +223,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                 className="nostyle"
                 href="https://www.instagram.com/wildishandco_studio/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span style={{ color: "var(--yellow)" }}>&rarr;</span> Instagram
               </a>
@@ -231,6 +232,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                 className="nostyle"
                 href="https://www.facebook.com/wildishandco/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span style={{ color: "var(--yellow)" }}>&rarr;</span> Facebook
               </a>
@@ -239,6 +241,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                 className="nostyle"
                 href="https://www.linkedin.com/company/wildish-&-co/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span style={{ color: "var(--yellow)" }}>&rarr;</span> Linkedin
               </a>

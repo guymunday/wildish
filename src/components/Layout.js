@@ -10,6 +10,7 @@ import Logo from "./Logo";
 import Transition from "./Transition";
 import AnnoyingPopup from "./AnnoyingPopup";
 import Cursor from "./cursor/Cursor";
+import CookiesBanner from "./CookiesBanner";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -36,6 +37,7 @@ const Layout = ({ location, children }) => {
       <Hamburger setMenuOpen={setMenuOpen} />
       <Logo setMenuOpen={setMenuOpen} />
       <Footer />
+      {/* <CookiesBanner /> */}
       <Cursor />
     </>
   );

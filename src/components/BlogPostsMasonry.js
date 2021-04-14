@@ -105,7 +105,7 @@ export default function BlogPostMasonry() {
       <Masonry>
         {blog?.allWpPost?.edges.map((b, i) => (
           <div key={i} className="blog-post-thumb">
-            <Link to={`/blog/${b?.node?.slug}`}>
+            <Link to={`/blog/${b?.node?.slug}`} className="nostyle">
               <Image image={b?.node?.featuredImage?.node} />
               <h3 className="blog-title" style={{ margin: "20px 0" }}>
                 {b?.node?.title}

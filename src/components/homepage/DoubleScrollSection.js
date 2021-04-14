@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import { gsap } from "gsap";
 import Image from "../Image";
@@ -137,34 +137,6 @@ export default function DoubleScrollSection({ data }) {
         "<"
       )
       .add(function () {}, "+=0.3");
-  };
-
-  const handleLeftHover = () => {
-    gsap.to(wordsRef.current, {
-      width: "55%",
-      duration: 0.1,
-    });
-  };
-
-  const removeLeftHover = () => {
-    gsap.to(wordsRef.current, {
-      width: "50%",
-      duration: 0.1,
-    });
-  };
-
-  const handleRightHover = () => {
-    gsap.to(picturesRef.current, {
-      width: "55%",
-      duration: 0.1,
-    });
-  };
-
-  const removeRightHover = () => {
-    gsap.to(picturesRef.current, {
-      width: "50%",
-      duration: 0.1,
-    });
   };
 
   return (

@@ -2,7 +2,6 @@ import * as React from "react";
 import { openPopupWidget } from "react-calendly";
 import styled from "styled-components";
 import EmojiMarquee from "./EmojiMarquee";
-import Marquee from "./Marquee";
 
 const ButtonStyles = styled.button`
   border: 2px solid var(--yellow);

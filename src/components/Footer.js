@@ -56,7 +56,7 @@ export default function Footer() {
           </Link>
           <p>
             <Link
-              style={{ marginRight: 30 }}
+              style={{ marginRight: 30, position: "relative" }}
               className="nostyle"
               to="/privacy-policy"
             >
