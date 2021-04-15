@@ -1,10 +1,12 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import SliceZone from "../components/pages/SliceZone";
+import Seo from "gatsby-plugin-wpgraphql-seo";
 
 export default function PageTemplate({ data }) {
   return (
     <>
+      <Seo post={data?.page} />
       {data?.page?.contentBlocks?.contentBlocks && (
         <SliceZone slices={data?.page?.contentBlocks?.contentBlocks} />
       )}
@@ -18,6 +20,35 @@ export const PAGE_QUERY = graphql`
       title
       slug
       content
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          articleType
+          pageType
+          raw
+        }
+      }
       contentBlocks {
         contentBlocks {
           ... on WpGql_page_Contentblocks_ContentBlocks_Hero {
@@ -35,6 +66,23 @@ export const PAGE_QUERY = graphql`
                     quality: 90
                     placeholder: BLURRED
                   )
+                }
+              }
+            }
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_HoverImageBlocks {
+            colour
+            fieldGroupName
+            title
+            textHoverImage {
+              text
+              hoverImage {
+                altText
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }

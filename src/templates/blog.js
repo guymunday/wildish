@@ -5,6 +5,7 @@ import { MasonryWrapper } from "../components/BlogPostsMasonry";
 import Image from "../components/Image";
 import GlassesSvg from "../assets/svgs/glasses";
 import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent";
+import Seo from "gatsby-plugin-wpgraphql-seo";
 
 const BlogHeader = styled.div`
   width: 100%;
@@ -102,6 +103,7 @@ const RecentPosts = styled.div`
 export default function BlogPage({ data }) {
   return (
     <>
+      <Seo post={data?.wpPost} />
       <BlogHeader className="glasses">
         <div className="blog-header-inner">
           <p className="read-time">
@@ -155,6 +157,35 @@ export const BLOG_QUERY = graphql`
       slug
       title
       content
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          articleType
+          pageType
+          raw
+        }
+      }
       blogSingle {
         readTime
       }

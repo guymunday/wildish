@@ -5,9 +5,16 @@ import Image from "../../Image";
 const HeroStyles = styled.section`
   padding: 100px 30px;
   .hero-inner {
-    max-width: 450px;
+    max-width: 600px;
     text-align: center;
     margin: auto;
+    .html {
+      max-width: 450px;
+      margin: auto;
+      h1 {
+        font-size: 3rem;
+      }
+    }
   }
 `;
 

@@ -18,6 +18,43 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
+      seo {
+        breadcrumbs {
+          text
+          url
+        }
+        canonical
+        cornerstone
+        focuskw
+        fullHead
+        metaDesc
+        metaKeywords
+        metaRobotsNofollow
+        metaRobotsNoindex
+        opengraphAuthor
+        opengraphDescription
+        opengraphImage {
+          __typename
+          id
+        }
+        opengraphModifiedTime
+        opengraphPublishedTime
+        opengraphPublisher
+        opengraphSiteName
+        opengraphTitle
+        opengraphType
+        opengraphUrl
+        schema {
+          raw
+        }
+        title
+        twitterDescription
+        twitterImage {
+          __typename
+          id
+        }
+        twitterTitle
+      }
       slug
       taxonomy {
         node {

@@ -3,13 +3,22 @@ import FadeIn from "../FadeIn";
 import Image from "../Image";
 import Copy from "./slices/Copy";
 import Results from "./slices/Results";
+import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
         return (
-          <FadeIn key={i}>
+          <FadeIn
+            key={i}
+            style={{
+              minHeight: "100vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Copy html={s?.content} />
           </FadeIn>
         );
@@ -18,6 +27,10 @@ export default function SliceZone({ slices }) {
           <FadeIn key={i}>
             <Image image={s?.image} />
           </FadeIn>
+        );
+      case "case_study_CaseStudy_PageContent_ImageTextRollOver":
+        return (
+          <RollIn alt={s.order === "text" ? true : false} key={i} input={s} />
         );
       case "case_study_CaseStudy_PageContent_ResultsSection":
         return (

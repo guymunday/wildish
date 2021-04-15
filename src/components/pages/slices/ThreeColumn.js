@@ -32,7 +32,7 @@ export default function ThreeColumn({
   React.useEffect(() => {
     gsap.from(".fade-in-column", {
       opacity: 0,
-      xPercent: -100,
+      yPercent: 100,
       scrollTrigger: containerRef.current,
       stagger: 0.2,
       duration: 0.3,

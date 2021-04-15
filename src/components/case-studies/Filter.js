@@ -4,12 +4,12 @@ import styled from "styled-components";
 const FilterStyles = styled.div`
   color: var(--white);
   padding: 50px 30px 30px 30px;
-  font-size: 0.9rem;
   .filter-button {
     margin: 0 5px;
     background: none;
     outline: none;
     border: none;
+    font-size: inherit;
   }
 `;
 

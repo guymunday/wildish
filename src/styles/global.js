@@ -14,7 +14,7 @@ const global = css`
   body {
     font-family: "Mabry Pro";
     font-style: normal;
-    font-size: 20px;
+    font-size: 22px;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -96,7 +96,10 @@ const global = css`
   h4,
   h5,
   h6 {
+    font-weight: 600;
+    line-height: 1.3;
     strong {
+      font-weight: 600;
       position: relative;
       z-index: 1;
       background: rgb(255, 255, 255);

@@ -39,7 +39,6 @@ const HomepageSection = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--yellow);
     position: relative;
     z-index: 1;
     outline: none;
@@ -118,7 +117,10 @@ export default function DoubleScrollSectionMobile({ data }) {
           </div>
           {data?.homepage?.words?.map((w, i) => {
             return (
-              <div className="homepage-words homepage-left" key={i}>
+              <div
+                className={`homepage-words homepage-left ${w?.colour}`}
+                key={i}
+              >
                 <div
                   className="hompepage-words-copy html"
                   dangerouslySetInnerHTML={{ __html: w?.section }}

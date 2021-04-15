@@ -34,13 +34,24 @@ const ResultsStyles = styled.div`
 export default function Results({ results }) {
   return (
     <>
-      <div style={{ textAlign: "center", padding: "100px 30px" }}>
-        <h2>Results</h2>
+      <div
+        style={{
+          textAlign: "center",
+          padding: "100px 30px",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <h2 style={{ marginBottom: 60 }}>Results</h2>
         <ResultsStyles>
           {results?.results?.map((r, i) => {
             return (
               <div key={i} className="results-thumb">
-                <img src={r?.image?.localFile?.publicURL} alt="" />
+                {/* {r?.image?.localFile?.publicURL && (
+                  <img src={r?.image?.localFile?.publicURL} alt="" />
+                )} */}
                 <h3>{r?.number}</h3>
                 <p>{r?.text}</p>
               </div>

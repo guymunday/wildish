@@ -26,6 +26,15 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
             id
           }
         }
+        ... on Case_study_CaseStudy_PageContent_ImageTextRollOver {
+          fieldGroupName
+          image {
+            __typename
+            id
+          }
+          order
+          text
+        }
         ... on Case_study_CaseStudy_PageContent_ContentSection {
           content
           fieldGroupName
@@ -53,13 +62,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
             text
           }
         }
-      }
-    }
-    case_study_tags {
-      fieldGroupName
-      tags {
-        fieldGroupName
-        tag
       }
     }
     wpChildren: children(first: 100) {
@@ -105,6 +107,46 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     }
     parentDatabaseId
     parentId
+    seo {
+      breadcrumbs {
+        text
+        url
+      }
+      canonical
+      cornerstone
+      focuskw
+      fullHead
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        __typename
+        id
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      readingTime
+      schema {
+        articleType
+        pageType
+        raw
+      }
+      title
+      twitterDescription
+      twitterImage {
+        __typename
+        id
+      }
+      twitterTitle
+    }
     slug
     status
     tags(first: 100) {

@@ -5,7 +5,7 @@ export default function Copy({ html }) {
   return (
     <div
       style={{
-        maxWidth: 800,
+        maxWidth: 850,
         margin: "50px auto",
         textAlign: "center",
         padding: 30,

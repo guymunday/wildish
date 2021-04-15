@@ -11,6 +11,7 @@ import Transition from "./Transition";
 import AnnoyingPopup from "./AnnoyingPopup";
 import Cursor from "./cursor/Cursor";
 import CookiesBanner from "./CookiesBanner";
+import MenuFooter from "./MenuFooter";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -36,6 +37,7 @@ const Layout = ({ location, children }) => {
       )}
       <Hamburger setMenuOpen={setMenuOpen} />
       <Logo setMenuOpen={setMenuOpen} />
+      <MenuFooter />
       <Footer />
       {/* <CookiesBanner /> */}
       <Cursor />

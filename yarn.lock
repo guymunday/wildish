@@ -1902,6 +1902,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-helmet@^6.1.0":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.1.tgz#4fde22cbcaa1b461642e1d719cc6162d95acb110"
+  integrity sha512-VmSCMz6jp/06DABoY60vQa++h1YFt0PfAI23llxBJHbowqFgLUL0dhS1AQeVPNqYfRp9LAfokrfWACTNeobOrg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
@@ -6082,6 +6089,13 @@ gatsby-plugin-utils@^1.1.0:
   integrity sha512-B21V3tFskfZcVSJVaYy6rLrxHcumbcmhKAYKniKThxCP/0KSqHkfC9+Bopsonk8npRKbVX924OI3UOCKfbgFsg==
   dependencies:
     joi "^17.2.1"
+
+gatsby-plugin-wpgraphql-seo@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-wpgraphql-seo/-/gatsby-plugin-wpgraphql-seo-1.1.4.tgz#673cec2bb30749e9d8d0b2622114e591240b1e56"
+  integrity sha512-vpSw+ty/U4rR0EkGoCY6+v5jhRefgqI01i09kcOBgdLk0ixHDHr2Mp5ABcf+C6MmwBKAM3VYxN5Jr9/i4n0AOw==
+  dependencies:
+    "@types/react-helmet" "^6.1.0"
 
 gatsby-react-router-scroll@^4.1.0:
   version "4.1.0"

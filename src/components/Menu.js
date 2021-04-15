@@ -5,6 +5,10 @@ import { gsap } from "gsap";
 import CalendlyButton from "./CalendlyButton";
 
 const MenuStyles = styled.nav`
+  a,
+  p {
+    font-size: 18px;
+  }
   position: fixed;
   top: 0;
   left: 0;
@@ -50,6 +54,11 @@ const MenuStyles = styled.nav`
         outline: none;
         border: none;
         text-align: left;
+        :hover {
+          .menu-arrow {
+            transform: rotate(360deg);
+          }
+        }
         @media screen and (max-height: 768px) {
           font-size: 3rem;
         }
@@ -57,6 +66,7 @@ const MenuStyles = styled.nav`
           display: inline-block;
           width: 70px;
           text-align: center;
+          transition: 0.4s transform ease;
         }
       }
     }
@@ -75,6 +85,17 @@ const MenuStyles = styled.nav`
         h3 {
           &:not(:first-child) {
             margin-top: 30px;
+          }
+        }
+        .social-link {
+          .footer-arrow {
+            transition: 0.4s transform ease;
+          }
+          :hover {
+            .footer-arrow {
+              display: inline-block;
+              transform: rotate(360deg);
+            }
           }
         }
         @media screen and (max-width: 950px) {
@@ -99,6 +120,20 @@ export default function Menu({ setMenuOpen, menuOpen }) {
           addesses {
             address
           }
+          hireUs {
+            emailAddress
+            text
+          }
+          workWithUs {
+            emailAddress
+            text
+          }
+          socialLinks {
+            socialLink {
+              link
+              text
+            }
+          }
           links {
             links
             internalLink
@@ -112,13 +147,13 @@ export default function Menu({ setMenuOpen, menuOpen }) {
     let tl = gsap.timeline();
 
     tl.from(menuRef.current, {
-      scale: 0.5,
+      opacity: 0,
       duration: 0.2,
     }).from(".menu-address", {
       opacity: 0,
-      x: -100,
+      y: 50,
       duration: 0.2,
-      stagger: 0.2,
+      stagger: 0.1,
     });
   }, []);
 
@@ -128,15 +163,14 @@ export default function Menu({ setMenuOpen, menuOpen }) {
     return tl
       .to(".menu-address", {
         opacity: 0,
-        x: -100,
+        y: 50,
         duration: 0.2,
         stagger: {
-          each: 0.2,
+          each: 0.1,
           from: "end",
         },
       })
       .to(menuRef.current, {
-        scale: 0.5,
         duration: 0.2,
         autoAlpha: 0,
       });
@@ -206,45 +240,40 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               );
             })}
             <div className="menu-address">
-              <h3>Hire us</h3>
-              <a href="mailto:hello@wildishandco.co.uk">
-                hello@wildishandco.co.uk
+              <h3>{data?.menu?.menu?.hireUs?.text}</h3>
+              <a href={`mailto:${data?.menu?.menu?.hireUs?.emailAddress}`}>
+                {data?.menu?.menu?.hireUs?.emailAddress}
               </a>
               <br />
               <CalendlyButton />
-              <h3>Work with us</h3>
-              <a href="mailto:work@wildishandco.co.uk">
-                work@wildishandco.co.uk
+              <h3>{data?.menu?.menu?.workWithUs?.text}</h3>
+              <a href={`mailto:${data?.menu?.menu?.workWithUs?.emailAddress}`}>
+                {data?.menu?.menu?.workWithUs?.emailAddress}
               </a>
             </div>
             <div className="menu-address">
               <h3>Follow us</h3>
-              <a
-                className="nostyle"
-                href="https://www.instagram.com/wildishandco_studio/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Instagram
-              </a>
-              <br />
-              <a
-                className="nostyle"
-                href="https://www.facebook.com/wildishandco/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Facebook
-              </a>
-              <br />
-              <a
-                className="nostyle"
-                href="https://www.linkedin.com/company/wildish-&-co/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span style={{ color: "var(--yellow)" }}>&rarr;</span> Linkedin
-              </a>
+              {data?.menu?.menu?.socialLinks?.map((l, i) => {
+                return (
+                  <>
+                    <a
+                      className="nostyle social-link"
+                      href={l?.socialLink?.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span
+                        className="footer-arrow"
+                        style={{ color: "var(--yellow)" }}
+                      >
+                        &rarr;
+                      </span>{" "}
+                      {l?.socialLink?.text}
+                    </a>
+                    <br />
+                  </>
+                );
+              })}
               {/* <h3>Keep up to date</h3>
               <a href="">Sign up to our delicious spam</a> */}
             </div>

@@ -4,14 +4,12 @@ import HeroSection from "../components/case-studies/HeroSection";
 import SliceZone from "../components/case-studies/SliceZone";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import Seo from "gatsby-plugin-wpgraphql-seo";
+import ScheduleCall from "../components/case-studies/ScheduleCall";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const Casestudy = ({ data }) => {
-  React.useEffect(() => {
-    console.log(document.height);
-  });
-
   const scrollAni = () => {
     let tl = gsap.timeline();
 
@@ -19,6 +17,15 @@ const Casestudy = ({ data }) => {
       .to(".brand-logo", {
         opacity: 0,
       })
+      .to(
+        ".hero-inner",
+        {
+          css: {
+            background: "transparent",
+          },
+        },
+        "<"
+      )
       .to(
         "#next-project",
         {
@@ -35,24 +42,28 @@ const Casestudy = ({ data }) => {
   };
 
   return (
-    <div>
-      <HeroSection data={data?.project?.case_study} />
-      <SliceZone slices={data?.project?.case_study?.pageContent} />
-      {data?.nextProject && (
-        <>
-          <HeroSection
-            data={data?.nextProject?.case_study}
-            next
-            id="next-project"
-            style={{ cursor: "pointer" }}
-            onClick={async () => {
-              await scrollAni();
-              await navigate(`/case-studies/${data?.nextProject?.slug}`);
-            }}
-          />
-        </>
-      )}
-    </div>
+    <>
+      <Seo post={data?.project} />
+      <div>
+        <HeroSection data={data?.project?.case_study} />
+        <SliceZone slices={data?.project?.case_study?.pageContent} />
+        <ScheduleCall />
+        {data?.nextProject && (
+          <>
+            <HeroSection
+              data={data?.nextProject?.case_study}
+              next
+              id="next-project"
+              style={{ cursor: "pointer" }}
+              onClick={async () => {
+                await scrollAni();
+                await navigate(`/case-studies/${data?.nextProject?.slug}`);
+              }}
+            />
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
@@ -64,6 +75,35 @@ export const CASE_STUDY_QUERY = graphql`
       id
       slug
       title
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          articleType
+          pageType
+          raw
+        }
+      }
       case_study {
         heroImage {
           altText
@@ -127,6 +167,23 @@ export const CASE_STUDY_QUERY = graphql`
           ... on WpCase_study_CaseStudy_PageContent_ContentSection {
             content
             fieldGroupName
+          }
+          ... on WpCase_study_CaseStudy_PageContent_ImageTextRollOver {
+            fieldGroupName
+            text
+            order
+            image {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    layout: FULL_WIDTH
+                    quality: 90
+                    placeholder: BLURRED
+                  )
+                }
+              }
+            }
           }
           ... on WpCase_study_CaseStudy_PageContent_ImageSection {
             fieldGroupName

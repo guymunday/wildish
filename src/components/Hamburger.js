@@ -23,8 +23,10 @@ const HamburgerStyles = styled.nav`
       transform: translate(-50%, -50%) scale(0.8);
     }
     svg {
-      fill: var(--yellow);
-      mix-blend-mode: difference;
+      rect {
+        fill: var(--white);
+        mix-blend-mode: screen;
+      }
     }
   }
 `;

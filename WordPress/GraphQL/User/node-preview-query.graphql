@@ -46,6 +46,27 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
+    seo {
+      fullHead
+      metaDesc
+      metaRobotsNofollow
+      metaRobotsNoindex
+      schema {
+        raw
+      }
+      social {
+        facebook
+        instagram
+        linkedIn
+        mySpace
+        pinterest
+        soundCloud
+        twitter
+        wikipedia
+        youTube
+      }
+      title
+    }
     slug
     uri
     url

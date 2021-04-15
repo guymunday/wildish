@@ -4,6 +4,7 @@ import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import { gsap } from "gsap";
 import Image from "../Image";
+import ScrollSnap from "scroll-snap";
 
 const DoubleScrollStyles = styled.div`
   display: flex;
@@ -18,7 +19,6 @@ const HomepageSection = styled.section`
   height: 100vh;
   position: relative;
   width: 50%;
-  scroll-snap-type: y mandatory;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -35,12 +35,9 @@ const HomepageSection = styled.section`
   .homepage-words {
     height: 100%;
     width: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--yellow);
     position: relative;
     z-index: 1;
     outline: none;
@@ -52,7 +49,7 @@ const HomepageSection = styled.section`
       background: #000;
     }
     .homepage-logo {
-      width: 80%;
+      width: 60%;
     }
     .hompepage-words-copy {
       padding: 30px;
@@ -98,6 +95,29 @@ const Arrows = styled.div`
 export default function DoubleScrollSection({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
+
+  function bindScrollSnapLeft() {
+    const element = wordsRef.current;
+    const snapElement = new ScrollSnap(element, {
+      snapDestinationY: "100%",
+      threshold: 0.5,
+    });
+    snapElement.bind();
+  }
+
+  function bindScrollSnapRight() {
+    const element = picturesRef.current;
+    const snapElement = new ScrollSnap(element, {
+      snapDestinationY: "100%",
+      threshold: 0.5,
+    });
+    snapElement.bind();
+  }
+
+  React.useEffect(() => {
+    bindScrollSnapLeft();
+    bindScrollSnapRight();
+  }, []);
 
   const animation = () => {
     let tl = gsap.timeline({ ease: "power1.in" });
@@ -155,7 +175,10 @@ export default function DoubleScrollSection({ data }) {
           </div>
           {data?.homepage?.words?.map((w, i) => {
             return (
-              <div className="homepage-words homepage-left" key={i}>
+              <div
+                className={`homepage-words homepage-left ${w?.colour}`}
+                key={i}
+              >
                 <div
                   className="hompepage-words-copy html"
                   dangerouslySetInnerHTML={{ __html: w?.section }}

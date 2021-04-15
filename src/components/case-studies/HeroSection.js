@@ -25,10 +25,13 @@ const HeroStyles = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: ${(props) =>
+      props.next ? "rgba(0, 0, 0, 0.3)" : "transparent"};
     .brand-logo {
       max-width: 300px;
       object-fit: contain;
       height: auto;
+      display: block;
     }
     h2 {
       font-size: 2.5rem;
@@ -53,7 +56,7 @@ export default function HeroSection({ data, next, ...rest }) {
             <h2>{data?.heroText}</h2>
           </>
         ) : (
-          <img className="brand-logo" src={nextHand} />
+          <h2 className="brand-logo">Next &darr;</h2>
         )}
       </div>
     </HeroStyles>

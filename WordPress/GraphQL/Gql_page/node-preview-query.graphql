@@ -71,6 +71,19 @@ query PREVIEW_QUERY($id: ID!) {
             id
           }
         }
+        ... on Gql_page_Contentblocks_ContentBlocks_HoverImageBlocks {
+          colour
+          fieldGroupName
+          textHoverImage {
+            fieldGroupName
+            hoverImage {
+              __typename
+              id
+            }
+            text
+          }
+          title
+        }
       }
       fieldGroupName
     }
@@ -102,6 +115,46 @@ query PREVIEW_QUERY($id: ID!) {
     }
     parentDatabaseId
     parentId
+    seo {
+      breadcrumbs {
+        text
+        url
+      }
+      canonical
+      cornerstone
+      focuskw
+      fullHead
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        __typename
+        id
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      readingTime
+      schema {
+        articleType
+        pageType
+        raw
+      }
+      title
+      twitterDescription
+      twitterImage {
+        __typename
+        id
+      }
+      twitterTitle
+    }
     slug
     status
     template {

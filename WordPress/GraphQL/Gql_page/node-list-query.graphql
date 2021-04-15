@@ -72,6 +72,19 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
               id
             }
           }
+          ... on Gql_page_Contentblocks_ContentBlocks_HoverImageBlocks {
+            colour
+            fieldGroupName
+            textHoverImage {
+              fieldGroupName
+              hoverImage {
+                __typename
+                id
+              }
+              text
+            }
+            title
+          }
         }
         fieldGroupName
       }
@@ -103,6 +116,46 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       }
       parentDatabaseId
       parentId
+      seo {
+        breadcrumbs {
+          text
+          url
+        }
+        canonical
+        cornerstone
+        focuskw
+        fullHead
+        metaDesc
+        metaKeywords
+        metaRobotsNofollow
+        metaRobotsNoindex
+        opengraphAuthor
+        opengraphDescription
+        opengraphImage {
+          __typename
+          id
+        }
+        opengraphModifiedTime
+        opengraphPublishedTime
+        opengraphPublisher
+        opengraphSiteName
+        opengraphTitle
+        opengraphType
+        opengraphUrl
+        readingTime
+        schema {
+          articleType
+          pageType
+          raw
+        }
+        title
+        twitterDescription
+        twitterImage {
+          __typename
+          id
+        }
+        twitterTitle
+      }
       slug
       status
       template {
