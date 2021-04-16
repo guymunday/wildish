@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import FadeIn from "../../FadeIn"
+import FadeIn from "../../FadeIn";
 
 export const TwoColumnStyles = styled.section`
   padding: 100px 30px;
@@ -16,6 +16,9 @@ export const TwoColumnStyles = styled.section`
       padding: 30px;
       @media screen and (max-width: 480px) {
         padding: 0;
+        &:last-child {
+          padding: 60px 0 0 0;
+        }
       }
     }
   }

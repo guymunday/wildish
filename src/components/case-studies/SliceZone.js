@@ -2,24 +2,24 @@ import React from "react";
 import FadeIn from "../FadeIn";
 import Image from "../Image";
 import Copy from "./slices/Copy";
+import Quote from "./slices/Quote";
 import Results from "./slices/Results";
 import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
+    console.log(s);
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
         return (
-          <FadeIn
-            key={i}
-            style={{
-              minHeight: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <FadeIn key={i}>
             <Copy html={s?.content} />
+          </FadeIn>
+        );
+      case "case_study_CaseStudy_PageContent_Quote":
+        return (
+          <FadeIn key={i}>
+            <Quote input={s} />
           </FadeIn>
         );
       case "case_study_CaseStudy_PageContent_ImageSection":

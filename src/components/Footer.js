@@ -49,9 +49,9 @@ export default function Footer() {
           <p className="mobile-margin">
             ©{new Date().getFullYear()} Wildish&Co LTD. All rights reserved.
           </p>
-          <Link className="nostyle footer-logo" to="/">
+          {/* <Link className="nostyle footer-logo" to="/">
             <img src={handLogo} alt="" />
-          </Link>
+          </Link> */}
           <p>
             <Link
               style={{ marginRight: 30, position: "relative" }}

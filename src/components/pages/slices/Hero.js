@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Image from "../../Image";
 
 const HeroStyles = styled.section`
-  padding: 100px 30px;
+  padding: 0 30px 100px 30px;
   .hero-inner {
-    max-width: 600px;
+    max-width: 550px;
     text-align: center;
     margin: auto;
     .html {
@@ -13,6 +13,9 @@ const HeroStyles = styled.section`
       margin: auto;
       h1 {
         font-size: 3rem;
+        @media screen and (max-width: 600px) {
+          font-size: 2rem;
+        }
       }
     }
   }

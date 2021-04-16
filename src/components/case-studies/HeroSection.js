@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "../Image";
-import nextHand from "../../assets/images/next-hand.gif";
 
 const HeroStyles = styled.div`
   width: 100%;
@@ -32,6 +31,9 @@ const HeroStyles = styled.div`
       object-fit: contain;
       height: auto;
       display: block;
+      @media screen and (max-width: 600px) {
+        max-width: 250px;
+      }
     }
     h2 {
       font-size: 2.5rem;

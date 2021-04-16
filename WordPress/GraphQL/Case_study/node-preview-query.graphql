@@ -39,6 +39,12 @@ query PREVIEW_QUERY($id: ID!) {
           content
           fieldGroupName
         }
+        ... on Case_study_CaseStudy_PageContent_Quote {
+          fieldGroupName
+          name
+          quote
+          title
+        }
         ... on Case_study_CaseStudy_PageContent_VideoSection {
           embedCode
           fieldGroupName

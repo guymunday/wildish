@@ -19,6 +19,9 @@ const ThreeColumnsStyles = styled.section`
       padding: 30px;
       @media screen and (max-width: 480px) {
         padding: 0;
+        &:not(:first-child) {
+          padding: 60px 0 0 0;
+        }
       }
     }
   }

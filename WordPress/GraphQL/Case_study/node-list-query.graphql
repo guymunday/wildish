@@ -40,6 +40,12 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
             content
             fieldGroupName
           }
+          ... on Case_study_CaseStudy_PageContent_Quote {
+            fieldGroupName
+            name
+            quote
+            title
+          }
           ... on Case_study_CaseStudy_PageContent_VideoSection {
             embedCode
             fieldGroupName

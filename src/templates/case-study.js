@@ -133,6 +133,12 @@ export const CASE_STUDY_QUERY = graphql`
         }
         heroText
         pageContent {
+          ... on WpCase_study_CaseStudy_PageContent_Quote {
+            fieldGroupName
+            name
+            quote
+            title
+          }
           ... on WpCase_study_CaseStudy_PageContent_ResultsSection {
             fieldGroupName
             results {
