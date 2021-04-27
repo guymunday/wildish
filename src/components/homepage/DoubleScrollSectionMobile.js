@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import Image from "../Image";
+import ScrollSnap from "scroll-snap";
 
 const DoubleScrollStyles = styled.div`
   display: none;
@@ -13,11 +14,9 @@ const DoubleScrollStyles = styled.div`
 `;
 
 const HomepageSection = styled.section`
-  position: sticky;
   bottom: 0;
   height: 100vh;
   position: relative;
-  scroll-snap-type: y mandatory;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -34,8 +33,8 @@ const HomepageSection = styled.section`
   .homepage-words {
     height: 100%;
     width: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
+    height: -moz-available;
+    height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,6 +99,29 @@ export default function DoubleScrollSectionMobile({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
   const [isWords, setIsWords] = React.useState(true);
+
+  function bindScrollSnapLeft() {
+    const element = wordsRef.current;
+    const snapElement = new ScrollSnap(element, {
+      snapDestinationY: "100%",
+      threshold: 0.5,
+    });
+    snapElement.bind();
+  }
+
+  function bindScrollSnapRight() {
+    const element = picturesRef.current;
+    const snapElement = new ScrollSnap(element, {
+      snapDestinationY: "100%",
+      threshold: 0.5,
+    });
+    snapElement.bind();
+  }
+
+  React.useEffect(() => {
+    bindScrollSnapLeft();
+    bindScrollSnapRight();
+  }, []);
 
   return (
     <>

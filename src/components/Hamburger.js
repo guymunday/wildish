@@ -7,8 +7,10 @@ const HamburgerStyles = styled.nav`
   right: 0;
   padding: 50px;
   z-index: 99;
+  background-color: transparent;
+  mix-blend-mode: difference;
   button {
-    background: none;
+    background-color: transparent;
     outline: none;
     border: none;
     transition: 0.2s ease;
@@ -24,8 +26,7 @@ const HamburgerStyles = styled.nav`
     }
     svg {
       rect {
-        fill: var(--white);
-        mix-blend-mode: screen;
+        fill: white;
       }
     }
   }

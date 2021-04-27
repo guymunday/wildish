@@ -12,6 +12,9 @@ const CursorStyles = styled.div`
   mix-blend-mode: difference;
   pointer-events: none;
   transition: 0.1s ease;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default function Cursor() {

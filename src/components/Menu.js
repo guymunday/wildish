@@ -62,6 +62,9 @@ const MenuStyles = styled.nav`
         @media screen and (max-height: 768px) {
           font-size: 3rem;
         }
+        @media screen and (max-height: 400px) {
+          font-size: 2.5rem;
+        }
         .menu-arrow {
           display: inline-block;
           width: 70px;

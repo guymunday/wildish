@@ -168,6 +168,7 @@ const global = css`
   }
 
   .white {
+    background: #fff;
     strong {
       background: rgba(250, 222, 43, 1);
       background: linear-gradient(
