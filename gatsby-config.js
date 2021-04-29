@@ -39,8 +39,13 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    {
+      resolve: "@sentry/gatsby",
+      options: {
+        dsn:
+          "https://8d6e9cdf7c8f4f308d2facc2d1a7be93@o593193.ingest.sentry.io/5741559",
+        sampleRate: 0.7,
+      },
+    },
   ],
 };
