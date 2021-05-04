@@ -14,10 +14,14 @@ export const TwoColumnStyles = styled.section`
     .column {
       flex: 1;
       padding: 30px;
+      position: relative;
       @media screen and (max-width: 480px) {
         padding: 0;
         &:last-child {
           padding: 60px 0 0 0;
+        }
+        .animation-iframe-container {
+          display: none;
         }
       }
     }

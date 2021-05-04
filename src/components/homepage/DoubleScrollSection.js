@@ -76,6 +76,9 @@ const HomepageSection = styled.section`
         opacity: 1;
       }
     }
+    a {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -179,10 +182,17 @@ export default function DoubleScrollSection({ data }) {
                 className={`homepage-words homepage-left ${w?.colour}`}
                 key={i}
               >
-                <div
-                  className="hompepage-words-copy html"
-                  dangerouslySetInnerHTML={{ __html: w?.section }}
-                />
+                <div>
+                  {w?.animations ? (
+                    <div className="animation-iframe-container">
+                      <iframe title="Wildish animation" src={w?.animations} />
+                    </div>
+                  ) : null}
+                  <div
+                    className="hompepage-words-copy html"
+                    dangerouslySetInnerHTML={{ __html: w?.section }}
+                  />
+                </div>
               </div>
             );
           })}

@@ -101,6 +101,7 @@ export const PAGE_QUERY = graphql`
           ... on WpGql_page_Contentblocks_ContentBlocks_CopyAndButtons {
             colour
             copy
+            animation
             buttons {
               fieldGroupName
               button {

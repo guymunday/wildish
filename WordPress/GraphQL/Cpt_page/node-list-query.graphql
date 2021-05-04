@@ -1,5 +1,5 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
-  cpt_pages(first: $first, after: $after) {
+  cptPages(first: $first, after: $after) {
     nodes {
       ancestors(first: 100) {
         nodes {
@@ -42,6 +42,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           video
         }
         wordsScrollSections {
+          animations
           colour
           fieldGroupName
           section

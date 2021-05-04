@@ -9,12 +9,16 @@ const global = css`
 
   * {
     font-family: "Mabry Pro";
+    ::selection {
+      color: var(--black);
+      background: var(--yellow);
+    }
   }
 
   body {
     font-family: "Mabry Pro";
     font-style: normal;
-    font-size: 22px;
+    font-size: 20px;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -25,6 +29,14 @@ const global = css`
       font-size: 16px;
     }
   }
+
+  h1 {
+    font-size: 3rem;
+    @media screen and (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+
   .hands {
     font-family: "Hands";
     color: inherit;
@@ -191,6 +203,29 @@ const global = css`
       width: 100%;
       height: 100%;
       border: none;
+    }
+  }
+
+  .animation-iframe-container {
+    width: 100%;
+    padding-top: 400px;
+    position: relative;
+    pointer-events: none;
+    margin-bottom: -60px;
+    @media screen and (max-height: 800px) {
+      padding-top: 300px;
+    }
+    @media screen and (max-height: 600px) {
+      display: none;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: -1;
     }
   }
 `;

@@ -1,5 +1,5 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
-  case_studies(first: $first, after: $after) {
+  caseStudies(first: $first, after: $after) {
     nodes {
       ancestors(first: 100) {
         nodes {

@@ -1,6 +1,6 @@
 query PREVIEW_QUERY($id: ID!) {
   tag(id: $id, idType: ID, asPreview: true) {
-    case_studies(first: 100) {
+    caseStudies(first: 100) {
       nodes {
         id
       }

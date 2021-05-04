@@ -151,7 +151,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
 
     tl.from(menuRef.current, {
       opacity: 0,
-      duration: 0.2,
+      duration: 0.4,
     }).from(".menu-address", {
       opacity: 0,
       y: 50,

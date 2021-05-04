@@ -1,5 +1,5 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
-  cpt_page(id: $id) {
+  cptPage(id: $id) {
     ancestors(first: 100) {
       nodes {
         id
@@ -41,6 +41,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         video
       }
       wordsScrollSections {
+        animations
         colour
         fieldGroupName
         section

@@ -1,5 +1,5 @@
 query PREVIEW_QUERY($id: ID!) {
-  case_study(id: $id, idType: ID, asPreview: true) {
+  caseStudy(id: $id, idType: ID, asPreview: true) {
     ancestors(first: 100) {
       nodes {
         id

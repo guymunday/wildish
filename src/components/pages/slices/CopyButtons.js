@@ -10,16 +10,19 @@ const PillLink = styled(Link)`
   border: 1px solid black;
   border-radius: 25px;
   margin: 2px;
+  background: var(--yellow) !important;
   :after {
     display: none;
   }
   :hover {
-    background: var(--black);
+    background: var(--black) !important;
     color: var(--white);
   }
 `;
 
-export default function CopyButtons({ input: { copy, buttons, colour } }) {
+export default function CopyButtons({
+  input: { copy, buttons, colour, animation },
+}) {
   return (
     <>
       <TwoColumnStyles className={`${colour}`}>
@@ -29,6 +32,19 @@ export default function CopyButtons({ input: { copy, buttons, colour } }) {
             dangerouslySetInnerHTML={{ __html: copy }}
           />
           <div className="column">
+            {animation ? (
+              <div
+                className="animation-iframe-container"
+                style={{
+                  transform: "scaleX(-1)",
+                  position: "absolute",
+                  left: "30%",
+                  marginRight: -30,
+                }}
+              >
+                <iframe title="Wildish animation" src={animation} />
+              </div>
+            ) : null}
             {buttons?.map((b, i) => {
               const link = b?.button?.caseStudyLink?.slug
                 ? b?.button?.caseStudyLink?.slug
@@ -38,6 +54,7 @@ export default function CopyButtons({ input: { copy, buttons, colour } }) {
                   <PillLink className="nostyle" to={`/case-studies/${link}`}>
                     {b?.button?.buttonLabel}
                   </PillLink>
+                  <br />
                 </>
               );
             })}

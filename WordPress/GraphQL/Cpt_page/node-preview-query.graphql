@@ -1,5 +1,5 @@
 query PREVIEW_QUERY($id: ID!) {
-  cpt_page(id: $id, idType: ID, asPreview: true) {
+  cptPage(id: $id, idType: ID, asPreview: true) {
     ancestors(first: 100) {
       nodes {
         id
@@ -41,6 +41,7 @@ query PREVIEW_QUERY($id: ID!) {
         video
       }
       wordsScrollSections {
+        animations
         colour
         fieldGroupName
         section

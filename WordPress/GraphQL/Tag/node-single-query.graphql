@@ -1,6 +1,6 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   tag(id: $id) {
-    case_studies(first: 100) {
+    caseStudies(first: 100) {
       nodes {
         id
       }

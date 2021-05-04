@@ -95,6 +95,7 @@ export const indexQuery = graphql`
           }
         }
         words: wordsScrollSections {
+          animations
           section
           colour
         }

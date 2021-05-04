@@ -40,6 +40,7 @@ const HomepageSection = styled.section`
     z-index: 1;
     outline: none;
     border: none;
+    flex-direction: column;
     &.homepage-words-hero {
       background: #fff;
     }
@@ -69,6 +70,9 @@ const HomepageSection = styled.section`
       transition: 0.3s ease opacity;
       text-align: center;
     }
+  }
+  a {
+    text-decoration: underline;
   }
   :hover {
     .casestudy-title {
@@ -141,6 +145,11 @@ export default function DoubleScrollSectionMobile({ data }) {
                 className={`homepage-words homepage-left ${w?.colour}`}
                 key={i}
               >
+                {w?.animations ? (
+                  <div className="square-iframe-container">
+                    <iframe title="Wildish animation" src={w?.animations} />
+                  </div>
+                ) : null}
                 <div
                   className="hompepage-words-copy html"
                   dangerouslySetInnerHTML={{ __html: w?.section }}

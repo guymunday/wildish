@@ -139,7 +139,7 @@ export const caseQuery = graphql`
         node {
           slug
           name
-          case_studies {
+          caseStudies {
             nodes {
               title
               slug

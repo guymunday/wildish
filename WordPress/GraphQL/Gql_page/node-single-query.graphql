@@ -1,5 +1,5 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
-  gql_page(id: $id) {
+  gqlPage(id: $id) {
     ancestors(first: 100) {
       nodes {
         id
@@ -38,6 +38,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
           fieldGroupName
         }
         ... on Gql_page_Contentblocks_ContentBlocks_CopyAndButtons {
+          animation
           buttons {
             button {
               buttonLabel

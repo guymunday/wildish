@@ -1,5 +1,5 @@
 query PREVIEW_QUERY($id: ID!) {
-  gql_page(id: $id, idType: ID, asPreview: true) {
+  gqlPage(id: $id, idType: ID, asPreview: true) {
     ancestors(first: 100) {
       nodes {
         id
@@ -38,6 +38,7 @@ query PREVIEW_QUERY($id: ID!) {
           fieldGroupName
         }
         ... on Gql_page_Contentblocks_ContentBlocks_CopyAndButtons {
+          animation
           buttons {
             button {
               buttonLabel

@@ -26,7 +26,7 @@ export default function Filter({ tags, tagFilter, handleClick }) {
           All
         </button>
         {tags?.map((t, i) => {
-          if (t?.node?.case_studies?.nodes.length > 0) {
+          if (t?.node?.caseStudies?.nodes.length > 0) {
             return (
               <button
                 className="filter-button"
