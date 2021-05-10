@@ -196,6 +196,7 @@ const global = css`
     padding-top: 100%;
     position: relative;
     pointer-events: none;
+    z-index: 1;
     iframe {
       position: absolute;
       top: 0;
