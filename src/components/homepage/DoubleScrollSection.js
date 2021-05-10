@@ -54,7 +54,7 @@ const HomepageSection = styled.section`
     .hompepage-words-copy {
       padding: 30px;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
     }
     .casestudy-title {
       position: absolute;
@@ -185,7 +185,11 @@ export default function DoubleScrollSection({ data }) {
                 <div>
                   {w?.animations ? (
                     <div className="animation-iframe-container">
-                      <iframe title="Wildish animation" src={w?.animations} />
+                      <iframe
+                        title="Wildish animation"
+                        src={w?.animations}
+                        loading="lazy"
+                      />
                     </div>
                   ) : null}
                   <div

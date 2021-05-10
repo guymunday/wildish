@@ -13,7 +13,7 @@ export default function IndexPage({ data }) {
       <DoubleScrollSection data={data?.sections} />
       <DoubleScrollSectionMobile data={data?.sections} />
       <Marquee />
-      <Marquee right />
+      {/* <Marquee right /> */}
       <BlogPostMasonry />
     </>
   );

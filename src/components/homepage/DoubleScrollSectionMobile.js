@@ -25,11 +25,6 @@ const HomepageSection = styled.section`
   ::-webkit-scrollbar {
     display: none;
   }
-  &.homepage-left {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
   .homepage-words {
     height: 100%;
     width: 100%;
@@ -41,6 +36,10 @@ const HomepageSection = styled.section`
     outline: none;
     border: none;
     flex-direction: column;
+    &.homepage-left {
+      height: auto;
+      min-height: 100%;
+    }
     &.homepage-words-hero {
       background: #fff;
     }
@@ -53,7 +52,7 @@ const HomepageSection = styled.section`
     .hompepage-words-copy {
       padding: 30px;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
     }
     .casestudy-title {
       position: absolute;
@@ -82,7 +81,7 @@ const HomepageSection = styled.section`
 `;
 
 const ToggleButton = styled.button`
-  width: 40px;
+  width: 30px;
   outline: none;
   border: none;
   :active,
@@ -102,15 +101,6 @@ export default function DoubleScrollSectionMobile({ data }) {
   const picturesRef = React.useRef(null);
   const [isWords, setIsWords] = React.useState(true);
 
-  function bindScrollSnapLeft() {
-    const element = wordsRef.current;
-    const snapElement = new ScrollSnap(element, {
-      snapDestinationY: "100%",
-      threshold: 0.5,
-    });
-    snapElement.bind();
-  }
-
   function bindScrollSnapRight() {
     const element = picturesRef.current;
     const snapElement = new ScrollSnap(element, {
@@ -121,7 +111,6 @@ export default function DoubleScrollSectionMobile({ data }) {
   }
 
   React.useEffect(() => {
-    bindScrollSnapLeft();
     bindScrollSnapRight();
   }, []);
 
@@ -146,8 +135,15 @@ export default function DoubleScrollSectionMobile({ data }) {
                 key={i}
               >
                 {w?.animations ? (
-                  <div className="square-iframe-container">
-                    <iframe title="Wildish animation" src={w?.animations} />
+                  <div
+                    className="square-iframe-container"
+                    style={{ marginBottom: -60 }}
+                  >
+                    <iframe
+                      title="Wildish animation"
+                      src={w?.animations}
+                      loading="lazy"
+                    />
                   </div>
                 ) : null}
                 <div
