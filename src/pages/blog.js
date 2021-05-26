@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import GlassesSvg from "../assets/svgs/glasses";
 import styled from "styled-components";
 import Image from "../components/Image";
-import BlogPostsMasonry, {
+import {
   MasonryWrapper,
   Masonry,
 } from "../components/BlogPostsMasonry";

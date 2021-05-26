@@ -2,13 +2,13 @@ import React from "react";
 import FadeIn from "../FadeIn";
 import Image from "../Image";
 import Copy from "./slices/Copy";
+import ImageAndVideo from "./slices/ImageAndVideo";
 import Quote from "./slices/Quote";
 import Results from "./slices/Results";
 import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
-    console.log(s);
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
         return (
@@ -20,6 +20,12 @@ export default function SliceZone({ slices }) {
         return (
           <FadeIn key={i}>
             <Quote input={s} />
+          </FadeIn>
+        );
+      case "case_study_CaseStudy_PageContent_ImageAndVideo":
+        return (
+          <FadeIn key={i}>
+            <ImageAndVideo input={s} />
           </FadeIn>
         );
       case "case_study_CaseStudy_PageContent_ImageSection":

@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Mabry Pro";
-  src: url("../assets/fonts/MabryPro.otf");
+  src: url("../assets/fonts/MabryPro.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Hands";
-  src: url("../assets/fonts/HandsUp.otf");
+  src: url("../assets/fonts/HandsUp.otf") format("opentype");
 }

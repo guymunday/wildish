@@ -46,7 +46,7 @@ export default function Marquee({ right, ...rest }) {
               target="_blank"
               className="nostyle"
               key={i}
-              style={{ margin: "0 10px" }}
+              style={{ margin: "0 10px", fontSize: "1.3rem" }}
             >
               {words.words}
             </a>

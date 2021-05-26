@@ -36,6 +36,17 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
             order
             text
           }
+          ... on Case_study_CaseStudy_PageContent_ImageAndVideo {
+            fieldGroupName
+            image {
+              __typename
+              id
+            }
+            video {
+              __typename
+              id
+            }
+          }
           ... on Case_study_CaseStudy_PageContent_ContentSection {
             content
             fieldGroupName

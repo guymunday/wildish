@@ -53,6 +53,7 @@ const HomepageSection = styled.section`
       padding: 30px;
       max-width: 600px;
       margin: 0 auto;
+      text-align: center;
     }
     .casestudy-title {
       position: absolute;
@@ -70,9 +71,9 @@ const HomepageSection = styled.section`
       text-align: center;
     }
   }
-  a {
+  /* a {
     text-decoration: underline;
-  }
+  } */
   :hover {
     .casestudy-title {
       opacity: 1;
@@ -136,7 +137,7 @@ export default function DoubleScrollSectionMobile({ data }) {
               >
                 {w?.animations ? (
                   <div
-                    className="square-iframe-container"
+                    className="animation-iframe-container-mobile"
                     style={{ marginBottom: -60 }}
                   >
                     <iframe

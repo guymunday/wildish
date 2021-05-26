@@ -14,6 +14,9 @@ const QuoteStyles = styled.section`
     margin: 0 auto;
     font-size: 2rem;
     font-weight: 600;
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
   h3 {
     margin: 30px 0 0 0;

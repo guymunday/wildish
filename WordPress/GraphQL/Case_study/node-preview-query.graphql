@@ -35,6 +35,17 @@ query PREVIEW_QUERY($id: ID!) {
           order
           text
         }
+        ... on Case_study_CaseStudy_PageContent_ImageAndVideo {
+          fieldGroupName
+          image {
+            __typename
+            id
+          }
+          video {
+            __typename
+            id
+          }
+        }
         ... on Case_study_CaseStudy_PageContent_ContentSection {
           content
           fieldGroupName

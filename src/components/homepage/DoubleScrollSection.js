@@ -53,8 +53,9 @@ const HomepageSection = styled.section`
     }
     .hompepage-words-copy {
       padding: 30px;
-      max-width: 600px;
+      max-width: 550px;
       margin: 0 auto;
+      text-align: center;
     }
     .casestudy-title {
       position: absolute;
@@ -76,9 +77,9 @@ const HomepageSection = styled.section`
         opacity: 1;
       }
     }
-    a {
+    /* a {
       text-decoration: underline;
-    }
+    } */
   }
 `;
 

@@ -191,6 +191,20 @@ export const CASE_STUDY_QUERY = graphql`
               }
             }
           }
+          ... on WpCase_study_CaseStudy_PageContent_ImageAndVideo {
+            fieldGroupName
+            video {
+              mediaItemUrl
+            }
+            image {
+              localFile {
+                publicURL
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
           ... on WpCase_study_CaseStudy_PageContent_ImageSection {
             fieldGroupName
             image {

@@ -12,6 +12,7 @@ import AnnoyingPopup from "./AnnoyingPopup";
 import Cursor from "./cursor/Cursor";
 import CookiesBanner from "./CookiesBanner";
 import MenuFooter from "./MenuFooter";
+import IntroScreen from "./IntroScreen";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -20,21 +21,13 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const [popupOpen, setPopupOpen] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   let timer = setTimeout(() => setPopupOpen(true), 10000);
-  //   return () => clearTimeout(timer);
-  // }, []);
 
   return (
     <>
       <GlobalStyle />
+      <IntroScreen />
       <Transition location={location}>{children}</Transition>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
-      {popupOpen && location.pathname === "/" && (
-        <AnnoyingPopup setPopupOpen={setPopupOpen} popupOpen={popupOpen} />
-      )}
       <Hamburger setMenuOpen={setMenuOpen} />
       <Logo setMenuOpen={setMenuOpen} />
       <MenuFooter />
