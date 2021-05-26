@@ -39,13 +39,11 @@ export default function IntroScreen() {
 
   return (
     <>
-      {introOpen &&
-        typeof window !== "undefined" &&
-        !sessionStorage.getItem("session") && (
-          <IntroStyles ref={ref}>
-            <img className="intro-gif" src={logo} alt="" />
-          </IntroStyles>
-        )}
+      {introOpen && (
+        <IntroStyles ref={ref}>
+          <img className="intro-gif" src={logo} alt="" />
+        </IntroStyles>
+      )}
     </>
   );
 }
