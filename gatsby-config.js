@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://staging.wildishandco.co.uk/graphql`,
+        url: `https://login.wildishandco.co.uk/graphql`,
         verbose: true,
         develop: {
           hardCacheMediaFiles: true,

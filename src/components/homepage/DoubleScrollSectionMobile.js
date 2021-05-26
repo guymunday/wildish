@@ -163,7 +163,7 @@ export default function DoubleScrollSectionMobile({ data }) {
             className="toggle-words"
             style={{ color: !isWords ? "var(--black)" : "var(--white)" }}
           >
-            {isWords ? "Pictures ↑" : "Words ↓"}
+            {isWords ? "Showcase ↑" : "About ↓"}
           </span>
         </ToggleButton>
         <HomepageSection
@@ -190,7 +190,7 @@ export default function DoubleScrollSectionMobile({ data }) {
                 className={`homepage-words`}
               >
                 <Image image={c?.case_study?.heroImage} />
-                <p className="casestudy-title">Case Study: {c?.title} &rarr;</p>
+                <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
             );
           })}

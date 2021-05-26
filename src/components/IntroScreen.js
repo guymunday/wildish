@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import logo from "../assets/images/logo-ani.gif";
+import Image from "./Image";
 
 const IntroStyles = styled.div`
   position: fixed;
@@ -22,7 +23,23 @@ const IntroStyles = styled.div`
 
 export default function IntroScreen() {
   const [introOpen, setIntroOpen] = React.useState(true);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const loadImage = (image) => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = image;
+        loadImg.onload = () => resolve(image);
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+
+    loadImage(logo)
+      .then(() => setImageLoaded(true))
+      .catch((err) => console.log("Failed to load images", err));
+  }, []);
 
   React.useEffect(() => {
     let tl = gsap.timeline();
@@ -36,9 +53,10 @@ export default function IntroScreen() {
 
   return (
     <>
-      {introOpen && (
+      {!imageLoaded && <IntroStyles />}
+      {introOpen && imageLoaded && (
         <IntroStyles ref={ref}>
-          <img className="intro-gif" src={logo} alt="" />
+          <img src={logo} alt="" />
         </IntroStyles>
       )}
     </>
