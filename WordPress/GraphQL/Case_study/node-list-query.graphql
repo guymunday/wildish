@@ -42,6 +42,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
               __typename
               id
             }
+            order
             video {
               __typename
               id

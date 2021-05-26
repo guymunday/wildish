@@ -1,9 +1,9 @@
 import * as React from "react";
-import { openPopupWidget } from "react-calendly";
 import styled from "styled-components";
 import EmojiMarquee from "./EmojiMarquee";
 
 const ButtonStyles = styled.button`
+  display: inline-block;
   border: 2px solid var(--yellow);
   border: ${(props) =>
     props.alt ? "2px solid var(--black);" : "2px solid var(--yellow);"};
@@ -11,13 +11,20 @@ const ButtonStyles = styled.button`
   background: none;
   color: ${(props) => (props.alt ? "var(--black);" : "var(--white);")};
   border-radius: 25px;
-  font-size: 1.4rem;
+  font-size: inherit;
   margin: 10px 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
   transition: 0.5s ease all;
-  width: 180px;
+  width: 205px;
+  white-space: nowrap;
+  @media screen and (max-width: 768px) {
+    width: 170px;
+  }
+  a {
+    font-size: inherit;
+  }
   .emoji {
     display: none;
     align-items: center;
@@ -28,7 +35,7 @@ const ButtonStyles = styled.button`
     display: block;
   }
   :hover {
-    background: var(--yellow);
+    background: var(--black);
     .emoji {
       display: flex;
     }
@@ -38,16 +45,15 @@ const ButtonStyles = styled.button`
   }
 `;
 
-export default function CalendlyButton({ alt }) {
-  const url = "https://calendly.com/sam-wildishandco/call";
-  const onClick = () => openPopupWidget({ url });
-
+export default function CalendlyButton({ alt, words }) {
   return (
-    <ButtonStyles alt={alt} className="" onClick={onClick}>
-      <span className="words">Schedule a call</span>
-      <span className="emoji">
-        <EmojiMarquee emoji="📞" />
-      </span>
+    <ButtonStyles alt={alt}>
+      <a className="nostyle" href="mailto:hello@wildishandco.co.uk">
+        <span className="words">{words ? words : "Talk about a project"}</span>
+        <span className="emoji">
+          <EmojiMarquee emoji=" 💌 " />
+        </span>
+      </a>
     </ButtonStyles>
   );
 }

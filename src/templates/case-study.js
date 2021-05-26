@@ -196,6 +196,7 @@ export const CASE_STUDY_QUERY = graphql`
             video {
               mediaItemUrl
             }
+            order
             image {
               localFile {
                 publicURL

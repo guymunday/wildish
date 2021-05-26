@@ -41,6 +41,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
             __typename
             id
           }
+          order
           video {
             __typename
             id
