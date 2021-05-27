@@ -3,8 +3,11 @@ import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "../Image";
 import ScrollSnap from "scroll-snap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const DoubleScrollStyles = styled.div`
   display: flex;
@@ -163,6 +166,23 @@ export default function DoubleScrollSection({ data }) {
       .add(function () {}, "+=0.3");
   };
 
+  React.useEffect(() => {
+    let fadein = gsap.utils.toArray(".fade-in");
+    fadein.forEach((fade) => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          scroller: wordsRef.current,
+          trigger: fade,
+          start: "top 50%",
+        },
+      });
+
+      tl.from(fade, {
+        opacity: 0,
+      });
+    });
+  }, []);
+
   return (
     <>
       <DoubleScrollStyles>
@@ -170,13 +190,13 @@ export default function DoubleScrollSection({ data }) {
           <Arrows>
             <p>About &rarr;</p>
           </Arrows>
-          <div className="homepage-words-hero homepage-words homepage-left">
+          {/* <div className="homepage-words-hero homepage-words homepage-left">
             <img
               className="homepage-logo"
               src={fullLogo}
               alt="Wildish & Co full logo"
             />
-          </div>
+          </div> */}
           {data?.homepage?.words?.map((w, i) => {
             return (
               <div
@@ -194,7 +214,7 @@ export default function DoubleScrollSection({ data }) {
                     </div>
                   ) : null}
                   <div
-                    className="hompepage-words-copy html"
+                    className="hompepage-words-copy html fade-in"
                     dangerouslySetInnerHTML={{ __html: w?.section }}
                   />
                 </div>

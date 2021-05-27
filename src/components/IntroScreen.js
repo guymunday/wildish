@@ -16,7 +16,9 @@ const IntroStyles = styled.div`
   z-index: 9999;
   .intro-gif {
     display: block;
-    width: 30%;
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
   }
 `;
 

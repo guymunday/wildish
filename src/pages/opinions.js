@@ -34,7 +34,7 @@ export default function BlogPosts({ data }) {
         }}
       >
         <BlogHeader>
-          <h1>Ideas</h1>
+          <h1>Opinions</h1>
           <Link to="/">
             This is too many words, I would like to leave &times;
           </Link>

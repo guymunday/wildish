@@ -4,6 +4,10 @@ import styled from "styled-components";
 import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import Image from "../Image";
 import ScrollSnap from "scroll-snap";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const DoubleScrollStyles = styled.div`
   display: none;
@@ -115,6 +119,24 @@ export default function DoubleScrollSectionMobile({ data }) {
     bindScrollSnapRight();
   }, []);
 
+  React.useEffect(() => {
+    let fadein = gsap.utils.toArray(".fade-in-mobile");
+    fadein.forEach((fade) => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          scroller: wordsRef.current,
+          trigger: fade,
+          start: "top 50%",
+        },
+      });
+
+      tl.from(fade, {
+        opacity: 0,
+        y: 50,
+      });
+    });
+  }, []);
+
   return (
     <>
       <DoubleScrollStyles>
@@ -122,13 +144,13 @@ export default function DoubleScrollSectionMobile({ data }) {
           ref={wordsRef}
           style={{ width: isWords ? "100%" : "0%" }}
         >
-          <div className="homepage-words-hero homepage-words">
+          {/* <div className="homepage-words-hero homepage-words">
             <img
               className="homepage-logo"
               src={fullLogo}
               alt="Wildish & Co full logo"
             />
-          </div>
+          </div> */}
           {data?.homepage?.words?.map((w, i) => {
             return (
               <div
@@ -148,7 +170,7 @@ export default function DoubleScrollSectionMobile({ data }) {
                   </div>
                 ) : null}
                 <div
-                  className="hompepage-words-copy html"
+                  className="hompepage-words-copy html fade-in-mobile"
                   dangerouslySetInnerHTML={{ __html: w?.section }}
                 />
               </div>

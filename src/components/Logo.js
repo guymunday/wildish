@@ -8,6 +8,9 @@ const LogoStyles = styled.div`
   top: 25px;
   left: 25px;
   z-index: 999;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
   img {
     display: block;
     width: 50px;
