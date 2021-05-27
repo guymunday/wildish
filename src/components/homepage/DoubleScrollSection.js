@@ -229,10 +229,14 @@ export default function DoubleScrollSection({ data }) {
           <div className="homepage-words homepage-images-hero">
             {data?.homepage?.picturesVideo?.video ? (
               <div className="square-iframe-container">
-                <iframe
+                <video
                   title="Wildish animation"
                   loading="eager"
                   src={data?.homepage?.picturesVideo?.video}
+                  playsInline
+                  autoPlay
+                  loop
+                  muted
                 />
               </div>
             ) : (

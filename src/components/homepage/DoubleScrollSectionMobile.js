@@ -105,6 +105,8 @@ export default function DoubleScrollSectionMobile({ data }) {
   const wordsRef = React.useRef(null);
   const picturesRef = React.useRef(null);
   const [isWords, setIsWords] = React.useState(true);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
 
   function bindScrollSnapRight() {
     const element = picturesRef.current;
@@ -137,12 +139,33 @@ export default function DoubleScrollSectionMobile({ data }) {
     });
   }, []);
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      setIsWords(!isWords);
+    }
+
+    if (touchStart - touchEnd < -50) {
+      setIsWords(!isWords);
+    }
+  };
+
   return (
     <>
       <DoubleScrollStyles>
         <HomepageSection
           ref={wordsRef}
           style={{ width: isWords ? "100%" : "0%" }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* <div className="homepage-words-hero homepage-words">
             <img
@@ -162,10 +185,14 @@ export default function DoubleScrollSectionMobile({ data }) {
                     className="animation-iframe-container-mobile"
                     style={{ marginBottom: -60 }}
                   >
-                    <iframe
+                    <video
                       title="Wildish animation"
                       src={w?.animations}
                       loading="lazy"
+                      playsInline
+                      autoPlay
+                      loop
+                      muted
                     />
                   </div>
                 ) : null}
