@@ -74,6 +74,11 @@ const HomepageSection = styled.section`
       transition: 0.3s ease opacity;
       text-align: center;
     }
+    .homepage-casestudy-logo {
+      position: absolute;
+      max-width: 200px;
+      width: 100%;
+    }
   }
   /* a {
     text-decoration: underline;
@@ -159,13 +164,14 @@ export default function DoubleScrollSectionMobile({ data }) {
 
   return (
     <>
-      <DoubleScrollStyles>
+      <DoubleScrollStyles
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <HomepageSection
           ref={wordsRef}
           style={{ width: isWords ? "100%" : "0%" }}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
           {/* <div className="homepage-words-hero homepage-words">
             <img
@@ -185,7 +191,7 @@ export default function DoubleScrollSectionMobile({ data }) {
                     className="animation-iframe-container-mobile"
                     style={{ marginBottom: -60 }}
                   >
-                    <video
+                    <iframe
                       title="Wildish animation"
                       src={w?.animations}
                       loading="lazy"
@@ -239,6 +245,13 @@ export default function DoubleScrollSectionMobile({ data }) {
                 className={`homepage-words`}
               >
                 <Image image={c?.case_study?.heroImage} />
+                {c?.case_study?.heroLogo?.localFile?.publicURL && (
+                  <img
+                    className="homepage-casestudy-logo"
+                    src={c?.case_study?.heroLogo?.localFile?.publicURL}
+                    alt={c?.title}
+                  />
+                )}
                 <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
             );

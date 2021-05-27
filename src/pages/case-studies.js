@@ -31,6 +31,16 @@ const CasestudyGrid = styled.section`
         width: 100%;
         height: 100%;
       }
+      .casestudy-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 200px;
+        object-fit: contain;
+        height: auto;
+        display: block;
+      }
       .casestudy-title {
         position: absolute;
         display: block;
@@ -118,6 +128,15 @@ export default function Casestudies({ data: { cases, tags } }) {
                         image={c?.node?.case_study?.heroImage}
                         style={{ height: "100%" }}
                       />
+                      {c?.node?.case_study?.heroLogo?.localFile?.publicURL && (
+                        <img
+                          className="casestudy-logo"
+                          src={
+                            c?.node?.case_study?.heroLogo?.localFile?.publicURL
+                          }
+                          alt={c?.node?.title}
+                        />
+                      )}
                       <p className="casestudy-title">{c?.node?.title} &rarr;</p>
                     </Link>
                   </div>
@@ -161,6 +180,12 @@ export const caseQuery = graphql`
           }
           case_study {
             heroText
+            heroLogo {
+              altText
+              localFile {
+                publicURL
+              }
+            }
             heroImage {
               altText
               localFile {

@@ -80,9 +80,19 @@ const HomepageSection = styled.section`
         opacity: 1;
       }
     }
-    /* a {
-      text-decoration: underline;
-    } */
+    .homepage-casestudy-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 300px;
+      object-fit: contain;
+      height: auto;
+      display: block;
+      @media screen and (max-width: 600px) {
+        max-width: 250px;
+      }
+    }
   }
 `;
 
@@ -229,7 +239,7 @@ export default function DoubleScrollSection({ data }) {
           <div className="homepage-words homepage-images-hero">
             {data?.homepage?.picturesVideo?.video ? (
               <div className="square-iframe-container">
-                <video
+                <iframe
                   title="Wildish animation"
                   loading="eager"
                   src={data?.homepage?.picturesVideo?.video}
@@ -256,6 +266,13 @@ export default function DoubleScrollSection({ data }) {
                 }}
               >
                 <Image image={c?.case_study?.heroImage} />
+                {c?.case_study?.heroLogo?.localFile?.publicURL && (
+                  <img
+                    className="homepage-casestudy-logo"
+                    src={c?.case_study?.heroLogo?.localFile?.publicURL}
+                    alt={c?.title}
+                  />
+                )}
                 <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
             );
