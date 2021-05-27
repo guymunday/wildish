@@ -16,6 +16,9 @@ const MenuFooterStyles = styled.nav`
       padding: 30px;
       display: flex;
       flex-wrap: wrap;
+      @media screen and (max-width: 650px) {
+        padding: 10px;
+      }
       .footer-address {
         width: 25%;
         padding: 20px;

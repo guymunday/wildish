@@ -47,7 +47,7 @@ export default function Footer() {
       <FooterStyles>
         <div className="footer-inner">
           <p className="mobile-margin">
-            ©{new Date().getFullYear()} Wildish&Co LTD. All rights reserved.
+            ©{new Date().getFullYear()} Wildish & Co LTD. All rights reserved.
           </p>
           {/* <Link className="nostyle footer-logo" to="/">
             <img src={handLogo} alt="" />

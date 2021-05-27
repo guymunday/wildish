@@ -17,12 +17,16 @@ const MenuStyles = styled.nav`
   overflow: scroll;
   background: var(--yellow);
   z-index: 999;
+  opacity: 0;
   .menu-container {
     min-height: 60vh;
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    @media screen and (max-width: 600px) {
+      min-height: 40vh;
+    }
     .close-button {
       display: flex;
       justify-content: flex-end;
@@ -65,6 +69,9 @@ const MenuStyles = styled.nav`
         @media screen and (max-width: 500px) {
           font-size: 2.4rem;
         }
+        @media screen and (max-width: 350px) {
+          font-size: 1.8rem;
+        }
         .menu-arrow {
           display: inline-block;
           width: 70px;
@@ -82,6 +89,9 @@ const MenuStyles = styled.nav`
       padding: 30px;
       display: flex;
       flex-wrap: wrap;
+      @media screen and (max-width: 650px) {
+        padding: 10px;
+      }
       .menu-address {
         width: 25%;
         padding: 20px;
@@ -149,8 +159,8 @@ export default function Menu({ setMenuOpen, menuOpen }) {
   React.useEffect(() => {
     let tl = gsap.timeline();
 
-    tl.from(menuRef.current, {
-      opacity: 0,
+    tl.to(menuRef.current, {
+      opacity: 1,
       duration: 0.4,
     }).from(".menu-address", {
       opacity: 0,
