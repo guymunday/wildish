@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import fullLogo from "../../assets/images/wildish-logo-full.svg";
+// import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import Image from "../Image";
 import ScrollSnap from "scroll-snap";
 import { gsap } from "gsap";

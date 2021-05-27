@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import fullLogo from "../../assets/images/wildish-logo-full.svg";
+// import fullLogo from "../../assets/images/wildish-logo-full.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "../Image";
@@ -107,7 +107,7 @@ export default function DoubleScrollSection({ data }) {
     const element = wordsRef.current;
     const snapElement = new ScrollSnap(element, {
       snapDestinationY: "100%",
-      threshold: 0.5,
+      threshold: 0.6,
     });
     snapElement.bind();
   }

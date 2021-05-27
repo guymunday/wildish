@@ -40,7 +40,6 @@
     "react-transition-group": "^4.4.1",
     "sanitize-html": "^2.3.2",
     "scroll-snap": "^3.2.4",
-    "stickybits": "^3.7.9",
     "styled-components": "^5.2.1"
   }
 }

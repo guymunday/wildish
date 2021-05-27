@@ -54,12 +54,13 @@ const global = css`
     cursor: pointer;
   }
 
-  a {
+  /* a {
     text-decoration: none;
     color: inherit;
     font-size: inherit;
     position: relative;
     z-index: 1;
+    cursor: pointer !important;
     background: linear-gradient(
       0deg,
       rgba(250, 222, 43, 1) 10%,
@@ -75,6 +76,7 @@ const global = css`
       height: 2px;
       background: var(--yellow);
       z-index: -1;
+      cursor: pointer !important;
       transition: height 0.3s ease;
     }
     &:hover {
@@ -82,6 +84,22 @@ const global = css`
         height: 100%;
       }
     }
+  } */
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    background-image: linear-gradient(var(--yellow), var(--yellow));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    transition: background-size 0.3s;
+  }
+
+  a:hover,
+  a:focus {
+    background-size: 100% 80%;
   }
 
   a.nostyle {
