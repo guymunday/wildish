@@ -32,7 +32,7 @@ const Layout = ({ location, children }) => {
       <Logo setMenuOpen={setMenuOpen} />
       <MenuFooter />
       <Footer />
-      <CookiesBanner />
+      {/* <CookiesBanner /> */}
       <Cursor />
     </>
   );
