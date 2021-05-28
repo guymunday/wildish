@@ -39,12 +39,12 @@ export default function SliceZone({ slices }) {
         return (
           <RollIn alt={s.order === "text" ? true : false} key={i} input={s} />
         );
-      case "case_study_CaseStudy_PageContent_ResultsSection":
-        return (
-          <FadeIn key={i}>
-            <Results results={s} />
-          </FadeIn>
-        );
+      // case "case_study_CaseStudy_PageContent_ResultsSection":
+      //   return (
+      //     <FadeIn key={i}>
+      //       <Results results={s} />
+      //     </FadeIn>
+      //   );
       case "case_study_CaseStudy_PageContent_VideoEmbed":
         return (
           <FadeIn key={i}>
