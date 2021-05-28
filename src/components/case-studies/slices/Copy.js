@@ -8,6 +8,7 @@ const CopyWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  background: var(--white);
 `;
 
 export default function Copy({ html }) {

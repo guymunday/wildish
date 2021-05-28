@@ -5,6 +5,8 @@ import CalendlyButton from "../CalendlyButton";
 const CallStyles = styled.section`
   text-align: center;
   padding: 120px 30px;
+  background: var(--white);
+
   /* display: flex;
   align-items: center;
   margin: auto;

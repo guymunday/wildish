@@ -153,11 +153,11 @@ export default function DoubleScrollSectionMobile({ data }) {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 50) {
+    if (touchStart - touchEnd > 150) {
       setIsWords(!isWords);
     }
 
-    if (touchStart - touchEnd < -50) {
+    if (touchStart - touchEnd < -150) {
       setIsWords(!isWords);
     }
   };
