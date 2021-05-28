@@ -8,11 +8,12 @@ import Footer from "./Footer";
 import Hamburger from "./Hamburger";
 import Logo from "./Logo";
 import Transition from "./Transition";
-import AnnoyingPopup from "./AnnoyingPopup";
 import Cursor from "./cursor/Cursor";
 import CookiesBanner from "./CookiesBanner";
 import MenuFooter from "./MenuFooter";
 import IntroScreen from "./IntroScreen";
+import { Helmet } from "react-helmet";
+import favicon from "../assets/favICON.png";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -26,6 +27,9 @@ const Layout = ({ location, children }) => {
     <>
       <GlobalStyle />
       <IntroScreen />
+      <Helmet>
+        <link rel="icon" type="image/png" href={favicon} />
+      </Helmet>
       <Transition location={location}>{children}</Transition>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
