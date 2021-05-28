@@ -96,8 +96,8 @@ const MenuStyles = styled.nav`
         width: 25%;
         padding: 20px;
         h3 {
-          &:not(:first-child) {
-            margin-top: 30px;
+          &:not(:last-child) {
+            margin-top: 30px !important;
           }
         }
         .social-link {
@@ -253,19 +253,23 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               );
             })}
             <div className="menu-address">
-              <h3>{data?.menu?.menu?.hireUs?.text}</h3>
+              <h3 style={{ marginBottom: 20 }}>
+                {data?.menu?.menu?.hireUs?.text}
+              </h3>
               <a href={`mailto:${data?.menu?.menu?.hireUs?.emailAddress}`}>
                 {data?.menu?.menu?.hireUs?.emailAddress}
               </a>
               <br />
               <CalendlyButton />
-              <h3>{data?.menu?.menu?.workWithUs?.text}</h3>
+              <h3 style={{ marginBottom: 20 }}>
+                {data?.menu?.menu?.workWithUs?.text}
+              </h3>
               <a href={`mailto:${data?.menu?.menu?.workWithUs?.emailAddress}`}>
                 {data?.menu?.menu?.workWithUs?.emailAddress}
               </a>
             </div>
             <div className="menu-address">
-              <h3>Follow us</h3>
+              <h3 style={{ marginBottom: 20 }}>Follow us</h3>
               {data?.menu?.menu?.socialLinks?.map((l, i) => {
                 return (
                   <>

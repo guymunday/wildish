@@ -167,7 +167,7 @@ export const caseQuery = graphql`
         }
       }
     }
-    cases: allWpCaseStudy(sort: { order: ASC, fields: date }) {
+    cases: allWpCaseStudy(sort: { order: DESC, fields: date }) {
       edges {
         node {
           title
