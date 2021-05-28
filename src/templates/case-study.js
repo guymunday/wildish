@@ -225,7 +225,7 @@ export const CASE_STUDY_QUERY = graphql`
         }
       }
     }
-    nextProject: wpCaseStudy(slug: { eq: $nextSlug }) {
+    previousProject: wpCaseStudy(slug: { eq: $nextSlug }) {
       id
       slug
       title
@@ -259,7 +259,7 @@ export const CASE_STUDY_QUERY = graphql`
         heroText
       }
     }
-    previousProject: wpCaseStudy(slug: { eq: $previousSlug }) {
+    nextProject: wpCaseStudy(slug: { eq: $previousSlug }) {
       id
       slug
       title
