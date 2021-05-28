@@ -38,9 +38,9 @@ const RollInStyles = styled.section`
 const RollInStylesMobile = styled.section`
   width: 100%;
   position: relative;
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     display: none;
-  }
+  } */
   .rollin-image {
     position: relative;
   }
@@ -74,7 +74,7 @@ export default function RollIn({ alt, input: { image, text } }) {
 
   return (
     <>
-      <RollInStyles ref={containerRef}>
+      {/* <RollInStyles ref={containerRef}>
         <div className="rollin-image" ref={imageRef}>
           {alt ? (
             <Copy html={text} />
@@ -85,7 +85,7 @@ export default function RollIn({ alt, input: { image, text } }) {
         <div className="rollin-copy" ref={copyRef}>
           {alt ? <Image image={image} /> : <Copy html={text} />}
         </div>
-      </RollInStyles>
+      </RollInStyles> */}
       <RollInStylesMobile>
         <div className="rollin-image">
           {alt ? <Copy html={text} /> : <Image image={image} />}
