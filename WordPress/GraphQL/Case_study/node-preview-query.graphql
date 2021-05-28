@@ -57,9 +57,9 @@ query PREVIEW_QUERY($id: ID!) {
           quote
           title
         }
-        ... on Case_study_CaseStudy_PageContent_VideoSection {
-          embedCode
+        ... on Case_study_CaseStudy_PageContent_VideoEmbed {
           fieldGroupName
+          videoEmbed
         }
         ... on Case_study_CaseStudy_PageContent_Video {
           fieldGroupName

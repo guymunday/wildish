@@ -9,6 +9,7 @@ import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
+    console.log(s);
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
         return (
@@ -44,6 +45,14 @@ export default function SliceZone({ slices }) {
             <Results results={s} />
           </FadeIn>
         );
+      case "case_study_CaseStudy_PageContent_VideoEmbed":
+        return (
+          <FadeIn key={i}>
+            <div className="casestudy-iframe-container">
+              <iframe src={s?.videoEmbed} frameborder="0" />
+            </div>
+          </FadeIn>
+        );
       case "case_study_CaseStudy_PageContent_Video":
         return s?.videoFile ? (
           <FadeIn key={i}>
@@ -54,7 +63,7 @@ export default function SliceZone({ slices }) {
               loop
               style={{ width: "100%", height: "auto", display: "block" }}
               src={s?.videoFile?.mediaItemUrl}
-            ></video>
+            />
           </FadeIn>
         ) : null;
       default:

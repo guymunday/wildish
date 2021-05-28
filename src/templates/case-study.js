@@ -166,8 +166,8 @@ export const CASE_STUDY_QUERY = graphql`
               mediaItemUrl
             }
           }
-          ... on WpCase_study_CaseStudy_PageContent_VideoSection {
-            embedCode
+          ... on WpCase_study_CaseStudy_PageContent_VideoEmbed {
+            videoEmbed
             fieldGroupName
           }
           ... on WpCase_study_CaseStudy_PageContent_ContentSection {
