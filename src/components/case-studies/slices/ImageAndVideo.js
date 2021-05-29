@@ -30,6 +30,7 @@ export default function ImageAndVideo({ input: { video, image, order } }) {
               autoPlay="autoplay"
               muted
               loop
+              playsInline
             />
             <Image
               image={image}
@@ -47,6 +48,7 @@ export default function ImageAndVideo({ input: { video, image, order } }) {
               autoPlay="autoplay"
               muted
               loop
+              playsInline
             />
             <Image
               image={image}
