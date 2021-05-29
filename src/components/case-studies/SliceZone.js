@@ -61,6 +61,7 @@ export default function SliceZone({ slices }) {
               autoPlay="autoplay"
               muted
               loop
+              playsInline
               style={{ width: "100%", height: "auto", display: "block" }}
               src={s?.videoFile?.mediaItemUrl}
             />
