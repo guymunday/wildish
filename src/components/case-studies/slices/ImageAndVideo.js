@@ -9,12 +9,14 @@ const Styles = styled.div`
   overflow: hidden;
   video {
     width: 50%;
+    height: 100%;
   }
   .image-and-video_image {
     height: 100%;
     width: 50%;
     position: absolute;
     top: 0;
+    bottom: 0;
   }
 `;
 
