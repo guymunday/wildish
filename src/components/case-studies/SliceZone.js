@@ -9,7 +9,6 @@ import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
-    console.log(s);
     switch (s.fieldGroupName) {
       case "case_study_CaseStudy_PageContent_ContentSection":
         return (

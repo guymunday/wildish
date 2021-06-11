@@ -21,7 +21,6 @@ const Styles = styled.div`
 `;
 
 export default function ImageAndVideo({ input: { video, image, order } }) {
-  console.log(order);
   return (
     <>
       <div className="div">
