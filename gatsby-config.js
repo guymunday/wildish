@@ -35,14 +35,12 @@ module.exports = {
         },
       },
     },
-     {
+    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
-          "GA-TRACKING_ID", // Google Analytics / GA
-          "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-          "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+          "G-YMC5TY9LR1", // Google Analytics / GA
         ],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
@@ -63,10 +61,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-110949102-2",
+        head: false,
+      },
+    },
+    {
       resolve: "@sentry/gatsby",
       options: {
-        dsn:
-          "https://8d6e9cdf7c8f4f308d2facc2d1a7be93@o593193.ingest.sentry.io/5741559",
+        dsn: "https://8d6e9cdf7c8f4f308d2facc2d1a7be93@o593193.ingest.sentry.io/5741559",
         sampleRate: 0.7,
       },
     },
