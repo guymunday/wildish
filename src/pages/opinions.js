@@ -3,10 +3,7 @@ import { graphql, Link } from "gatsby";
 import GlassesSvg from "../assets/svgs/glasses";
 import styled from "styled-components";
 import Image from "../components/Image";
-import {
-  MasonryWrapper,
-  Masonry,
-} from "../components/BlogPostsMasonry";
+import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry";
 
 const BlogHeader = styled.div`
   background: var(--black);
