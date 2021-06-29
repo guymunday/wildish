@@ -1,9 +1,11 @@
 @font-face {
   font-family: "Mabry Pro";
   src: url("../assets/fonts/MabryPro.otf") format("opentype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Hands";
   src: url("../assets/fonts/HandsUp.otf") format("opentype");
+  font-display: swap;
 }
