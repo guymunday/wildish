@@ -26,7 +26,7 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <GlobalStyle />
-      {/* <IntroScreen /> */}
+      <IntroScreen />
       <Helmet>
         <link rel="icon" type="image/png" href={favicon} />
       </Helmet>
