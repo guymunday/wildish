@@ -1,9 +1,15 @@
 module.exports = {
   flags: { PRESERVE_WEBPACK_CACHE: true },
+  siteMetadata: {
+    title: `Wildish & Co`,
+    siteUrl: `https://www.wildishandco.co.uk`,
+    description: `Creative agency`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
