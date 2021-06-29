@@ -47,6 +47,7 @@ const Casestudy = ({ data }) => {
     <>
       <Seo post={data?.project} />
       <div>
+        <h1 className="element-invisible">{data?.project?.title}</h1>
         <HeroSection data={data?.project?.case_study} />
         <SliceZone slices={data?.project?.case_study?.pageContent} />
         <ScheduleCall />

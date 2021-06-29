@@ -6,6 +6,7 @@ import Marquee from "../components/Marquee";
 import gsap from "gsap";
 import Filter from "../components/case-studies/Filter";
 import useQueryString from "../components/query-string/useQueryString";
+import { Helmet } from "react-helmet";
 
 const CasestudyGrid = styled.section`
   width: 100%;
@@ -106,6 +107,9 @@ export default function Casestudies({ data: { cases, tags } }) {
 
   return (
     <>
+      <Helmet>
+        <title>Case Studies | Wildish & Co.</title>
+      </Helmet>
       <div style={{ background: "#000", minHeight: "100vh", width: "100%" }}>
         <div style={{ background: "#000", height: 100, width: "100%" }} />
         <Filter
