@@ -20,7 +20,6 @@
     "@sentry/gatsby": "^6.3.4",
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.0.0",
-    "gatsby-plugin-advanced-sitemap": "^2.0.0",
     "gatsby-plugin-google-analytics": "^3.7.1",
     "gatsby-plugin-google-gtag": "^3.7.1",
     "gatsby-plugin-image": "^1.1.1",
