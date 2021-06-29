@@ -41,7 +41,7 @@ export default function BlogPosts({ data }) {
         <Masonry>
           {data?.allWpPost?.edges.map((b, i) => (
             <div key={i} className="blog-post-thumb">
-              <Link to={`/blog/${b?.node?.slug}`}>
+              <Link to={`/opinions/${b?.node?.slug}`}>
                 <Image image={b?.node?.featuredImage?.node} />
                 <h3 className="blog-title">{b?.node?.title}</h3>
                 <div
