@@ -23,6 +23,8 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
 
+  console.log(location)
+
   return (
     <>
       <GlobalStyle />
@@ -30,7 +32,7 @@ const Layout = ({ location, children }) => {
       <Helmet>
         <html lang="en" amp />
         <link rel="icon" type="image/png" href={favicon} />
-        <link rel="canonical" href="https://www.wildishandco.co.uk" />
+        <link rel="canonical" href={location.href} />
       </Helmet>
       <Transition location={location}>{children}</Transition>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
