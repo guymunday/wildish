@@ -22,11 +22,11 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-  
+
   return (
     <>
       <GlobalStyle />
-      <IntroScreen />
+      {/* <IntroScreen /> */}
       <Helmet>
         <html lang="en" amp />
         <link rel="icon" type="image/png" href={favicon} />
