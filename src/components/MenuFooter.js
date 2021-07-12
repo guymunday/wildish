@@ -1,7 +1,7 @@
-import * as React from "react";
-import styled from "styled-components";
-import { useStaticQuery, graphql, navigate } from "gatsby";
-import CalendlyButton from "./CalendlyButton";
+import * as React from "react"
+import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
+import CalendlyButton from "./CalendlyButton"
 
 const MenuFooterStyles = styled.nav`
   a,
@@ -47,7 +47,7 @@ const MenuFooterStyles = styled.nav`
       }
     }
   }
-`;
+`
 
 export default function MenuFooter() {
   const data = useStaticQuery(graphql`
@@ -74,7 +74,7 @@ export default function MenuFooter() {
         }
       }
     }
-  `);
+  `)
 
   return (
     <>
@@ -88,7 +88,7 @@ export default function MenuFooter() {
                   className="html footer-address"
                   dangerouslySetInnerHTML={{ __html: a?.address }}
                 />
-              );
+              )
             })}
             <div className="footer-address">
               <h3 style={{ marginBottom: 20 }}>
@@ -110,7 +110,7 @@ export default function MenuFooter() {
               <h3 style={{ marginBottom: 20 }}>Follow us</h3>
               {data?.menu?.menu?.socialLinks?.map((l, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <a
                       className="nostyle social-link"
                       href={l?.socialLink?.link}
@@ -126,13 +126,13 @@ export default function MenuFooter() {
                       {l?.socialLink?.text}
                     </a>
                     <br />
-                  </>
-                );
+                  </React.Fragment>
+                )
               })}
             </div>
           </div>
         </div>
       </MenuFooterStyles>
     </>
-  );
+  )
 }

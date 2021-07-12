@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import { Link } from "gatsby";
 import CookieConsent from "react-cookie-consent";
 

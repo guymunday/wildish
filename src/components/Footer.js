@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import styled from "styled-components";
-import handLogo from "../assets/images/hand-logo.svg";
 
 const FooterStyles = styled.footer`
   width: 100%;

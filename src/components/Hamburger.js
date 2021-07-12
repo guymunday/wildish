@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from "react"
+import styled from "styled-components"
 
 const HamburgerStyles = styled.nav`
   position: fixed;
@@ -30,38 +30,42 @@ const HamburgerStyles = styled.nav`
       }
     }
   }
-`;
+`
 
 export default function Hamburger({ setMenuOpen }) {
-  const hamburgerRef = React.useRef(null);
-  const buttonRef = React.useRef(null);
+  const hamburgerRef = React.useRef(null)
+  const buttonRef = React.useRef(null)
 
   const handleMagnetic = (event) => {
-    const { clientX, clientY } = event;
-    const left = hamburgerRef.current.getBoundingClientRect().left;
+    const { clientX, clientY } = event
+    const left = hamburgerRef.current.getBoundingClientRect().left
 
-    buttonRef.current.style.left = `${clientX - left}px`;
-    buttonRef.current.style.top = `${clientY}px`;
-  };
+    buttonRef.current.style.left = `${clientX - left}px`
+    buttonRef.current.style.top = `${clientY}px`
+  }
 
   const resetMagnet = () => {
-    buttonRef.current.style.left = `50%`;
-    buttonRef.current.style.top = `50%`;
-  };
+    buttonRef.current.style.left = `50%`
+    buttonRef.current.style.top = `50%`
+  }
 
   React.useEffect(() => {
-    hamburgerRef.current.addEventListener("mouseover", handleMagnetic);
-    hamburgerRef.current.addEventListener("mouseleave", resetMagnet);
+    hamburgerRef.current.addEventListener("mouseover", handleMagnetic)
+    hamburgerRef.current.addEventListener("mouseleave", resetMagnet)
     return () => {
-      hamburgerRef.current.removeEventListener("mouseover", handleMagnetic);
-      hamburgerRef.current.removeEventListener("mouseleave", resetMagnet);
-    };
-  });
+      hamburgerRef.current.removeEventListener("mouseover", handleMagnetic)
+      hamburgerRef.current.removeEventListener("mouseleave", resetMagnet)
+    }
+  }, [])
 
   return (
     <>
       <HamburgerStyles ref={hamburgerRef}>
-        <button onClick={() => setMenuOpen(true)} ref={buttonRef}>
+        <button
+          aria-label="menu"
+          onClick={() => setMenuOpen(true)}
+          ref={buttonRef}
+        >
           <svg viewBox="0 0 100 80" width="30" height="30">
             <rect width="100" height="10"></rect>
             <rect y="30" width="100" height="10"></rect>
@@ -70,5 +74,5 @@ export default function Hamburger({ setMenuOpen }) {
         </button>
       </HamburgerStyles>
     </>
-  );
+  )
 }

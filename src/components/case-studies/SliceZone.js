@@ -4,7 +4,6 @@ import Image from "../Image";
 import Copy from "./slices/Copy";
 import ImageAndVideo from "./slices/ImageAndVideo";
 import Quote from "./slices/Quote";
-import Results from "./slices/Results";
 import RollIn from "./slices/RollIn";
 
 export default function SliceZone({ slices }) {
@@ -38,12 +37,6 @@ export default function SliceZone({ slices }) {
         return (
           <RollIn alt={s.order === "text" ? true : false} key={i} input={s} />
         );
-      // case "case_study_CaseStudy_PageContent_ResultsSection":
-      //   return (
-      //     <FadeIn key={i}>
-      //       <Results results={s} />
-      //     </FadeIn>
-      //   );
       case "case_study_CaseStudy_PageContent_VideoEmbed":
         return (
           <FadeIn key={i}>

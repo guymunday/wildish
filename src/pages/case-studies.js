@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, graphql } from "gatsby";
-import styled from "styled-components";
-import Image from "../components/Image";
-import Marquee from "../components/Marquee";
-import gsap from "gsap";
-import Filter from "../components/case-studies/Filter";
-import useQueryString from "../components/query-string/useQueryString";
-import { Helmet } from "react-helmet";
+import React from "react"
+import { Link, graphql } from "gatsby"
+import styled from "styled-components"
+import Image from "../components/Image"
+import Marquee from "../components/Marquee"
+import gsap from "gsap"
+import Filter from "../components/case-studies/Filter"
+import useQueryString from "../components/query-string/useQueryString"
+import { Helmet } from "react-helmet"
 
 const CasestudyGrid = styled.section`
   width: 100%;
@@ -63,10 +63,10 @@ const CasestudyGrid = styled.section`
       }
     }
   }
-`;
+`
 
 export default function Casestudies({ data: { cases, tags } }) {
-  const [tagFilter, setTagFilter] = useQueryString("tagged", "all");
+  const [tagFilter, setTagFilter] = useQueryString("tagged", "all")
 
   const animation = async () => {
     return gsap.to(".grid-item", {
@@ -75,8 +75,8 @@ export default function Casestudies({ data: { cases, tags } }) {
       stagger: {
         each: 0.2,
       },
-    });
-  };
+    })
+  }
 
   const reverseAnimation = async () => {
     return gsap.to(".grid-item", {
@@ -86,8 +86,8 @@ export default function Casestudies({ data: { cases, tags } }) {
         each: 0.1,
         from: "end",
       },
-    });
-  };
+    })
+  }
 
   React.useEffect(() => {
     gsap.from(".grid-item", {
@@ -96,20 +96,21 @@ export default function Casestudies({ data: { cases, tags } }) {
       stagger: {
         each: 0.2,
       },
-    });
-  }, []);
+    })
+  }, [])
 
   const handleClick = async (filter) => {
-    await reverseAnimation();
-    await setTagFilter(filter);
-    await animation();
-  };
+    await reverseAnimation()
+    await setTagFilter(filter)
+    await animation()
+  }
 
   return (
     <>
       <Helmet>
         <title>Case Studies | Wildish & Co.</title>
       </Helmet>
+      <h1 className="element-invisible">Case Studies</h1>
       <div style={{ background: "#000", minHeight: "100vh", width: "100%" }}>
         <div style={{ background: "#000", height: 100, width: "100%" }} />
         <Filter
@@ -119,7 +120,7 @@ export default function Casestudies({ data: { cases, tags } }) {
         />
         <CasestudyGrid>
           {cases?.edges?.map((c, i) => {
-            const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name);
+            const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name)
             if (mappedFilter.includes(tagFilter) || tagFilter === "all") {
               return (
                 <>
@@ -145,14 +146,14 @@ export default function Casestudies({ data: { cases, tags } }) {
                     </Link>
                   </div>
                 </>
-              );
+              )
             }
           })}
         </CasestudyGrid>
       </div>
       <Marquee />
     </>
-  );
+  )
 }
 
 export const caseQuery = graphql`
@@ -208,4 +209,4 @@ export const caseQuery = graphql`
       }
     }
   }
-`;
+`

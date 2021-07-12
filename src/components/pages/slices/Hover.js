@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import FadeIn from "../../FadeIn";
 import Image from "../../Image";
 import useEventListener from "../../../hooks/useEventListener";
 

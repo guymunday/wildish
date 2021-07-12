@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from "react"
+import styled from "styled-components"
 
 const MarqueeStyles = styled.div`
   display: flex;
@@ -10,12 +10,12 @@ const MarqueeStyles = styled.div`
   .marquee-track {
     display: flex;
   }
-`;
+`
 
 export default function EmojiMarquee({ right, emoji, ...rest }) {
   const words = {
     words: <>{emoji}</>,
-  };
+  }
 
   return (
     <>
@@ -29,10 +29,10 @@ export default function EmojiMarquee({ right, emoji, ...rest }) {
           }}
         >
           {Array.from({ length: 50 }, () => words).map((words, i) => (
-            <>{words.words}</>
+            <React.Fragment key={i}>{words.words}</React.Fragment>
           ))}
         </div>
       </MarqueeStyles>
     </>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from "styled-components";
-import { useStaticQuery, graphql, Link, navigate } from "gatsby";
-import { gsap } from "gsap";
-import CalendlyButton from "./CalendlyButton";
+import * as React from "react"
+import styled from "styled-components"
+import { useStaticQuery, graphql, navigate } from "gatsby"
+import { gsap } from "gsap"
+import CalendlyButton from "./CalendlyButton"
 
 const MenuStyles = styled.nav`
   a,
@@ -120,11 +120,11 @@ const MenuStyles = styled.nav`
       }
     }
   }
-`;
+`
 
 export default function Menu({ setMenuOpen, menuOpen }) {
-  const [direction, setDirection] = React.useState({});
-  const menuRef = React.useRef(null);
+  const [direction, setDirection] = React.useState({})
+  const menuRef = React.useRef(null)
 
   const data = useStaticQuery(graphql`
     {
@@ -154,10 +154,10 @@ export default function Menu({ setMenuOpen, menuOpen }) {
         }
       }
     }
-  `);
+  `)
 
   React.useEffect(() => {
-    let tl = gsap.timeline();
+    let tl = gsap.timeline()
 
     tl.to(menuRef.current, {
       opacity: 1,
@@ -167,11 +167,11 @@ export default function Menu({ setMenuOpen, menuOpen }) {
       y: 50,
       duration: 0.2,
       stagger: 0.1,
-    });
-  }, []);
+    })
+  }, [])
 
   const closeAnimation = () => {
-    let tl = gsap.timeline();
+    let tl = gsap.timeline()
 
     return tl
       .to(".menu-address", {
@@ -186,23 +186,23 @@ export default function Menu({ setMenuOpen, menuOpen }) {
       .to(menuRef.current, {
         duration: 0.2,
         autoAlpha: 0,
-      });
-  };
+      })
+  }
 
   const exitAnimation = () => {
-    return gsap.to(menuRef.current, direction);
-  };
+    return gsap.to(menuRef.current, direction)
+  }
 
   const handleMenuClick = async (i) => {
-    await navigate(data?.menu?.menu?.links[i]?.internalLink);
-    await exitAnimation();
-    await setMenuOpen(false);
-  };
+    await navigate(data?.menu?.menu?.links[i]?.internalLink)
+    await exitAnimation()
+    await setMenuOpen(false)
+  }
 
   const handleCloseButton = async () => {
-    await closeAnimation();
-    await setMenuOpen(false);
-  };
+    await closeAnimation()
+    await setMenuOpen(false)
+  }
 
   return (
     <>
@@ -250,7 +250,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                   className="html menu-address"
                   dangerouslySetInnerHTML={{ __html: a?.address }}
                 />
-              );
+              )
             })}
             <div className="menu-address">
               <h3 style={{ marginBottom: 20 }}>
@@ -272,7 +272,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               <h3 style={{ marginBottom: 20 }}>Follow us</h3>
               {data?.menu?.menu?.socialLinks?.map((l, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <a
                       className="nostyle social-link"
                       href={l?.socialLink?.link}
@@ -288,8 +288,8 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                       {l?.socialLink?.text}
                     </a>
                     <br />
-                  </>
-                );
+                  </React.Fragment>
+                )
               })}
               {/* <h3>Keep up to date</h3>
               <a href="">Sign up to our delicious spam</a> */}
@@ -298,5 +298,5 @@ export default function Menu({ setMenuOpen, menuOpen }) {
         </div>
       </MenuStyles>
     </>
-  );
+  )
 }

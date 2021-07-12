@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from "react"
+import styled from "styled-components"
 
 const MarqueeStyles = styled.div`
   display: flex;
@@ -17,17 +17,17 @@ const MarqueeStyles = styled.div`
       animation-play-state: paused !important;
     }
   }
-`;
+`
 
 export default function Marquee({ right, ...rest }) {
   const words = {
     words: (
       <>
-        Follow us <span>🙏 </span>{" "}
+        Follow us <span role="img">🙏 </span>{" "}
         <span style={{ color: "var(--yellow)" }}>wildishandco_studio</span>
       </>
     ),
-  };
+  }
 
   return (
     <>
@@ -44,6 +44,7 @@ export default function Marquee({ right, ...rest }) {
             <a
               href="https://www.instagram.com/wildishandco_studio"
               target="_blank"
+              rel="noreferrer"
               className="nostyle"
               key={i}
               style={{ margin: "0 10px", fontSize: "1.3rem" }}
@@ -54,5 +55,5 @@ export default function Marquee({ right, ...rest }) {
         </div>
       </MarqueeStyles>
     </>
-  );
+  )
 }

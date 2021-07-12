@@ -40,9 +40,7 @@ const Casestudy = ({ data }) => {
       })
       .add(function () {}, "+=0.6");
   };
-
-  console.log(data);
-
+  
   return (
     <>
       <Seo post={data?.project} />
