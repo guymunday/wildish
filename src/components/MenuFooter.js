@@ -28,6 +28,7 @@ const MenuFooterStyles = styled.nav`
           }
         }
         .social-link {
+          display: inline-block;
           .footer-arrow {
             transition: 0.4s transform ease;
           }

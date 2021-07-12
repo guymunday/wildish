@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import GlassesSvg from "../assets/svgs/glasses";
+import GlassesSvg from "./GlassesSvg";
 import Image from "./Image";
 import styled from "styled-components";
 

@@ -1,10 +1,10 @@
-import React from "react";
-import { graphql } from "gatsby";
-import BlogPostMasonry from "../components/BlogPostsMasonry";
-import Marquee from "../components/Marquee";
-import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectionMobile";
-import DoubleScrollSection from "../components/homepage/DoubleScrollSection";
-import Seo from "gatsby-plugin-wpgraphql-seo";
+import React from "react"
+import { graphql } from "gatsby"
+import BlogPostMasonry from "../components/BlogPostsMasonry"
+import Marquee from "../components/Marquee"
+import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectionMobile"
+import DoubleScrollSection from "../components/homepage/DoubleScrollSection"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 
 export default function IndexPage({ data }) {
   return (
@@ -15,7 +15,7 @@ export default function IndexPage({ data }) {
       <Marquee />
       <BlogPostMasonry />
     </>
-  );
+  )
 }
 
 export const indexQuery = graphql`
@@ -101,4 +101,4 @@ export const indexQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,9 +1,9 @@
-import * as React from "react";
-import { graphql, Link } from "gatsby";
-import GlassesSvg from "../assets/svgs/glasses";
-import styled from "styled-components";
-import Image from "../components/Image";
-import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry";
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import GlassesSvg from "../components/GlassesSvg"
+import styled from "styled-components"
+import Image from "../components/Image"
+import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry"
 
 const BlogHeader = styled.div`
   background: var(--black);
@@ -18,7 +18,7 @@ const BlogHeader = styled.div`
   @media screen and (max-width: 500px) {
     flex-direction: column;
   }
-`;
+`
 
 export default function BlogPosts({ data }) {
   return (
@@ -62,7 +62,7 @@ export default function BlogPosts({ data }) {
         </Masonry>
       </MasonryWrapper>
     </>
-  );
+  )
 }
 
 export const BLOGS_QUERY = graphql`
@@ -95,4 +95,4 @@ export const BLOGS_QUERY = graphql`
       }
     }
   }
-`;
+`

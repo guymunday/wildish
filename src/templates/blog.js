@@ -1,11 +1,11 @@
-import * as React from "react";
-import { graphql, Link } from "gatsby";
-import styled from "styled-components";
-import { MasonryWrapper } from "../components/BlogPostsMasonry";
-import Image from "../components/Image";
-import GlassesSvg from "../assets/svgs/glasses";
-import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent";
-import Seo from "gatsby-plugin-wpgraphql-seo";
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import styled from "styled-components"
+import { MasonryWrapper } from "../components/BlogPostsMasonry"
+import Image from "../components/Image"
+import GlassesSvg from "../components/GlassesSvg"
+import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 
 const BlogHeader = styled.div`
   width: 100%;
@@ -21,7 +21,7 @@ const BlogHeader = styled.div`
       }
     }
   }
-`;
+`
 
 const Title = styled.div`
   padding: 30px 30px 0 30px;
@@ -29,7 +29,7 @@ const Title = styled.div`
     max-width: 800px;
     margin: 0 auto 20px auto;
   }
-`;
+`
 
 const Html = styled.div`
   .html-inner {
@@ -52,7 +52,7 @@ const Html = styled.div`
       object-fit: cover;
     }
   }
-`;
+`
 
 const RecentPosts = styled.div`
   display: grid;
@@ -98,7 +98,7 @@ const RecentPosts = styled.div`
       }
     }
   }
-`;
+`
 
 export default function BlogPage({ data }) {
   return (
@@ -148,7 +148,7 @@ export default function BlogPage({ data }) {
         </RecentPosts>
       </MasonryWrapper>
     </>
-  );
+  )
 }
 
 export const BLOG_QUERY = graphql`
@@ -222,4 +222,4 @@ export const BLOG_QUERY = graphql`
       }
     }
   }
-`;
+`
