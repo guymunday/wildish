@@ -108,7 +108,7 @@ export default function BlogPostMasonry() {
           {blog?.allWpPost?.edges.map((b, i) => (
             <Link
               key={i}
-              to={`/opinions/${b?.node?.slug}`}
+              to={`/blog/${b?.node?.slug}`}
               className="blog-post-thumb nostyle"
             >
               <Image image={b?.node?.featuredImage?.node} />
