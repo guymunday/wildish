@@ -28,7 +28,7 @@ const Layout = ({ location, children }) => {
       <GlobalStyle />
       <IntroScreen />
       <Helmet>
-        <html lang="en" amp />
+        <html lang="en" />
         <link rel="icon" type="image/png" href={favicon} />
         <link rel="canonical" href={location.href} />
       </Helmet>
