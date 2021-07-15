@@ -1,13 +1,17 @@
-import { Link } from "gatsby";
-import * as React from "react";
-import styled from "styled-components";
-import handLogo from "../assets/images/hand-logo.svg";
+import { Link } from "gatsby"
+import * as React from "react"
+import styled from "styled-components"
+import handLogo from "../assets/images/hand-logo.svg"
 
 const LogoStyles = styled.div`
   position: fixed;
   top: 25px;
   left: 25px;
   z-index: 999;
+  transition: 0.3s ease;
+  :hover {
+    transform: scale(1.2);
+  }
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -19,16 +23,16 @@ const LogoStyles = styled.div`
       width: 40px;
     }
   }
-`;
+`
 
 export default function Logo({ setMenuOpen }) {
   return (
     <>
       <LogoStyles>
-        <Link to="/" onClick={() => setMenuOpen(false)}>
+        <Link to="/" onClick={() => setMenuOpen(false)} id="logo">
           <img src={handLogo} alt="Wildish and Co hand logo" />
         </Link>
       </LogoStyles>
     </>
-  );
+  )
 }

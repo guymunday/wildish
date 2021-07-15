@@ -14,6 +14,7 @@ import MenuFooter from "./MenuFooter"
 import IntroScreen from "./IntroScreen"
 import { Helmet } from "react-helmet"
 import favicon from "../assets/favICON.png"
+import LogoDragger from "./LogoDragger"
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -22,11 +23,12 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-  
+  const [funMode, setFunMode] = React.useState(true)
+
   return (
     <>
       <GlobalStyle />
-      <IntroScreen />
+      {/* <IntroScreen /> */}
       <Helmet>
         <html lang="en" />
         <link rel="icon" type="image/png" href={favicon} />
@@ -36,6 +38,7 @@ const Layout = ({ location, children }) => {
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
       <Logo setMenuOpen={setMenuOpen} />
+      {funMode && <LogoDragger />}
       <MenuFooter />
       <Footer />
       <CookiesBanner />
