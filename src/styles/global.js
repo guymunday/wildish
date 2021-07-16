@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
 const global = css`
   :root {
@@ -147,6 +147,12 @@ const global = css`
         rgba(255, 255, 255, 1) 80%,
         rgba(255, 255, 255, 0) 80%
       );
+    }
+  }
+
+  p {
+    strong {
+      font-weight: 400;
     }
   }
 
@@ -369,6 +375,6 @@ const global = css`
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
   }
-`;
+`
 
-export default global;
+export default global

@@ -119,7 +119,7 @@ export default function BlogPage({ data }) {
       </Title>
       <Html>
         <DangerouslySetHtmlContent
-          className="html-inner"
+          className="html-inner white"
           html={data?.wpPost?.content}
         />
       </Html>
