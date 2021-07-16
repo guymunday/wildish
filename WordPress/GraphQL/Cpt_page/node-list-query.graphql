@@ -49,6 +49,8 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       id
+      isContentNode
+      isTermNode
       lastEditedBy {
         node {
           id

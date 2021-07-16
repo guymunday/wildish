@@ -109,6 +109,8 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     featuredImageId
     guid
     id
+    isContentNode
+    isTermNode
     lastEditedBy {
       node {
         id

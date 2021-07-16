@@ -47,10 +47,12 @@ query PREVIEW_QUERY($id: ID!) {
     featuredImageId
     guid
     id
+    isContentNode
     isFrontPage
     isPostsPage
     isPrivacyPage
     isRevision
+    isTermNode
     lastEditedBy {
       node {
         id

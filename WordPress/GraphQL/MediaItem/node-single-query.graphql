@@ -42,6 +42,8 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     fileSize
     guid
     id
+    isContentNode
+    isTermNode
     lastEditedBy {
       node {
         id

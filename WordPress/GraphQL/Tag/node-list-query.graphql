@@ -16,6 +16,8 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       databaseId
       description
       id
+      isContentNode
+      isTermNode
       link
       name
       posts(first: 100) {

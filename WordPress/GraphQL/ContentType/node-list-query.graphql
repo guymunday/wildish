@@ -22,8 +22,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       hasArchive
       hierarchical
       id
+      isContentNode
       isFrontPage
       isPostsPage
+      isTermNode
       label
       labels {
         addNew
