@@ -10,6 +10,8 @@ query PREVIEW_QUERY($id: ID!) {
     databaseId
     description
     id
+    isContentNode
+    isTermNode
     link
     name
     posts(first: 100) {

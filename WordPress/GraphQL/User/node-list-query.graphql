@@ -26,6 +26,8 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       extraCapabilities
       firstName
       id
+      isContentNode
+      isTermNode
       lastName
       locale
       name

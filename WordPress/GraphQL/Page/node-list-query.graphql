@@ -48,10 +48,12 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       featuredImageId
       guid
       id
+      isContentNode
       isFrontPage
       isPostsPage
       isPrivacyPage
       isRevision
+      isTermNode
       lastEditedBy {
         node {
           id

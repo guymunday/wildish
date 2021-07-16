@@ -25,6 +25,8 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     extraCapabilities
     firstName
     id
+    isContentNode
+    isTermNode
     lastName
     locale
     name

@@ -48,6 +48,8 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     id
+    isContentNode
+    isTermNode
     lastEditedBy {
       node {
         id

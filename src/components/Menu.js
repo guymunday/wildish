@@ -50,6 +50,9 @@ const MenuStyles = styled.nav`
       flex-direction: column;
       padding: 30px;
       align-self: flex-end;
+      @media screen and (max-width: 500px) {
+       padding: 15px;
+      }
       .menu-item {
         display: inline-block;
         font-size: 4rem;
