@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import GlassesSvg from "./GlassesSvg";
+// import GlassesSvg from "./GlassesSvg";
 import Image from "./Image";
 import styled from "styled-components";
 
@@ -120,7 +120,7 @@ export default function BlogPostMasonry() {
                 <div className="time-to-read">
                   <div className="hands">A</div>
                   <div className="glasses">
-                    <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
+                    {/* <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p> */}
                   </div>
                 </div>
               </div>
