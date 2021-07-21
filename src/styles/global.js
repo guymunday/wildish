@@ -38,53 +38,11 @@ const global = css`
     font-size: 3.5rem;
     line-height: 0.6;
   }
-  .glasses:before {
-    content: "";
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    height: 12px;
-    width: 31px;
-    background-image: url(../assets/svgs/glasses.svg);
-    right: 0;
-    transform: translateX(-50%);
-  }
 
   button {
     cursor: pointer;
   }
 
-  /* a {
-    text-decoration: none;
-    color: inherit;
-    font-size: inherit;
-    position: relative;
-    z-index: 1;
-    cursor: pointer !important;
-    background: linear-gradient(
-      0deg,
-      rgba(250, 222, 43, 1) 10%,
-      rgba(250, 222, 43, 0) 10%
-    );
-    ::before {
-      position: absolute;
-      content: "";
-      display: block;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      background: var(--yellow);
-      z-index: -1;
-      cursor: pointer !important;
-      transition: height 0.3s ease;
-    }
-    &:hover {
-      ::before {
-        height: 100%;
-      }
-    }
-  } */
 
   a,
   .link {

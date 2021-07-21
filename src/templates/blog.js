@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import { MasonryWrapper } from "../components/BlogPostsMasonry"
 import Image from "../components/Image"
-// import GlassesSvg from "../components/GlassesSvg"
+import GlassesSvg from "../components/GlassesSvg"
 import DangerouslySetHtmlContent from "../components/DangerouslySetHtmlContent"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 
@@ -139,7 +139,7 @@ export default function BlogPage({ data }) {
                 <div className="time-to-read">
                   <div className="hands">A</div>
                   <div className="glasses">
-                    {/* <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p> */}
+                    <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
                   </div>
                 </div>
               </Link>

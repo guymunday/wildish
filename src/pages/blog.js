@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
-// import GlassesSvg from "../components/GlassesSvg"
+import GlassesSvg from "../components/GlassesSvg"
 import styled from "styled-components"
 import Image from "../components/Image"
 import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry"
@@ -52,7 +52,7 @@ export default function BlogPosts({ data }) {
                   <div className="time-to-read">
                     <div className="hands">A</div>
                     <div className="glasses">
-                      {/* <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p> */}
+                      <GlassesSvg /> <p>{b?.node?.blogSingle?.readTime} mins</p>
                     </div>
                   </div>
                 </div>
