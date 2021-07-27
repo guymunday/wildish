@@ -94,7 +94,6 @@ const global = css`
   h6,
   p {
     font-weight: 400;
-    line-height: 1;
     strong {
       font-weight: 400;
       position: relative;
@@ -106,6 +105,15 @@ const global = css`
         rgba(255, 255, 255, 0) 80%
       );
     }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1;
   }
 
   p {
