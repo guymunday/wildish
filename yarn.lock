@@ -5072,6 +5072,11 @@ emojis-list@^3.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
+emojisplosion@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/emojisplosion/-/emojisplosion-2.6.1.tgz#1e00c316f06469489cb34fe65746d7c91ed48196"
+  integrity sha512-a+yvHzHHP9R8qvt7ZeZS8yReuHjwXvbBbSxJHVMMWs4+sf0eOE/v/+Iz6fQq0CdF8G04jsJMF1MNDlrIBCC1pw==
+
 encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
@@ -11015,10 +11020,10 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-calendly@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-2.0.2.tgz#a2db6b3790e4edbf5a093cd07b53cf50e4c4ce3d"
-  integrity sha512-wHKUf8yEYC1cihFmlqNC4cyhcJn6XwIZCgB7ahUoZ8MnQb2xjJb3JeEt/3zHLvNdyrpjEyBPRF6qpnVPEIy4iw==
+react-calendly@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-2.2.1.tgz#7c35f7747e01045dbd77e18ea1eb18adddf373cf"
+  integrity sha512-r9WJ2WNr3hjBFnE8UyFCtJiTy7InME0lghw3gA5BqAMOFe70OtLDINDRAKDSS8O1tTSxJJrFdmZ1PpFSL0NAJA==
 
 react-cookie-consent@^6.2.4:
   version "6.2.4"

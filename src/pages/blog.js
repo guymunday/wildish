@@ -4,6 +4,7 @@ import GlassesSvg from "../components/GlassesSvg"
 import styled from "styled-components"
 import Image from "../components/Image"
 import { MasonryWrapper, Masonry } from "../components/BlogPostsMasonry"
+import CallToAction from "../components/CallToAction"
 
 const BlogHeader = styled.div`
   background: var(--black);
@@ -61,6 +62,7 @@ export default function BlogPosts({ data }) {
           ))}
         </Masonry>
       </MasonryWrapper>
+      <CallToAction />
     </>
   )
 }

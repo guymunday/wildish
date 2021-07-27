@@ -14,6 +14,7 @@ import MenuFooter from "./MenuFooter"
 import IntroScreen from "./IntroScreen"
 import { Helmet } from "react-helmet"
 import favicon from "../assets/favICON.png"
+import CallToAction from "./CallToAction"
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-  
+
   return (
     <>
       <GlobalStyle />

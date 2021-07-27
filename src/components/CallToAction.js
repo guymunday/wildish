@@ -1,0 +1,69 @@
+import * as React from "react"
+import styled from "styled-components"
+import { emojisplosion } from "emojisplosion"
+import AnnoyingPopup from "./AnnoyingPopup"
+
+const CTAStyles = styled.button`
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: red;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  z-index: 100;
+  border: 2px solid black;
+  box-shadow: 0px 10px 0px black;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+  font-size: 1.3rem;
+  color: white;
+  @media (max-width: 768px) {
+    bottom: 15px;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+  }
+  :active {
+    box-shadow: 0px 0px 0px black;
+    transform: translate(0%, 10px);
+  }
+  :focus {
+    outline: none;
+  }
+`
+
+export default function CallToAction() {
+  const [pushed, setPushed] = React.useState(false)
+
+  function handleClick() {
+    emojisplosion({
+      emojiCount: 90,
+      position: {
+        x: 100,
+        y: window.innerHeight - 150,
+      },
+      emojis: ["💖"],
+      physics: {
+        fontSize: 40,
+        initialVelocities: {
+          x: {
+            min: -10,
+            max: 50,
+          },
+          y: {
+            min: -50,
+            max: 10,
+          },
+        },
+      },
+    })
+    setPushed(!pushed)
+  }
+
+  return (
+    <>
+      <CTAStyles onClick={handleClick}>Push</CTAStyles>
+      {pushed && <AnnoyingPopup setPushed={setPushed} />}
+    </>
+  )
+}

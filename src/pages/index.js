@@ -5,6 +5,7 @@ import Marquee from "../components/Marquee"
 import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectionMobile"
 import DoubleScrollSection from "../components/homepage/DoubleScrollSection"
 import Seo from "gatsby-plugin-wpgraphql-seo"
+import CallToAction from "../components/CallToAction"
 
 export default function IndexPage({ data }) {
   return (
@@ -14,6 +15,7 @@ export default function IndexPage({ data }) {
       <DoubleScrollSectionMobile data={data?.sections} />
       <Marquee />
       <BlogPostMasonry />
+      <CallToAction />
     </>
   )
 }

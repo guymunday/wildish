@@ -1,5 +1,4 @@
 module.exports = {
-  flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `Wildish & Co`,
     siteUrl: `https://www.wildishandco.co.uk`,

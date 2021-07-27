@@ -7,6 +7,7 @@ import gsap from "gsap"
 import Filter from "../components/case-studies/Filter"
 import useQueryString from "../components/query-string/useQueryString"
 import { Helmet } from "react-helmet"
+import CallToAction from "../components/CallToAction"
 
 const CasestudyGrid = styled.section`
   width: 100%;
@@ -152,6 +153,7 @@ export default function Casestudies({ data: { cases, tags } }) {
         </CasestudyGrid>
       </div>
       <Marquee />
+      <CallToAction />
     </>
   )
 }
