@@ -20,23 +20,21 @@ const PopupStyles = styled.div`
     padding: 30px 20px;
     min-height: 100%;
     background: var(--yellow);
-    display: flex;
-    align-items: center;
     position: relative;
     .popup-close-container {
-      text-align: center;
+      text-align: right;
       button {
         background: transparent;
         outline: none;
-        border: var(--black) 2px solid;
-        color: var(--black);
-        padding: 5px 10px;
-        border-radius: 18px;
-        margin: 0 10px;
+        border: none;
+        padding: 0px;
+        font-size: 50px;
+        line-height: 0;
+        margin: 0;
+        cursor: pointer;
         transition: 0.3s ease;
-        :hover {
-          background: var(--black);
-          color: var(--white);
+        :active {
+          transform: scale(0.8);
         }
       }
     }
@@ -77,6 +75,11 @@ export default function AnnoyingPopup({ setPushed }) {
     <>
       <PopupStyles ref={popupRef}>
         <div className="popup-inner">
+          <div className="popup-close-container">
+            <button className="popup-close" onClick={() => setPushed(false)}>
+              &times;
+            </button>
+          </div>
           <div className="popup-copy">
             <h3>
               <strong>
@@ -94,11 +97,6 @@ export default function AnnoyingPopup({ setPushed }) {
               love to hear from you.
             </p>
             <CalendlyButton alt />
-            <div className="popup-close-container">
-              <button className="popup-close" onClick={() => setPushed(false)}>
-                Close &times;
-              </button>
-            </div>
           </div>
         </div>
       </PopupStyles>
