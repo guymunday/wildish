@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { gsap } from "gsap"
 import CalendlyButton from "./CalendlyButton"
@@ -21,6 +21,7 @@ const PopupStyles = styled.div`
     min-height: 100%;
     background: var(--yellow);
     position: relative;
+    text-align: center;
     .popup-close-container {
       text-align: right;
       button {
@@ -42,7 +43,12 @@ const PopupStyles = styled.div`
       max-width: 450px;
       margin: auto;
       text-align: center;
-      h3 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         font-size: 1.5rem;
       }
       p {
@@ -71,6 +77,18 @@ export default function AnnoyingPopup({ setPushed }) {
     })
   }, [])
 
+  const data = useStaticQuery(graphql`
+    {
+      menu: wpCptPage(slug: { eq: "menu" }) {
+        menu {
+          buttonCopy {
+            copy
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <>
       <PopupStyles ref={popupRef}>
@@ -80,24 +98,13 @@ export default function AnnoyingPopup({ setPushed }) {
               &times;
             </button>
           </div>
-          <div className="popup-copy">
-            <h3>
-              <strong>
-                This is an annoying popup to say we’re really glad you’re here.
-              </strong>
-            </h3>
-            <p>
-              Have a look through some of our{" "}
-              <strong>
-                <Link to="/case-studies" className="link">
-                  favourite work
-                </Link>
-              </strong>{" "}
-              and if you like what you see, or would like to know more, we’d
-              love to hear from you.
-            </p>
-            <CalendlyButton alt />
-          </div>
+          <div
+            className="popup-copy"
+            dangerouslySetInnerHTML={{
+              __html: data?.menu?.menu?.buttonCopy?.copy,
+            }}
+          />
+          <CalendlyButton alt />
         </div>
       </PopupStyles>
     </>

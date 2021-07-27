@@ -61,6 +61,10 @@ query PREVIEW_QUERY($id: ID!) {
         address
         fieldGroupName
       }
+      buttonCopy {
+        copy
+        fieldGroupName
+      }
       fieldGroupName
       hireUs {
         emailAddress
