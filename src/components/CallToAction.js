@@ -34,6 +34,9 @@ const CTAStyles = styled.button`
 
 export default function CallToAction() {
   const [pushed, setPushed] = React.useState(false)
+  const [pushedCount, setPushedCount] = React.useState(
+    Math.floor(Math.random() * 6)
+  )
 
   function handleClick() {
     emojisplosion({
@@ -42,7 +45,20 @@ export default function CallToAction() {
         x: 100,
         y: window.innerHeight - 150,
       },
-      emojis: ["💖"],
+      emojis:
+        pushedCount === 0
+          ? ["💖"]
+          : pushedCount === 1
+          ? ["🎉"]
+          : pushedCount === 2
+          ? ["✌️"]
+          : pushedCount === 3
+          ? ["🔥"]
+          : pushedCount === 4
+          ? ["💀"]
+          : pushedCount === 5
+          ? ["💃"]
+          : ["💅"],
       physics: {
         fontSize: 40,
         initialVelocities: {
@@ -58,7 +74,12 @@ export default function CallToAction() {
       },
     })
     setPushed(!pushed)
+    setPushedCount(Math.floor(Math.random() * 6))
   }
+
+  React.useEffect(() => {
+    console.log(pushedCount)
+  }, [pushedCount])
 
   return (
     <>
