@@ -35,7 +35,7 @@ const CTAStyles = styled.button`
 export default function CallToAction() {
   const [pushed, setPushed] = React.useState(false)
   const [pushedCount, setPushedCount] = React.useState(
-    Math.floor(Math.random() * 6)
+    Math.floor(Math.random() * 7)
   )
 
   function handleClick() {
@@ -74,7 +74,7 @@ export default function CallToAction() {
       },
     })
     setPushed(!pushed)
-    setPushedCount(Math.floor(Math.random() * 6))
+    setPushedCount(Math.floor(Math.random() * 7))
   }
 
   React.useEffect(() => {
