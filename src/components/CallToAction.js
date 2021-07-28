@@ -83,7 +83,7 @@ export default function CallToAction() {
 
   return (
     <>
-      <CTAStyles onClick={handleClick}>Push</CTAStyles>
+      <CTAStyles onClick={handleClick}>{pushed ? "Close" : "Push"}</CTAStyles>
       {pushed && <AnnoyingPopup setPushed={setPushed} />}
     </>
   )
