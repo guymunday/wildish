@@ -39,7 +39,7 @@ const ButtonStyles = styled.button`
 `
 
 export default function CalendlyButton({ alt }) {
-  const url = "https://calendly.com/sam-wildishandco/call"
+  const url = "https://calendly.com/sam-wildishandco/newproject"
   const onClick = () => openPopupWidget({ url })
 
   return (
