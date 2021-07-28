@@ -200,13 +200,6 @@ export default function DoubleScrollSection({ data }) {
           <Arrows>
             <p>About &rarr;</p>
           </Arrows>
-          {/* <div className="homepage-words-hero homepage-words homepage-left">
-            <img
-              className="homepage-logo"
-              src={fullLogo}
-              alt="Wildish & Co full logo"
-            />
-          </div> */}
           {data?.homepage?.words?.map((w, i) => {
             return (
               <div

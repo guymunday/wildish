@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
-// import fullLogo from "../../assets/images/wildish-logo-full.svg";
-import Image from "../Image";
-import ScrollSnap from "scroll-snap";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
+import Image from "../Image"
+import ScrollSnap from "scroll-snap"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const DoubleScrollStyles = styled.div`
   display: none;
@@ -15,7 +14,7 @@ const DoubleScrollStyles = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
   }
-`;
+`
 
 const HomepageSection = styled.section`
   bottom: 0;
@@ -54,7 +53,7 @@ const HomepageSection = styled.section`
       width: 80%;
     }
     .hompepage-words-copy {
-      padding: 30px;
+      padding: 20px;
       max-width: 600px;
       margin: 0 auto;
       text-align: center;
@@ -80,20 +79,18 @@ const HomepageSection = styled.section`
       width: 100%;
     }
   }
-  /* a {
-    text-decoration: underline;
-  } */
   :hover {
     .casestudy-title {
       opacity: 1;
     }
   }
-`;
+`
 
 const ToggleButton = styled.button`
-  width: 30px;
+  width: 50px;
   outline: none;
   border: none;
+  z-index: 10;
   :active,
   :focus {
     outline: none;
@@ -104,30 +101,30 @@ const ToggleButton = styled.button`
     white-space: nowrap;
     font-size: 1.4rem;
   }
-`;
+`
 
 export default function DoubleScrollSectionMobile({ data }) {
-  const wordsRef = React.useRef(null);
-  const picturesRef = React.useRef(null);
-  const [isWords, setIsWords] = React.useState(true);
-  const [touchStart, setTouchStart] = React.useState(0);
-  const [touchEnd, setTouchEnd] = React.useState(0);
+  const wordsRef = React.useRef(null)
+  const picturesRef = React.useRef(null)
+  const [isWords, setIsWords] = React.useState(true)
+  const [touchStart, setTouchStart] = React.useState(0)
+  const [touchEnd, setTouchEnd] = React.useState(0)
 
   function bindScrollSnapRight() {
-    const element = picturesRef.current;
+    const element = picturesRef.current
     const snapElement = new ScrollSnap(element, {
       snapDestinationY: "100%",
       threshold: 0.5,
-    });
-    snapElement.bind();
+    })
+    snapElement.bind()
   }
 
   React.useEffect(() => {
-    bindScrollSnapRight();
-  }, []);
+    bindScrollSnapRight()
+  }, [])
 
   React.useEffect(() => {
-    let fadein = gsap.utils.toArray(".fade-in-mobile");
+    let fadein = gsap.utils.toArray(".fade-in-mobile")
     fadein.forEach((fade) => {
       let tl = gsap.timeline({
         scrollTrigger: {
@@ -135,51 +132,44 @@ export default function DoubleScrollSectionMobile({ data }) {
           trigger: fade,
           start: "top 50%",
         },
-      });
+      })
 
       tl.from(fade, {
         opacity: 0,
         y: 50,
-      });
-    });
-  }, []);
+      })
+    })
+  }, [])
 
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+  // const handleTouchStart = (e) => {
+  //   setTouchStart(e.targetTouches[0].clientX)
+  // }
 
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+  // const handleTouchMove = (e) => {
+  //   setTouchEnd(e.targetTouches[0].clientX)
+  // }
 
-  const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 150) {
-      setIsWords(!isWords);
-    }
+  // const handleTouchEnd = () => {
+  //   if (touchStart - touchEnd > 150) {
+  //     setIsWords(!isWords)
+  //   }
 
-    if (touchStart - touchEnd < -150) {
-      setIsWords(!isWords);
-    }
-  };
+  //   if (touchStart - touchEnd < -150) {
+  //     setIsWords(!isWords)
+  //   }
+  // }
 
   return (
     <>
       <DoubleScrollStyles
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        // onTouchStart={handleTouchStart}
+        // onTouchMove={handleTouchMove}
+        // onTouchEnd={handleTouchEnd}
       >
         <HomepageSection
           ref={wordsRef}
           style={{ width: isWords ? "100%" : "0%" }}
         >
-          {/* <div className="homepage-words-hero homepage-words">
-            <img
-              className="homepage-logo"
-              src={fullLogo}
-              alt="Wildish & Co full logo"
-            />
-          </div> */}
           {data?.homepage?.words?.map((w, i) => {
             return (
               <div
@@ -207,7 +197,7 @@ export default function DoubleScrollSectionMobile({ data }) {
                   dangerouslySetInnerHTML={{ __html: w?.section }}
                 />
               </div>
-            );
+            )
           })}
         </HomepageSection>
         <ToggleButton
@@ -254,10 +244,10 @@ export default function DoubleScrollSectionMobile({ data }) {
                 )}
                 <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
-            );
+            )
           })}
         </HomepageSection>
       </DoubleScrollStyles>
     </>
-  );
+  )
 }

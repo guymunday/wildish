@@ -95,7 +95,7 @@ export default function AnnoyingPopup({ setPushed }) {
         <div className="popup-inner">
           <div className="popup-close-container">
             <button className="popup-close" onClick={() => setPushed(false)}>
-              &times;
+              ×
             </button>
           </div>
           <div
