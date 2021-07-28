@@ -34,6 +34,7 @@ const PopupStyles = styled.div`
         margin: 0;
         cursor: pointer;
         transition: 0.3s ease;
+        color: black;
         :active {
           transform: scale(0.8);
         }
