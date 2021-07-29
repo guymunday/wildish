@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import Header from "../components/click-up/Header"
+import { Helmet } from "react-helmet"
 
 const PasswordStyles = styled.div`
   width: 100%;
@@ -28,10 +29,7 @@ export default function ClickUp({ data }) {
   const [password, setPassword] = React.useState("")
   const passwordCms = data?.page?.clickup?.password
 
-  const letThemIn =
-    password === passwordCms ||
-    (typeof window !== "undefined" &&
-      localStorage.getItem(`wildish-client-${data?.page?.title}`))
+  const letThemIn = password === passwordCms
 
   React.useEffect(() => {
     if (password === passwordCms) {
@@ -39,8 +37,17 @@ export default function ClickUp({ data }) {
     }
   }, [password])
 
+  React.useEffect(() => {
+    if (localStorage.getItem(`wildish-client-${data?.page?.title}`)) {
+      setPassword(passwordCms)
+    }
+  })
+
   return (
     <>
+      <Helmet>
+        <title>{data?.page?.title} &times; Wildish & Co.</title>
+      </Helmet>
       <Header />
       {!letThemIn && (
         <PasswordStyles>
