@@ -85,6 +85,7 @@ export default function ClickUp({ data }) {
     <>
       <Helmet>
         <title>{data?.page?.title} &times; Wildish & Co.</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <Header />
       {!letThemIn && (
