@@ -1,19 +1,20 @@
-const _ = require("lodash");
+const _ = require("lodash")
 
 const wrapper = (promise) =>
   promise.then((result) => {
     if (result.errors) {
-      throw result.errors;
+      throw result.errors
     }
-    return result;
-  });
+    return result
+  })
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
-  const casestudyTemplate = require.resolve("./src/templates/case-study.js");
-  const blogTemplate = require.resolve("./src/templates/blog.js");
-  const pageTemplate = require.resolve("./src/templates/page.js");
+  const casestudyTemplate = require.resolve("./src/templates/case-study.js")
+  const blogTemplate = require.resolve("./src/templates/blog.js")
+  const pageTemplate = require.resolve("./src/templates/page.js")
+  const clickTemplate = require.resolve("./src/templates/click-up.js")
 
   const result = await wrapper(
     graphql(`
@@ -53,13 +54,22 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        clickData: allWpClickPage {
+          edges {
+            node {
+              title
+              slug
+            }
+          }
+        }
       }
     `)
-  );
+  )
 
-  const casestudyResults = result.data.casestudyData.edges;
-  const blogResults = result.data.blogData.edges;
-  const pageResults = result.data.pageData.edges;
+  const casestudyResults = result.data.casestudyData.edges
+  const blogResults = result.data.blogData.edges
+  const pageResults = result.data.pageData.edges
+  const clickResults = result.data.clickData.edges
 
   casestudyResults.forEach((edge) => {
     createPage({
@@ -78,8 +88,8 @@ exports.createPages = async ({ graphql, actions }) => {
         previousSlug: edge.next ? edge.next.slug : "null",
         previousTitle: edge.next ? edge.next.title : "null",
       },
-    });
-  });
+    })
+  })
 
   blogResults.forEach((edge) => {
     createPage({
@@ -89,8 +99,8 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
         title: edge.node.title,
       },
-    });
-  });
+    })
+  })
 
   pageResults.forEach((edge) => {
     createPage({
@@ -100,6 +110,17 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
         title: edge.node.title,
       },
-    });
-  });
-};
+    })
+  })
+
+  clickResults.forEach((edge) => {
+    createPage({
+      path: `/client/${edge.node.slug}`,
+      component: clickTemplate,
+      context: {
+        slug: edge.node.slug,
+        title: edge.node.title,
+      },
+    })
+  })
+}

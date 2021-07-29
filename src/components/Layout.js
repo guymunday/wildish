@@ -24,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
 
+  console.log(location.pathname.includes("/client/"))
+
   return (
     <>
       <GlobalStyle />
@@ -36,11 +38,13 @@ const Layout = ({ location, children }) => {
       <Transition location={location}>{children}</Transition>
       {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
       <Hamburger setMenuOpen={setMenuOpen} />
-      <Logo setMenuOpen={setMenuOpen} />
+      {!location.pathname.includes("/client/") && (
+        <Logo setMenuOpen={setMenuOpen} />
+      )}
       <MenuFooter />
       <Footer />
       <CookiesBanner />
-      <Cursor />
+      {!location.pathname.includes("/client/") && <Cursor />}
     </>
   )
 }
