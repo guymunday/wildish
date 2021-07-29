@@ -28,15 +28,16 @@ export default function ClickUp({ data }) {
   const [password, setPassword] = React.useState("")
   const passwordCms = data?.page?.clickup?.password
 
-  const letThemIn = password === passwordCms
+  const letThemIn =
+    password === passwordCms ||
+    (typeof window !== "undefined" &&
+      localStorage.getItem(`wildish-client-${data?.page?.title}`))
 
-  //     (typeof window !== "undefined" && localStorage.getItem("wildish-client")) ||
-
-  //   React.useEffect(() => {
-  //     if (password === passwordCms) {
-  //       localStorage.setItem("wildish-client", "true")
-  //     }
-  //   }, [password])
+  React.useEffect(() => {
+    if (password === passwordCms) {
+      localStorage.setItem(`wildish-client-${data?.page?.title}`, "true")
+    }
+  }, [password])
 
   return (
     <>
@@ -49,7 +50,7 @@ export default function ClickUp({ data }) {
               👋
             </span>
           </h2>
-          <p>Enter your password below...</p>
+          <p>Enter your password below</p>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
