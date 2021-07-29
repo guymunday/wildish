@@ -264,7 +264,7 @@ const global = css`
   .clickup-embed {
     display: block;
   }
-  
+
   .services-span-container {
     display: flex;
     flex-wrap: wrap;

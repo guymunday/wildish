@@ -13,7 +13,14 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     clickup {
-      embed
+      boards {
+        board {
+          embed
+          fieldGroupName
+          title
+        }
+        fieldGroupName
+      }
       fieldGroupName
       password
     }

@@ -14,7 +14,14 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       clickup {
-        embed
+        boards {
+          board {
+            embed
+            fieldGroupName
+            title
+          }
+          fieldGroupName
+        }
         fieldGroupName
         password
       }

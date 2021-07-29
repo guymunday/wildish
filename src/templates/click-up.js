@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import Header from "../components/click-up/Header"
 import { Helmet } from "react-helmet"
+import Boards from "../components/click-up/Boards"
 
 const PasswordStyles = styled.div`
   width: 100%;
@@ -25,10 +26,47 @@ const PasswordStyles = styled.div`
   }
 `
 
+const SecondHeader = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    margin-top: 20px;
+  }
+  .client-buttons {
+    margin: 20px;
+    text-align: center;
+    span {
+      margin: 0 15px;
+      font-size: 1.5rem;
+    }
+    button {
+      background: transparent;
+      outline: none;
+      border: none;
+      font-size: 1.5rem;
+      color: inherit;
+      text-decoration: none;
+      line-height: 1.1;
+      background-image: linear-gradient(var(--yellow), var(--yellow));
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 100% 2px;
+      transition: background-size 0.3s;
+      :hover,
+      :focus {
+        background-size: 100% 80%;
+      }
+    }
+  }
+`
+
 export default function ClickUp({ data }) {
   const [password, setPassword] = React.useState("")
-  const passwordCms = data?.page?.clickup?.password
+  const [boardIndex, setBoardIndex] = React.useState(0)
 
+  const passwordCms = data?.page?.clickup?.password
   const letThemIn = password === passwordCms
 
   React.useEffect(() => {
@@ -65,7 +103,28 @@ export default function ClickUp({ data }) {
         </PasswordStyles>
       )}
       {letThemIn && (
-        <div dangerouslySetInnerHTML={{ __html: data?.page?.clickup?.embed }} />
+        <>
+          <SecondHeader className="white">
+            <h2>
+              <strong>{data?.page?.title}</strong>
+            </h2>
+            <div className="client-buttons">
+              {data?.page?.clickup?.boards.map((b, i) => {
+                return (
+                  <>
+                    <button onClick={() => setBoardIndex(i)}>
+                      {b?.board?.title}{" "}
+                    </button>
+                    {data?.page?.clickup?.boards.length - 1 !== i && (
+                      <span>•</span>
+                    )}
+                  </>
+                )
+              })}
+            </div>
+          </SecondHeader>
+          <Boards data={data?.page?.clickup?.boards} boardIndex={boardIndex} />
+        </>
       )}
     </>
   )
@@ -77,7 +136,12 @@ export const CLICK_QUERY = graphql`
       title
       clickup {
         password
-        embed
+        boards {
+          board {
+            embed
+            title
+          }
+        }
       }
     }
   }
