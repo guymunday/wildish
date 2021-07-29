@@ -28,15 +28,15 @@ export default function ClickUp({ data }) {
   const [password, setPassword] = React.useState("")
   const passwordCms = data?.page?.clickup?.password
 
-  const letThemIn =
-    (typeof window !== "undefined" && localStorage.getItem("wildish-client")) ||
-    password === passwordCms
+  const letThemIn = password === passwordCms
 
-  React.useEffect(() => {
-    if (password === passwordCms) {
-      localStorage.setItem("wildish-client", "true")
-    }
-  }, [password])
+  //     (typeof window !== "undefined" && localStorage.getItem("wildish-client")) ||
+
+  //   React.useEffect(() => {
+  //     if (password === passwordCms) {
+  //       localStorage.setItem("wildish-client", "true")
+  //     }
+  //   }, [password])
 
   return (
     <>

@@ -23,9 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-
-  console.log(location.pathname.includes("/client/"))
-
+  
   return (
     <>
       <GlobalStyle />
