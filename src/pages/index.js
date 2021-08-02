@@ -6,10 +6,14 @@ import DoubleScrollSectionMobile from "../components/homepage/DoubleScrollSectio
 import DoubleScrollSection from "../components/homepage/DoubleScrollSection"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import CallToAction from "../components/CallToAction"
+import { Helmet } from "react-helmet"
 
 export default function IndexPage({ data }) {
   return (
     <>
+      <Helmet>
+        <html lang="en" />
+      </Helmet>
       <Seo post={data?.sections} />
       <DoubleScrollSection data={data?.sections} />
       <DoubleScrollSectionMobile data={data?.sections} />
