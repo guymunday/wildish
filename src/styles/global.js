@@ -263,6 +263,7 @@ const global = css`
 
   .clickup-embed {
     display: block;
+    min-height: 700px !important;
   }
 
   .services-span-container {
