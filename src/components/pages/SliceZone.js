@@ -6,6 +6,10 @@ import ThreeColumn from "./slices/ThreeColumn";
 import CopyImage from "./slices/CopyImage";
 import Copy from "./slices/Copy";
 import Hover from "./slices/Hover";
+import TwoParagraphs from "./slices/TwoParagraphs";
+import ServiceList from "./slices/ServiceList";
+import AboveServiceFooter from "./slices/AboveServiceFooter";
+
 
 export default function SliceZone({ slices }) {
   const slice = slices.map((s, i) => {
@@ -24,6 +28,12 @@ export default function SliceZone({ slices }) {
         return <ThreeColumn key={i} input={s} />;
       case "gql_page_Contentblocks_ContentBlocks_CopyAndImage":
         return <CopyImage key={i} input={s} />;
+      case "gql_page_Contentblocks_ContentBlocks_TwoParagraphBlock":
+        return <TwoParagraphs key={i} input={s} />;
+      case "gql_page_Contentblocks_ContentBlocks_ServiceList":
+        return <ServiceList key={i} input={s} />;
+      case "gql_page_Contentblocks_ContentBlocks_AboveServiceFooter":
+        return <AboveServiceFooter key={i} input={s} />;
       default:
         return null;
     }

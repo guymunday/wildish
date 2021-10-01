@@ -4,6 +4,7 @@ import SliceZone from "../components/pages/SliceZone";
 import Seo from "gatsby-plugin-wpgraphql-seo";
 
 export default function PageTemplate({ data }) {
+  console.log(data)
   return (
     <>
       <Seo post={data?.page} />
@@ -123,6 +124,38 @@ export const PAGE_QUERY = graphql`
             columnTwo
             fieldGroupName
           }
+          ... on WpGql_page_Contentblocks_ContentBlocks_TwoParagraphBlock {
+              fieldGroupName
+              leftParagraph
+              rightParagraph
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_ServiceList {
+              fieldGroupName
+              serviceList {
+                fieldGroupName
+                service {
+                  fieldGroupName
+                  serviceLink
+                  serviceText
+                  serviceImage {
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        gatsbyImageData(
+                          layout: FULL_WIDTH
+                          quality: 90
+                          placeholder: BLURRED
+                        )
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ... on WpGql_page_Contentblocks_ContentBlocks_AboveServiceFooter {
+              fieldGroupName
+              above
+            }
           ... on WpGql_page_Contentblocks_ContentBlocks_CopyAndImage {
             colour
             copy
