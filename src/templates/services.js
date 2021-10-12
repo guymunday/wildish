@@ -277,7 +277,6 @@ const AboveServiceFooterContainer = styled.div`
 `
 
 export default function ServicePage({ data }) {
-  console.log(data)
   return (
     <>
       <LeftRightParagraphsStyles>
