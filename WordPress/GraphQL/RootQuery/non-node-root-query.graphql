@@ -227,6 +227,28 @@ query NON_NODE_QUERY {
         schemaType
         title
       }
+
+      servicePage {
+        archive {
+          archiveLink
+          breadcrumbTitle
+          fullHead
+          hasArchive
+          metaDesc
+          metaRobotsNoindex
+          title
+        }
+
+        metaDesc
+        metaRobotsNoindex
+
+        schema {
+          raw
+        }
+
+        schemaType
+        title
+      }
     }
 
     openGraph {
