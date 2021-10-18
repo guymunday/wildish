@@ -40,6 +40,7 @@ const MenuStyles = styled.nav`
         margin: 0;
         cursor: pointer;
         transition: 0.3s ease;
+        color: #000 !important;
         :active {
           transform: scale(0.8);
         }
