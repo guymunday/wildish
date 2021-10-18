@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "../Image";
+import React from "react"
+import styled from "styled-components"
+import Image from "../Image"
 
 const HeroStyles = styled.div`
   width: 100%;
@@ -41,12 +41,42 @@ const HeroStyles = styled.div`
       max-width: 500px;
     }
   }
-`;
+`
+const HeroVideo = styled.div`
+  width: 100%;
+  max-width: 100%;
+  background: green;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
 
 export default function HeroSection({ data, next, ...rest }) {
+  console.log(data?.heroVideo?.mediaItemUrl)
+
   return (
     <HeroStyles next={next} {...rest}>
-      <Image image={data?.heroImage} />
+      {data?.heroVideo?.mediaItemUrl ? (
+        <HeroVideo>
+          <video
+            src={data?.heroVideo?.mediaItemUrl}
+            loop
+            muted
+            playsInline
+            autoPlay
+          />
+        </HeroVideo>
+      ) : (
+        <Image image={data?.heroImage} />
+      )}
       <div className="hero-inner">
         {!next ? (
           <>
@@ -62,5 +92,5 @@ export default function HeroSection({ data, next, ...rest }) {
         )}
       </div>
     </HeroStyles>
-  );
+  )
 }

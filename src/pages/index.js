@@ -92,6 +92,9 @@ export const indexQuery = graphql`
                   }
                 }
               }
+              heroVideo {
+                mediaItemUrl
+              }
             }
           }
         }

@@ -1,17 +1,17 @@
-import React from "react";
-import { graphql, navigate } from "gatsby";
-import HeroSection from "../components/case-studies/HeroSection";
-import SliceZone from "../components/case-studies/SliceZone";
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import Seo from "gatsby-plugin-wpgraphql-seo";
-import ScheduleCall from "../components/case-studies/ScheduleCall";
+import React from "react"
+import { graphql, navigate } from "gatsby"
+import HeroSection from "../components/case-studies/HeroSection"
+import SliceZone from "../components/case-studies/SliceZone"
+import { gsap } from "gsap"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import Seo from "gatsby-plugin-wpgraphql-seo"
+import ScheduleCall from "../components/case-studies/ScheduleCall"
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin)
 
 const Casestudy = ({ data }) => {
   const scrollAni = () => {
-    let tl = gsap.timeline();
+    let tl = gsap.timeline()
 
     return tl
       .to(".brand-logo", {
@@ -38,9 +38,9 @@ const Casestudy = ({ data }) => {
         scrollTo: "#next-project",
         duration: 0.5,
       })
-      .add(function () {}, "+=0.6");
-  };
-  
+      .add(function () {}, "+=0.6")
+  }
+
   return (
     <>
       <Seo post={data?.project} />
@@ -57,18 +57,18 @@ const Casestudy = ({ data }) => {
               id="next-project"
               style={{ cursor: "pointer" }}
               onClick={async () => {
-                await scrollAni();
-                await navigate(`/case-studies/${data?.nextProject?.slug}`);
+                await scrollAni()
+                await navigate(`/case-studies/${data?.nextProject?.slug}`)
               }}
             />
           </>
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Casestudy;
+export default Casestudy
 
 export const CASE_STUDY_QUERY = graphql`
   query CaseQuery($slug: String!, $nextSlug: String!, $previousSlug: String!) {
@@ -118,6 +118,9 @@ export const CASE_STUDY_QUERY = graphql`
               )
             }
           }
+        }
+        heroVideo {
+          mediaItemUrl
         }
         heroLogo {
           altText
@@ -278,6 +281,9 @@ export const CASE_STUDY_QUERY = graphql`
             }
           }
         }
+        heroVideo {
+          mediaItemUrl
+        }
         heroLogo {
           altText
           localFile {
@@ -295,4 +301,4 @@ export const CASE_STUDY_QUERY = graphql`
       }
     }
   }
-`;
+`

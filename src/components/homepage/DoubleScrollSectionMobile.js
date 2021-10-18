@@ -86,6 +86,23 @@ const HomepageSection = styled.section`
   }
 `
 
+const HeroVideo = styled.div`
+  width: 100%;
+  max-width: 100%;
+  background: green;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
+
 const ToggleButton = styled.button`
   width: 50px;
   outline: none;
@@ -162,9 +179,9 @@ export default function DoubleScrollSectionMobile({ data }) {
   return (
     <>
       <DoubleScrollStyles
-        // onTouchStart={handleTouchStart}
-        // onTouchMove={handleTouchMove}
-        // onTouchEnd={handleTouchEnd}
+      // onTouchStart={handleTouchStart}
+      // onTouchMove={handleTouchMove}
+      // onTouchEnd={handleTouchEnd}
       >
         <HomepageSection
           ref={wordsRef}
@@ -234,7 +251,19 @@ export default function DoubleScrollSectionMobile({ data }) {
                 key={i}
                 className={`homepage-words`}
               >
-                <Image image={c?.case_study?.heroImage} />
+                {c?.case_study?.heroVideo?.mediaItemUrl ? (
+                  <HeroVideo>
+                    <video
+                      src={c?.case_study?.heroVideo?.mediaItemUrl}
+                      loop
+                      muted
+                      playsInline
+                      autoPlay
+                    />
+                  </HeroVideo>
+                ) : (
+                  <Image image={c?.case_study?.heroImage} />
+                )}
                 {c?.case_study?.heroLogo?.localFile?.publicURL && (
                   <img
                     className="homepage-casestudy-logo"

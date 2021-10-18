@@ -1,13 +1,13 @@
-import React from "react";
-import { Link, navigate } from "gatsby";
-import styled from "styled-components";
+import React from "react"
+import { Link, navigate } from "gatsby"
+import styled from "styled-components"
 // import fullLogo from "../../assets/images/wildish-logo-full.svg";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "../Image";
-import ScrollSnap from "scroll-snap";
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Image from "../Image"
+import ScrollSnap from "scroll-snap"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const DoubleScrollStyles = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const DoubleScrollStyles = styled.div`
   @media screen and (max-width: 768px) {
     display: none;
   }
-`;
+`
 
 const HomepageSection = styled.section`
   bottom: 0;
@@ -94,7 +94,7 @@ const HomepageSection = styled.section`
       }
     }
   }
-`;
+`
 
 const Arrows = styled.div`
   position: absolute;
@@ -107,37 +107,52 @@ const Arrows = styled.div`
     transform: rotate(90deg);
     transform-origin: 100% 0%;
   }
-`;
+`
+ const HeroVideo = styled.div`
+  width: 100%;
+  max-width: 100%;
+  background: green;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`
 
 export default function DoubleScrollSection({ data }) {
-  const wordsRef = React.useRef(null);
-  const picturesRef = React.useRef(null);
+  const wordsRef = React.useRef(null)
+  const picturesRef = React.useRef(null)
 
   function bindScrollSnapLeft() {
-    const element = wordsRef.current;
+    const element = wordsRef.current
     const snapElement = new ScrollSnap(element, {
       snapDestinationY: "100%",
       threshold: 0.6,
-    });
-    snapElement.bind();
+    })
+    snapElement.bind()
   }
 
   function bindScrollSnapRight() {
-    const element = picturesRef.current;
+    const element = picturesRef.current
     const snapElement = new ScrollSnap(element, {
       snapDestinationY: "100%",
       threshold: 0.5,
-    });
-    snapElement.bind();
+    })
+    snapElement.bind()
   }
 
   React.useEffect(() => {
-    bindScrollSnapLeft();
-    bindScrollSnapRight();
-  }, []);
+    bindScrollSnapLeft()
+    bindScrollSnapRight()
+  }, [])
 
   const animation = () => {
-    let tl = gsap.timeline({ ease: "power1.in" });
+    let tl = gsap.timeline({ ease: "power1.in" })
 
     return tl
       .to(".transition", {
@@ -173,11 +188,11 @@ export default function DoubleScrollSection({ data }) {
         },
         "<"
       )
-      .add(function () {}, "+=0.3");
-  };
+      .add(function () {}, "+=0.3")
+  }
 
   React.useEffect(() => {
-    let fadein = gsap.utils.toArray(".fade-in");
+    let fadein = gsap.utils.toArray(".fade-in")
     fadein.forEach((fade) => {
       let tl = gsap.timeline({
         scrollTrigger: {
@@ -185,13 +200,13 @@ export default function DoubleScrollSection({ data }) {
           trigger: fade,
           start: "top 50%",
         },
-      });
+      })
 
       tl.from(fade, {
         opacity: 0,
-      });
-    });
-  }, []);
+      })
+    })
+  }, [])
 
   return (
     <>
@@ -222,7 +237,7 @@ export default function DoubleScrollSection({ data }) {
                   />
                 </div>
               </div>
-            );
+            )
           })}
         </HomepageSection>
         <HomepageSection ref={picturesRef} className="right-side transition">
@@ -253,12 +268,24 @@ export default function DoubleScrollSection({ data }) {
                 key={i}
                 className={`homepage-words`}
                 onClick={async (e) => {
-                  e.preventDefault();
-                  await animation();
-                  await navigate(`/case-studies/${c?.slug}`);
+                  e.preventDefault()
+                  await animation()
+                  await navigate(`/case-studies/${c?.slug}`)
                 }}
               >
-                <Image image={c?.case_study?.heroImage} />
+                {c?.case_study?.heroVideo?.mediaItemUrl ? (
+                  <HeroVideo>
+                    <video
+                      src={c?.case_study?.heroVideo?.mediaItemUrl}
+                      loop
+                      muted
+                      playsInline
+                      autoPlay
+                    />
+                  </HeroVideo>
+                ) : (
+                  <Image image={c?.case_study?.heroImage} />
+                )}
                 {c?.case_study?.heroLogo?.localFile?.publicURL && (
                   <img
                     className="homepage-casestudy-logo"
@@ -268,10 +295,10 @@ export default function DoubleScrollSection({ data }) {
                 )}
                 <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
-            );
+            )
           })}
         </HomepageSection>
       </DoubleScrollStyles>
     </>
-  );
+  )
 }
