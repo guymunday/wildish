@@ -107,8 +107,8 @@ export default function DoubleScrollSectionMobile({ data }) {
   const wordsRef = React.useRef(null)
   const picturesRef = React.useRef(null)
   const [isWords, setIsWords] = React.useState(true)
-  const [touchStart, setTouchStart] = React.useState(0)
-  const [touchEnd, setTouchEnd] = React.useState(0)
+  // const [touchStart, setTouchStart] = React.useState(0)
+  // const [touchEnd, setTouchEnd] = React.useState(0)
 
   function bindScrollSnapRight() {
     const element = picturesRef.current
@@ -215,7 +215,7 @@ export default function DoubleScrollSectionMobile({ data }) {
           ref={picturesRef}
           style={{ width: isWords ? "0%" : "100%" }}
         >
-          <div className="homepage-words homepage-images-hero">
+          {/* <div className="homepage-words homepage-images-hero">
             {data?.homepage?.picturesVideo?.video ? (
               <div className="square-iframe-container">
                 <iframe
@@ -226,7 +226,7 @@ export default function DoubleScrollSectionMobile({ data }) {
             ) : (
               <Image image={data?.homepage?.picturesVideo?.backupImage} />
             )}
-          </div>
+          </div> */}
           {data?.homepage?.cases?.map((c, i) => {
             return (
               <Link

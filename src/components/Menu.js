@@ -51,7 +51,7 @@ const MenuStyles = styled.nav`
       padding: 30px;
       align-self: flex-end;
       @media screen and (max-width: 500px) {
-       padding: 15px;
+        padding: 15px;
       }
       .menu-item {
         display: inline-block;
@@ -61,6 +61,7 @@ const MenuStyles = styled.nav`
         outline: none;
         border: none;
         text-align: left;
+        color: #000 !important;
         :hover {
           .menu-arrow {
             transform: rotate(360deg);
