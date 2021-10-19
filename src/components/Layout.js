@@ -106,8 +106,6 @@ const Layout = ({ location, children }) => {
     }
   `)
 
-  console.log(location.pathname === "/")
-
   return (
     <>
       <SEOContext.Provider value={{ global: seo }}>
