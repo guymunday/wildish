@@ -7,6 +7,7 @@ import Menu from "./Menu"
 import Footer from "./Footer"
 import Hamburger from "./Hamburger"
 import Logo from "./Logo"
+import LogoDragger from "./LogoDragger"
 import Transition from "./Transition"
 import Cursor from "./cursor/Cursor"
 import CookiesBanner from "./CookiesBanner"
@@ -105,6 +106,8 @@ const Layout = ({ location, children }) => {
     }
   `)
 
+  console.log(location.pathname === "/")
+
   return (
     <>
       <SEOContext.Provider value={{ global: seo }}>
@@ -121,6 +124,7 @@ const Layout = ({ location, children }) => {
         {!location.pathname.includes("/client/") && (
           <Logo setMenuOpen={setMenuOpen} />
         )}
+        {location.pathname === "/" && <LogoDragger />}
         <MenuFooter />
         <Footer />
         <CookiesBanner />
