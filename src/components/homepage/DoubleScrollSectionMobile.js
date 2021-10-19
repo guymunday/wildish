@@ -234,11 +234,15 @@ export default function DoubleScrollSectionMobile({ data }) {
           style={{ width: isWords ? "0%" : "100%" }}
         >
           <div className="homepage-words homepage-images-hero">
-            {data?.homepage?.picturesVideo?.video ? (
+            {data?.homepage?.picturesVideo?.wpVideo?.mediaItemUrl ? (
               <div className="square-iframe-container">
-                <iframe
+                <video
                   title="Wildish animation"
-                  src={data?.homepage?.picturesVideo?.video}
+                  src={data?.homepage?.picturesVideo?.wpVideo?.mediaItemUrl}
+                  playsInline
+                  autoPlay
+                  loop
+                  muted
                 />
               </div>
             ) : (

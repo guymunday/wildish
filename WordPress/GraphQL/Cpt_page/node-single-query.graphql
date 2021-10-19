@@ -38,10 +38,12 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
           id
         }
         fieldGroupName
-        video
+        wpVideo {
+          __typename
+          id
+        }
       }
       wordsScrollSections {
-        animations
         colour
         fieldGroupName
         section

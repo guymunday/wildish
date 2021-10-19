@@ -39,10 +39,12 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
             id
           }
           fieldGroupName
-          video
+          wpVideo {
+            __typename
+            id
+          }
         }
         wordsScrollSections {
-          animations
           colour
           fieldGroupName
           section

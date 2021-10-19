@@ -246,12 +246,11 @@ export default function DoubleScrollSection({ data }) {
             <p>Showcase &rarr;</p>
           </Arrows>
           <div className="homepage-words homepage-images-hero">
-            {data?.homepage?.picturesVideo?.video ? (
+            {data?.homepage?.picturesVideo?.wpVideo?.mediaItemUrl ? (
               <div className="square-iframe-container">
-                <iframe
+                <video
                   title="Wildish animation"
-                  loading="eager"
-                  src={data?.homepage?.picturesVideo?.video}
+                  src={data?.homepage?.picturesVideo?.wpVideo?.mediaItemUrl}
                   playsInline
                   autoPlay
                   loop

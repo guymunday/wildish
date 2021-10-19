@@ -54,7 +54,9 @@ export const indexQuery = graphql`
       }
       homepage {
         picturesVideo {
-          video
+          wpVideo {
+            mediaItemUrl
+          }
           backupImage {
             altText
             localFile {
@@ -99,7 +101,6 @@ export const indexQuery = graphql`
           }
         }
         words: wordsScrollSections {
-          animations
           section
           colour
         }

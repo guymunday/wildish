@@ -196,7 +196,8 @@ const global = css`
     position: relative;
     pointer-events: none;
     z-index: 1;
-    iframe {
+    iframe,
+    video {
       position: absolute;
       top: 0;
       left: 0;
