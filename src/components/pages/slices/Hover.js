@@ -1,7 +1,7 @@
-import * as React from "react";
-import styled from "styled-components";
-import Image from "../../Image";
-import useEventListener from "../../../hooks/useEventListener";
+import * as React from "react"
+import styled from "styled-components"
+import Image from "../../Image"
+import useEventListener from "../../../hooks/useEventListener"
 
 const HoverStyles = styled.section`
   padding: 100px 30px;
@@ -42,20 +42,20 @@ const HoverStyles = styled.section`
       }
     }
   }
-`;
+`
 
 export default function Hover({ input }) {
-  const [imageToHover, setImageToHover] = React.useState(-1);
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  const [imageToHover, setImageToHover] = React.useState(-1)
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
 
   const imageHandler = React.useCallback(
     ({ clientX, clientY }) => {
-      setMousePosition({ x: clientX, y: clientY });
+      setMousePosition({ x: clientX, y: clientY })
     },
     [setMousePosition]
-  );
+  )
 
-  useEventListener("mousemove", imageHandler);
+  useEventListener("mousemove", imageHandler)
 
   return (
     <>
@@ -88,11 +88,11 @@ export default function Hover({ input }) {
                     onMouseEnter={() => setImageToHover(i)}
                   />
                 </>
-              );
+              )
             })}
           </div>
         </div>
       </HoverStyles>
     </>
-  );
+  )
 }

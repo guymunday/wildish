@@ -296,8 +296,6 @@ export default function Menu({ setMenuOpen, menuOpen }) {
                   </React.Fragment>
                 )
               })}
-              {/* <h3>Keep up to date</h3>
-              <a href="">Sign up to our delicious spam</a> */}
             </div>
           </div>
         </div>

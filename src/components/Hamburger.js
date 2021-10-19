@@ -50,11 +50,13 @@ export default function Hamburger({ setMenuOpen }) {
   }
 
   React.useEffect(() => {
-    hamburgerRef.current.addEventListener("mouseover", handleMagnetic)
-    hamburgerRef.current.addEventListener("mouseleave", resetMagnet)
+    const hamburger = hamburgerRef.current
+
+    hamburger.addEventListener("mouseover", handleMagnetic)
+    hamburger.addEventListener("mouseleave", resetMagnet)
     return () => {
-      hamburgerRef.current.removeEventListener("mouseover", handleMagnetic)
-      hamburgerRef.current.removeEventListener("mouseleave", resetMagnet)
+      hamburger.removeEventListener("mouseover", handleMagnetic)
+      hamburger.removeEventListener("mouseleave", resetMagnet)
     }
   }, [])
 

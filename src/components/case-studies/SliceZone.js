@@ -41,7 +41,7 @@ export default function SliceZone({ slices }) {
         return (
           <FadeIn key={i}>
             <div className="casestudy-iframe-container">
-              <iframe src={s?.videoEmbed} frameborder="0" />
+              <iframe src={s?.videoEmbed} frameborder="0" title="video" />
             </div>
           </FadeIn>
         );
