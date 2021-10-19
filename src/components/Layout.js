@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ location, children }) => {
   const [menuOpen, setMenuOpen] = React.useState(false)
 
+  React.useEffect(() => {
+    window.location.hostname.includes(".co.uk") && console.clear()
+  })
+
   const {
     wp: { seo },
   } = useStaticQuery(graphql`

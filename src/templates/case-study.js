@@ -49,16 +49,18 @@ const Casestudy = ({ data }) => {
         <HeroSection data={data?.project?.case_study} />
         <SliceZone slices={data?.project?.case_study?.pageContent} />
         <ScheduleCall />
-        {data?.nextProject && (
+        {data?.project?.case_study?.nextCaseStudy && (
           <>
             <HeroSection
-              data={data?.nextProject?.case_study}
+              data={data?.project?.case_study?.nextCaseStudy?.case_study}
               next
               id="next-project"
               style={{ cursor: "pointer" }}
               onClick={async () => {
                 await scrollAni()
-                await navigate(`/case-studies/${data?.nextProject?.slug}`)
+                await navigate(
+                  `/case-studies/${data?.project?.case_study?.nextCaseStudy?.slug}`
+                )
               }}
             />
           </>
@@ -71,7 +73,7 @@ const Casestudy = ({ data }) => {
 export default Casestudy
 
 export const CASE_STUDY_QUERY = graphql`
-  query CaseQuery($slug: String!, $nextSlug: String!, $previousSlug: String!) {
+  query CaseQuery($slug: String!) {
     project: wpCaseStudy(slug: { eq: $slug }) {
       id
       slug
@@ -106,6 +108,26 @@ export const CASE_STUDY_QUERY = graphql`
         }
       }
       case_study {
+        nextCaseStudy {
+          ... on WpCase_study {
+            id
+            title
+            slug
+            case_study {
+              heroImage {
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              heroVideo {
+                mediaItemUrl
+              }
+            }
+          }
+        }
         heroImage {
           altText
           localFile {
@@ -227,77 +249,6 @@ export const CASE_STUDY_QUERY = graphql`
             }
           }
         }
-      }
-    }
-    previousProject: wpCaseStudy(slug: { eq: $nextSlug }) {
-      id
-      slug
-      title
-      case_study {
-        heroImage {
-          altText
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                quality: 90
-                placeholder: BLURRED
-              )
-            }
-          }
-        }
-        heroLogo {
-          altText
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                quality: 90
-                placeholder: BLURRED
-              )
-            }
-          }
-        }
-        heroText
-      }
-    }
-    nextProject: wpCaseStudy(slug: { eq: $previousSlug }) {
-      id
-      slug
-      title
-      case_study {
-        heroImage {
-          altText
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                quality: 90
-                placeholder: BLURRED
-              )
-            }
-          }
-        }
-        heroVideo {
-          mediaItemUrl
-        }
-        heroLogo {
-          altText
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                quality: 90
-                placeholder: BLURRED
-              )
-            }
-          }
-        }
-        heroText
       }
     }
   }

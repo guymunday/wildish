@@ -20,14 +20,16 @@ const CasestudyGrid = styled.section`
   }
   .grid-item {
     width: 100%;
-    height: 56.25vw / 2;
     overflow: hidden;
     position: relative;
     a {
       display: block;
-      height: 100%;
+      height: 28.125vw;
       width: 100%;
       position: relative;
+      @media (max-width: 768px) {
+        height: 56.25vw;
+      }
       img,
       .gatsby-image-wrapper {
         width: 100%;
@@ -63,6 +65,24 @@ const CasestudyGrid = styled.section`
         }
       }
     }
+  }
+`
+
+const HeroVideo = styled.div`
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  background: var(--yellow);
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `
 
@@ -130,10 +150,22 @@ export default function Casestudies({ data: { cases, tags } }) {
                       className="nostyle"
                       to={`/case-studies/${c?.node?.slug}`}
                     >
-                      <Image
-                        image={c?.node?.case_study?.heroImage}
-                        style={{ height: "100%" }}
-                      />
+                      {c?.node?.case_study?.heroVideo?.mediaItemUrl ? (
+                        <HeroVideo>
+                          <video
+                            src={c?.node?.case_study?.heroVideo?.mediaItemUrl}
+                            loop
+                            muted
+                            playsInline
+                            autoPlay
+                          />
+                        </HeroVideo>
+                      ) : (
+                        <Image
+                          image={c?.node?.case_study?.heroImage}
+                          style={{ height: "100%" }}
+                        />
+                      )}
                       {c?.node?.case_study?.heroLogo?.localFile?.publicURL && (
                         <img
                           className="casestudy-logo"
@@ -205,6 +237,9 @@ export const caseQuery = graphql`
                   )
                 }
               }
+            }
+            heroVideo {
+              mediaItemUrl
             }
           }
         }

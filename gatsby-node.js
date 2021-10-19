@@ -27,16 +27,6 @@ exports.createPages = async ({ graphql, actions }) => {
               slug
               title
             }
-            previous {
-              slug
-              id
-              title
-            }
-            next {
-              slug
-              title
-              id
-            }
           }
         }
         blogData: allWpPost {
@@ -91,14 +81,6 @@ exports.createPages = async ({ graphql, actions }) => {
         id: edge.node.id,
         slug: edge.node.slug,
         title: edge.node.title,
-
-        nextId: edge.previous ? edge.previous.id : "null",
-        nextSlug: edge.previous ? edge.previous.slug : "null",
-        nextTitle: edge.previous ? edge.previous.title : "null",
-
-        previousId: edge.next ? edge.next.id : "null",
-        previousSlug: edge.next ? edge.next.slug : "null",
-        previousTitle: edge.next ? edge.next.title : "null",
       },
     })
   })

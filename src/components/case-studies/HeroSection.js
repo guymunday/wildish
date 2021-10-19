@@ -61,8 +61,6 @@ const HeroVideo = styled.div`
 `
 
 export default function HeroSection({ data, next, ...rest }) {
-  console.log(data?.heroVideo?.mediaItemUrl)
-
   return (
     <HeroStyles next={next} {...rest}>
       {data?.heroVideo?.mediaItemUrl ? (
