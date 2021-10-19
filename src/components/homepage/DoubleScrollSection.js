@@ -108,16 +108,17 @@ const Arrows = styled.div`
     transform-origin: 100% 0%;
   }
 `
- const HeroVideo = styled.div`
+const HeroVideo = styled.div`
   width: 100%;
   max-width: 100%;
-  background: green;
   overflow: hidden;
   position: relative;
   height: 100vh;
+  background: var(--yellow);
   video {
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
