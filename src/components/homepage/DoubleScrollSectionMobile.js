@@ -233,7 +233,7 @@ export default function DoubleScrollSectionMobile({ data }) {
           ref={picturesRef}
           style={{ width: isWords ? "0%" : "100%" }}
         >
-          {/* <div className="homepage-words homepage-images-hero">
+          <div className="homepage-words homepage-images-hero">
             {data?.homepage?.picturesVideo?.video ? (
               <div className="square-iframe-container">
                 <iframe
@@ -244,7 +244,7 @@ export default function DoubleScrollSectionMobile({ data }) {
             ) : (
               <Image image={data?.homepage?.picturesVideo?.backupImage} />
             )}
-          </div> */}
+          </div>
           {data?.homepage?.cases?.map((c, i) => {
             return (
               <Link
