@@ -62,6 +62,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           address
           fieldGroupName
         }
+        buttonCopy {
+          copy
+          fieldGroupName
+        }
         fieldGroupName
         hireUs {
           emailAddress

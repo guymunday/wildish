@@ -85,6 +85,30 @@ query PREVIEW_QUERY($id: ID!) {
           }
           title
         }
+        ... on Gql_page_Contentblocks_ContentBlocks_TwoParagraphBlock {
+          fieldGroupName
+          leftParagraph
+          rightParagraph
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_ServiceList {
+          fieldGroupName
+          serviceList {
+            fieldGroupName
+            service {
+              fieldGroupName
+              serviceImage {
+                __typename
+                id
+              }
+              serviceLink
+              serviceText
+            }
+          }
+        }
+        ... on Gql_page_Contentblocks_ContentBlocks_AboveServiceFooter {
+          above
+          fieldGroupName
+        }
       }
       fieldGroupName
     }
