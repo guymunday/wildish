@@ -3,13 +3,9 @@
 
 Agency site for Wildish & Co
 
-
-
-
 ## 🚀 Quick start
 
-
-Navigate into your new site’s directory and start it up.
+Navigate the site’s directory and start it up.
 
 ```bash
 cd wildish
