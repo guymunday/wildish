@@ -46,7 +46,7 @@ export default function HubspotModal({ setModalOpen }) {
         <HubspotStyles>
           <iframe
             title="Book a meeting with Sam Fresco"
-            src="https://meetings.hubspot.com/sam902"
+            src="https://meetings.hubspot.com/sam902/new-project-brief"
           />
           <button onClick={() => setModalOpen(false)}>&times;</button>
         </HubspotStyles>
