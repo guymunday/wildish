@@ -1,7 +1,7 @@
 import * as React from "react"
+import { openPopupWidget } from "react-calendly"
 import styled from "styled-components"
 import EmojiMarquee from "./EmojiMarquee"
-import HubspotModal from "./HubspotModal"
 
 const ButtonStyles = styled.button`
   border: 2px solid var(--yellow);
@@ -39,18 +39,15 @@ const ButtonStyles = styled.button`
 `
 
 export default function CalendlyButton({ alt }) {
-  const [modalOpen, setModalOpen] = React.useState(false)
-  const onClick = () => setModalOpen(true)
+  const url = "https://calendly.com/sam-wildishandco/newproject"
+  const onClick = () => openPopupWidget({ url })
 
   return (
-    <>
-      <ButtonStyles alt={alt} className="" onClick={onClick}>
-        <span className="words">Schedule a call</span>
-        <span className="emoji">
-          <EmojiMarquee emoji="📞" />
-        </span>
-      </ButtonStyles>
-      {modalOpen && <HubspotModal setModalOpen={setModalOpen} />}
-    </>
+    <ButtonStyles alt={alt} className="" onClick={onClick}>
+      <span className="words">Schedule a call</span>
+      <span className="emoji">
+        <EmojiMarquee emoji="📞" />
+      </span>
+    </ButtonStyles>
   )
 }
