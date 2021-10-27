@@ -241,6 +241,9 @@ export const caseQuery = graphql`
             heroVideo {
               mediaItemUrl
             }
+            heroVideoMobile {
+              mediaItemUrl
+            }
           }
         }
       }
