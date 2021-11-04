@@ -49,6 +49,9 @@ const HeroVideo = styled.div`
   position: relative;
   height: 100vh;
   background: var(--yellow);
+  @media (max-width: 600px) {
+    display: none;
+  }
   video {
     width: 100%;
     height: 100%;
@@ -60,19 +63,41 @@ const HeroVideo = styled.div`
   }
 `
 
+const HeroVideoMobile = styled(HeroVideo)`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+  }
+`
+
 export default function HeroSection({ data, next, ...rest }) {
   return (
     <HeroStyles next={next} {...rest}>
       {data?.heroVideo?.mediaItemUrl ? (
-        <HeroVideo>
-          <video
-            src={data?.heroVideo?.mediaItemUrl}
-            loop
-            muted
-            playsInline
-            autoPlay
-          />
-        </HeroVideo>
+        <>
+          <HeroVideo>
+            <video
+              src={data?.heroVideo?.mediaItemUrl}
+              loop
+              muted
+              playsInline
+              autoPlay
+            />
+          </HeroVideo>
+          <HeroVideoMobile>
+            <video
+              src={
+                data?.heroVideoMobile?.mediaItemUrl
+                  ? data?.heroVideoMobile?.mediaItemUrl
+                  : data?.heroVideo?.mediaItemUrl
+              }
+              loop
+              muted
+              playsInline
+              autoPlay
+            />
+          </HeroVideoMobile>
+        </>
       ) : (
         <Image image={data?.heroImage} />
       )}

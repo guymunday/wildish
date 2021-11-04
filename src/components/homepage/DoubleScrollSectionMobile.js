@@ -93,6 +93,9 @@ const HeroVideo = styled.div`
   position: relative;
   height: 100vh;
   background: var(--yellow);
+  @media (max-width: 600px) {
+    display: none;
+  }
   video {
     width: 100%;
     height: 100%;
@@ -101,6 +104,13 @@ const HeroVideo = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+`
+
+const HeroVideoMobile = styled(HeroVideo)`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
   }
 `
 
@@ -257,15 +267,30 @@ export default function DoubleScrollSectionMobile({ data }) {
                 className={`homepage-words`}
               >
                 {c?.case_study?.heroVideo?.mediaItemUrl ? (
-                  <HeroVideo>
-                    <video
-                      src={c?.case_study?.heroVideo?.mediaItemUrl}
-                      loop
-                      muted
-                      playsInline
-                      autoPlay
-                    />
-                  </HeroVideo>
+                  <>
+                    <HeroVideo>
+                      <video
+                        src={c?.case_study?.heroVideo?.mediaItemUrl}
+                        loop
+                        muted
+                        playsInline
+                        autoPlay
+                      />
+                    </HeroVideo>
+                    <HeroVideoMobile>
+                      <video
+                        src={
+                          c?.case_study?.heroVideoMobile?.mediaItemUrl
+                            ? c?.case_study?.heroVideoMobile?.mediaItemUrl
+                            : c?.case_study?.heroVideo?.mediaItemUrl
+                        }
+                        loop
+                        muted
+                        playsInline
+                        autoPlay
+                      />
+                    </HeroVideoMobile>
+                  </>
                 ) : (
                   <Image image={c?.case_study?.heroImage} />
                 )}

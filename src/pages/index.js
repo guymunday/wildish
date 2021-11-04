@@ -97,6 +97,9 @@ export const indexQuery = graphql`
               heroVideo {
                 mediaItemUrl
               }
+              heroVideoMobile {
+                mediaItemUrl
+              }
             }
           }
         }

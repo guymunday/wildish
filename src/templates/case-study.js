@@ -125,6 +125,9 @@ export const CASE_STUDY_QUERY = graphql`
               heroVideo {
                 mediaItemUrl
               }
+              heroVideoMobile {
+                mediaItemUrl
+              }
             }
           }
         }
@@ -142,6 +145,9 @@ export const CASE_STUDY_QUERY = graphql`
           }
         }
         heroVideo {
+          mediaItemUrl
+        }
+        heroVideoMobile {
           mediaItemUrl
         }
         heroLogo {
