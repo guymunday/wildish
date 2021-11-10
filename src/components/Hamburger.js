@@ -9,6 +9,12 @@ const HamburgerStyles = styled.nav`
   z-index: 99;
   background-color: transparent;
   mix-blend-mode: difference;
+  @media (max-width: 768px) {
+    left: 50%;
+    right: unset;
+    transform: translate(-50%, 0);
+    padding: 30px;
+  }
   button {
     background-color: transparent;
     outline: none;

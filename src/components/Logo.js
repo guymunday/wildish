@@ -8,13 +8,13 @@ const LogoStyles = styled.div`
   top: 25px;
   left: 25px;
   z-index: 999;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
   img {
     display: block;
     width: 50px;
-    transition: 0.3s ease ;
+    transition: 0.3s ease;
     :hover {
       transform: scale(1.1);
     }

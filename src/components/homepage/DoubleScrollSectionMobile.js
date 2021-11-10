@@ -114,20 +114,22 @@ const HeroVideoMobile = styled(HeroVideo)`
   }
 `
 
-const ToggleButton = styled.button`
-  width: 50px;
-  outline: none;
-  border: none;
-  z-index: 10;
+const ToggleButton = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
   :active,
   :focus {
     outline: none;
   }
   .toggle-words {
-    display: block;
-    transform: rotate(90deg);
-    white-space: nowrap;
     font-size: 1.4rem;
+    padding: 12px;
+    cursor: pointer;
   }
 `
 
@@ -194,6 +196,26 @@ export default function DoubleScrollSectionMobile({ data }) {
       // onTouchMove={handleTouchMove}
       // onTouchEnd={handleTouchEnd}
       >
+        <ToggleButton onClick={() => setIsWords(!isWords)} role="button">
+          <span
+            className="toggle-words"
+            style={{
+              color: isWords ? "black" : "white",
+              textDecoration: isWords ? "underline" : "none",
+            }}
+          >
+            &larr; About
+          </span>
+          <span
+            className="toggle-words"
+            style={{
+              color: isWords ? "black" : "white",
+              textDecoration: !isWords ? "underline" : "none",
+            }}
+          >
+            Showcase &rarr;
+          </span>
+        </ToggleButton>
         <HomepageSection
           ref={wordsRef}
           style={{ width: isWords ? "100%" : "0%" }}
@@ -228,17 +250,6 @@ export default function DoubleScrollSectionMobile({ data }) {
             )
           })}
         </HomepageSection>
-        <ToggleButton
-          onClick={() => setIsWords(!isWords)}
-          style={{ background: isWords ? "var(--black)" : "var(--white)" }}
-        >
-          <span
-            className="toggle-words"
-            style={{ color: !isWords ? "var(--black)" : "var(--white)" }}
-          >
-            {isWords ? "Showcase ↑" : "About ↓"}
-          </span>
-        </ToggleButton>
         <HomepageSection
           ref={picturesRef}
           style={{ width: isWords ? "0%" : "100%" }}

@@ -1,8 +1,17 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
-import { gsap } from "gsap"
+import styled, { keyframes } from "styled-components"
 import CalendlyButton from "./CalendlyButton"
+
+const animationMobile = keyframes`
+  0%   {transform: translate(-50%, 0) scale(0.3)}
+  100% {transform: translate(-50%, 0) scale(1)}
+`
+
+const animation = keyframes`
+  0%   {transform: scale(0.3)}
+  100% {transform: scale(1)}
+`
 
 const PopupStyles = styled.div`
   position: fixed;
@@ -11,10 +20,14 @@ const PopupStyles = styled.div`
   max-width: 370px;
   padding: 30px;
   z-index: 99;
+  width: 100%;
+  animation: ${animation} 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   @media (max-width: 768px) {
-    left: 0px;
+    left: 50%;
     bottom: 75px;
     padding: 15px;
+    transform: translate(-50%, 0);
+    animation: ${animationMobile} 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .popup-inner {
     padding: 30px 20px;
@@ -61,23 +74,6 @@ const PopupStyles = styled.div`
 `
 
 export default function AnnoyingPopup({ setPushed }) {
-  const popupRef = React.useRef(null)
-
-  React.useEffect(() => {
-    let tl = gsap.timeline()
-
-    tl.fromTo(
-      popupRef.current,
-      {
-        scale: 0.5,
-      },
-      { duration: 0.4, scale: 1.1 }
-    ).to(popupRef.current, {
-      duration: 0.2,
-      scale: 1,
-    })
-  }, [])
-
   const data = useStaticQuery(graphql`
     {
       menu: wpCptPage(slug: { eq: "menu" }) {
@@ -92,7 +88,7 @@ export default function AnnoyingPopup({ setPushed }) {
 
   return (
     <>
-      <PopupStyles ref={popupRef}>
+      <PopupStyles>
         <div className="popup-inner">
           <div className="popup-close-container">
             <button className="popup-close" onClick={() => setPushed(false)}>

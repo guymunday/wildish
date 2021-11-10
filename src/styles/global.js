@@ -92,9 +92,12 @@ const global = css`
   h4,
   h5,
   h6,
-  p {
+  p,
+  span,
+  div {
     font-weight: 400;
-    strong {
+    strong,
+    .highlight {
       font-weight: 400;
       position: relative;
       z-index: 1;
