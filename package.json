@@ -17,7 +17,6 @@
   "license": "0BSD",
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
-    "@sentry/gatsby": "^6.9.0",
     "babel-plugin-styled-components": "^1.13.2",
     "emojisplosion": "^2.6.1",
     "gatsby": "^4.0.0",
