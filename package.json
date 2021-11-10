@@ -19,7 +19,7 @@
     "@react-hook/media-query": "^1.1.1",
     "babel-plugin-styled-components": "^1.13.2",
     "emojisplosion": "^2.6.1",
-    "gatsby": "^4.0.0",
+    "gatsby": "^4.1.0",
     "gatsby-plugin-google-analytics": "^4.0.0",
     "gatsby-plugin-google-gtag": "^4.0.0",
     "gatsby-plugin-image": "^2.0.0",
