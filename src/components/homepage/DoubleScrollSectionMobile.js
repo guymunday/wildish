@@ -122,6 +122,7 @@ const ToggleButton = styled.nav`
   display: flex;
   justify-content: space-between;
   z-index: 99;
+  mix-blend-mode: difference;
   :active,
   :focus {
     outline: none;
@@ -130,6 +131,8 @@ const ToggleButton = styled.nav`
     font-size: 1.4rem;
     padding: 12px;
     cursor: pointer;
+    mix-blend-mode: difference;
+    color: white;
   }
 `
 
@@ -200,7 +203,6 @@ export default function DoubleScrollSectionMobile({ data }) {
           <span
             className="toggle-words"
             style={{
-              color: isWords ? "black" : "white",
               textDecoration: isWords ? "underline" : "none",
             }}
           >
@@ -209,7 +211,6 @@ export default function DoubleScrollSectionMobile({ data }) {
           <span
             className="toggle-words"
             style={{
-              color: isWords ? "black" : "white",
               textDecoration: !isWords ? "underline" : "none",
             }}
           >

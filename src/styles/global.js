@@ -96,8 +96,7 @@ const global = css`
   span,
   div {
     font-weight: 400;
-    strong,
-    .highlight {
+    strong {
       font-weight: 400;
       position: relative;
       z-index: 1;
