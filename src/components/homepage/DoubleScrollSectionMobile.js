@@ -214,7 +214,7 @@ export default function DoubleScrollSectionMobile({ data }) {
               textDecoration: !isWords ? "underline" : "none",
             }}
           >
-            Showcase &rarr;
+            Work &rarr;
           </span>
         </ToggleButton>
         <HomepageSection
@@ -313,7 +313,6 @@ export default function DoubleScrollSectionMobile({ data }) {
                     alt={c?.title}
                   />
                 )}
-                <p className="casestudy-title">{c?.title} &rarr;</p>
               </Link>
             )
           })}
