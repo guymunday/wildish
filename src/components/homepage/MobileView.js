@@ -8,13 +8,14 @@ const MobileViewStyles = styled.section`
   min-height: 100vh;
   z-index: 1;
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 0 80px;
   @media (min-width: 769px) {
     display: none;
   }
   .mobile-intro-paragraph {
     max-width: 300px;
     margin: auto;
+    padding: 20px 0 80px;
   }
 `
 

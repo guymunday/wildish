@@ -66,9 +66,8 @@ export default function AboveServiceFooter({ input }) {
           className="content"
           dangerouslySetInnerHTML={{ __html: input?.above }}
         />
-        <div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
           <CalendlyButton />
-          <span style={{ margin: 10 }} />
           <EmailButton />
         </div>
       </AboveServiceFooterContainer>

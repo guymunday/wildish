@@ -306,9 +306,8 @@ export default function ServicePage({ data }) {
               __html: data?.page?.servicePages?.footerText,
             }}
           />
-          <div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             <CalendlyButton />
-            <span style={{ margin: 10 }} />
             <EmailButton />
           </div>
         </AboveServiceFooterContainer>
