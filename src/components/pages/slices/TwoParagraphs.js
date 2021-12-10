@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import { useMediaQuery } from "@react-hook/media-query"
 
 const TwoParagraphsStyles = styled.section`
   display: flex;
-  background-color: var(--yellow);
   padding: 150px 150px 0px 150px;
   @media (max-width: 1199px) {
     padding: 150px 120px 0px 120px;
@@ -72,9 +72,11 @@ const TwoParagraphsStyles = styled.section`
 `
 
 export default function TwoParagraphs({ input }) {
+  const matches = useMediaQuery("(max-width: 768px)")
+
   return (
     <>
-      <TwoParagraphsStyles>
+      <TwoParagraphsStyles className={`${matches ? "black" : "yellow"}`}>
         <div
           className="twoparagraphs-left"
           dangerouslySetInnerHTML={{ __html: input?.leftParagraph }}

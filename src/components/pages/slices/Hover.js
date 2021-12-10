@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Image from "../../Image"
-import useEventListener from "../../../hooks/useEventListener"
+import useEventListener from "../../../utils/useEventListener"
 
 const HoverStyles = styled.section`
   padding: 100px 30px;

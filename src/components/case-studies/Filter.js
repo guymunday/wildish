@@ -1,9 +1,12 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from "react"
+import styled from "styled-components"
 
 const FilterStyles = styled.div`
   color: var(--white);
-  padding: 50px 30px 30px 30px;
+  padding: 150px 30px 30px 30px;
+  @media (max-width: 768px) {
+    display: none;
+  }
   .filter-button {
     margin: 0 5px;
     background: none;
@@ -11,7 +14,7 @@ const FilterStyles = styled.div`
     border: none;
     font-size: inherit;
   }
-`;
+`
 
 export default function Filter({ tags, tagFilter, handleClick }) {
   return (
@@ -38,10 +41,10 @@ export default function Filter({ tags, tagFilter, handleClick }) {
               >
                 {t?.node?.name.charAt(0).toUpperCase() + t?.node?.name.slice(1)}
               </button>
-            );
+            )
           }
         })}
       </FilterStyles>
     </>
-  );
+  )
 }

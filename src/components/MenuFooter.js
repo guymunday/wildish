@@ -2,6 +2,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import CalendlyButton from "./CalendlyButton"
+import EmailButton from "./EmailButton"
 
 const MenuFooterStyles = styled.nav`
   a,
@@ -10,8 +11,12 @@ const MenuFooterStyles = styled.nav`
   }
   .menu-contact {
     min-height: 40vh;
-    background: #000;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
+    @media (max-width: 768px) {
+      color: var(--black);
+      background: var(--yellow);
+    }
     .menu-contact-inner {
       padding: 30px;
       display: flex;
@@ -22,6 +27,7 @@ const MenuFooterStyles = styled.nav`
       .footer-address {
         width: 25%;
         padding: 20px;
+
         h3 {
           &:not(:first-child) {
             margin-top: 30px;
@@ -30,11 +36,16 @@ const MenuFooterStyles = styled.nav`
         .social-link {
           display: inline-block;
           .footer-arrow {
+            display: inline-block;
+            transform: rotate(60deg);
             transition: 0.4s transform ease;
+            color: var(--yellow);
+            @media (max-width: 768px) {
+              color: var(--black);
+            }
           }
           :hover {
             .footer-arrow {
-              display: inline-block;
               transform: rotate(360deg);
             }
           }
@@ -44,6 +55,22 @@ const MenuFooterStyles = styled.nav`
         }
         @media screen and (max-width: 500px) {
           width: 100%;
+        }
+        .footer-calendly-desktop {
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+        .footer-calendly-mobile {
+          display: none;
+          @media (max-width: 768px) {
+            display: inline-block;
+          }
+        }
+      }
+      .footer-addresses {
+        @media (max-width: 768px) {
+          display: none;
         }
       }
     }
@@ -86,7 +113,7 @@ export default function MenuFooter() {
               return (
                 <div
                   key={i}
-                  className="html footer-address"
+                  className="html footer-address footer-addresses"
                   dangerouslySetInnerHTML={{ __html: a?.address }}
                 />
               )
@@ -95,11 +122,11 @@ export default function MenuFooter() {
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.hireUs?.text}
               </h3>
-              <a href={`mailto:${data?.menu?.menu?.hireUs?.emailAddress}`}>
-                {data?.menu?.menu?.hireUs?.emailAddress}
-              </a>
+              <CalendlyButton className="footer-calendly-desktop" />
+              <CalendlyButton alt className="footer-calendly-mobile" />
               <br />
-              <CalendlyButton />
+              <EmailButton className="footer-calendly-desktop" />
+              <EmailButton alt className="footer-calendly-mobile" />
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.workWithUs?.text}
               </h3>
@@ -118,12 +145,7 @@ export default function MenuFooter() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <span
-                        className="footer-arrow"
-                        style={{ color: "var(--yellow)" }}
-                      >
-                        &rarr;
-                      </span>{" "}
+                      <span className="footer-arrow">&rarr;</span>{" "}
                       {l?.socialLink?.text}
                     </a>
                     <br />

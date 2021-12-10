@@ -3,7 +3,7 @@ import styled from "styled-components"
 import EmojiMarquee from "./EmojiMarquee"
 import HubspotModal from "./HubspotModal"
 
-const ButtonStyles = styled.button`
+export const ButtonStyles = styled.button`
   border: 2px solid var(--yellow);
   border: ${(props) =>
     props.alt ? "2px solid var(--black);" : "2px solid var(--yellow);"};
@@ -11,13 +11,15 @@ const ButtonStyles = styled.button`
   background: none;
   color: ${(props) => (props.alt ? "var(--black);" : "var(--white);")};
   border-radius: 25px;
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
   margin: 10px 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
   transition: 0.5s ease all;
   width: 180px;
+  text-align: center;
+  display: inline-block;
   .emoji {
     display: none;
     align-items: center;
@@ -38,13 +40,13 @@ const ButtonStyles = styled.button`
   }
 `
 
-export default function CalendlyButton({ alt }) {
+export default function CalendlyButton({ alt, ...rest }) {
   const [modalOpen, setModalOpen] = React.useState(false)
   const onClick = () => setModalOpen(true)
 
   return (
     <>
-      <ButtonStyles alt={alt} className="" onClick={onClick}>
+      <ButtonStyles alt={alt} onClick={onClick} {...rest}>
         <span className="words">Schedule a call</span>
         <span className="emoji">
           <EmojiMarquee emoji="📞" />

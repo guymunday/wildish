@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useStaticQuery, graphql, navigate } from "gatsby"
 import { gsap } from "gsap"
 import CalendlyButton from "./CalendlyButton"
+import EmailButton from "./EmailButton"
 
 const MenuStyles = styled.nav`
   a,
@@ -24,8 +25,8 @@ const MenuStyles = styled.nav`
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    @media screen and (max-width: 600px) {
-      min-height: 40vh;
+    @media (max-width: 768px) {
+      min-height: 50vh;
     }
     .close-button {
       display: flex;
@@ -67,6 +68,20 @@ const MenuStyles = styled.nav`
           .menu-arrow {
             transform: rotate(360deg);
           }
+          @media (max-width: 768px) {
+            .menu-arrow-1 {
+              transform: rotate(360deg) !important;
+            }
+            .menu-arrow-2 {
+              transform: rotate(450deg) !important;
+            }
+            .menu-arrow-3 {
+              transform: rotate(810deg) !important;
+            }
+            .menu-arrow-4 {
+              transform: rotate(540deg) !important;
+            }
+          }
         }
         @media screen and (max-height: 768px) {
           font-size: 3rem;
@@ -82,6 +97,25 @@ const MenuStyles = styled.nav`
           width: 70px;
           text-align: center;
           transition: 0.4s transform ease;
+          @media (max-width: 768px) {
+            &.menu-arrow-1 {
+              transform: rotate(-45deg);
+            }
+            &.menu-arrow-2 {
+              transform: rotate(135deg);
+            }
+            &.menu-arrow-3 {
+              transform: rotate(225deg);
+            }
+            &.menu-arrow-4 {
+              transform: rotate(45deg);
+            }
+          }
+        }
+        &.menu-about {
+          @media (min-width: 767px) {
+            display: none;
+          }
         }
       }
     }
@@ -106,12 +140,18 @@ const MenuStyles = styled.nav`
           }
         }
         .social-link {
+          display: inline-block;
           .footer-arrow {
+            display: inline-block;
+            transform: rotate(60deg);
             transition: 0.4s transform ease;
+            color: var(--yellow);
+            @media (max-width: 768px) {
+              color: var(--black);
+            }
           }
           :hover {
             .footer-arrow {
-              display: inline-block;
               transform: rotate(360deg);
             }
           }
@@ -121,6 +161,11 @@ const MenuStyles = styled.nav`
         }
         @media screen and (max-width: 500px) {
           width: 100%;
+        }
+      }
+      .menu-addresses {
+        @media (max-width: 768px) {
+          display: none;
         }
       }
     }
@@ -199,7 +244,10 @@ export default function Menu({ setMenuOpen, menuOpen }) {
   }
 
   const handleMenuClick = async (i) => {
-    await navigate(data?.menu?.menu?.links[i]?.internalLink)
+    i === "about"
+      ? navigate("/about")
+      : navigate(data?.menu?.menu?.links[i]?.internalLink)
+
     await exitAnimation()
     await setMenuOpen(false)
   }
@@ -219,15 +267,22 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               onMouseOver={() => setDirection({ xPercent: 100 })}
               onClick={() => handleMenuClick(0)}
             >
-              <span className="menu-arrow">→</span>{" "}
+              <span className="menu-arrow menu-arrow-1">→</span>{" "}
               {data?.menu?.menu?.links[0]?.links}
+            </button>
+            <button
+              className="menu-item menu-about"
+              onMouseOver={() => setDirection({ yPercent: -100 })}
+              onClick={() => handleMenuClick("about")}
+            >
+              <span className="menu-arrow menu-arrow-2">↑</span> About
             </button>
             <button
               className="menu-item"
               onMouseOver={() => setDirection({ yPercent: -100 })}
               onClick={() => handleMenuClick(1)}
             >
-              <span className="menu-arrow">↑</span>{" "}
+              <span className="menu-arrow menu-arrow-3">↑</span>{" "}
               {data?.menu?.menu?.links[1]?.links}
             </button>
             <button
@@ -235,11 +290,11 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               onMouseOver={() => setDirection({ xPercent: -100 })}
               onClick={() => handleMenuClick(2)}
             >
-              <span className="menu-arrow">←</span>{" "}
+              <span className="menu-arrow menu-arrow-4">←</span>{" "}
               {data?.menu?.menu?.links[2]?.links}
             </button>
             <div className="menu-item">
-              <span className="menu-arrow">↓</span> Contact
+              <span className="menu-arrow menu-arrow-5">↓</span> Contact
             </div>
           </div>
           <div className="close-button">
@@ -252,7 +307,7 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               return (
                 <div
                   key={i}
-                  className="html menu-address"
+                  className="html menu-address menu-addresses"
                   dangerouslySetInnerHTML={{ __html: a?.address }}
                 />
               )
@@ -261,11 +316,9 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.hireUs?.text}
               </h3>
-              <a href={`mailto:${data?.menu?.menu?.hireUs?.emailAddress}`}>
-                {data?.menu?.menu?.hireUs?.emailAddress}
-              </a>
-              <br />
               <CalendlyButton />
+              <br />
+              <EmailButton />
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.workWithUs?.text}
               </h3>

@@ -1,6 +1,6 @@
-import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
-import styled from "styled-components";
+import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import styled from "styled-components"
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ const ImageWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export default function Image({ image, ...rest }) {
   return (
@@ -34,5 +34,5 @@ export default function Image({ image, ...rest }) {
         </ImageWrapper>
       )}
     </>
-  );
+  )
 }

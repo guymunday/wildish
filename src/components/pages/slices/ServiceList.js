@@ -2,9 +2,9 @@ import * as React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Image from "../../Image"
+import { useMediaQuery } from "@react-hook/media-query"
 
 const ServiceListContainer = styled.div`
-  background-color: var(--yellow);
   padding: 150px;
   @media (max-width: 1199px) {
     padding: 100px 120px 100px 120px;
@@ -38,8 +38,8 @@ const ServiceListStyles = styled.div`
     }
   }
   a {
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
     border-radius: 50px;
     font-size: 2.4rem;
     margin: 0px 0;
@@ -57,6 +57,10 @@ const ServiceListStyles = styled.div`
     }
     @media (max-width: 991px) {
       font-size: 1.4rem;
+    }
+    @media (max-width: 768px) {
+      background-color: var(--yellow);
+      color: var(--black);
     }
     @media (max-width: 450px) {
       width: 100%;
@@ -81,6 +85,7 @@ export default function ServiceList({ input }) {
   const imageRef = React.useRef(null)
   const [coords, setCoords] = React.useState({ x: 0, y: 0 })
   const [hoveredImage, sethoveredImage] = React.useState(-1)
+  const matches = useMediaQuery("(max-width: 768px)")
 
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event
@@ -94,7 +99,7 @@ export default function ServiceList({ input }) {
 
   return (
     <>
-      <ServiceListContainer>
+      <ServiceListContainer className={`${matches ? "black" : "yellow"}`}>
         {input?.serviceList?.map((service, index) => {
           return (
             <>

@@ -74,7 +74,6 @@ const HeroVideo = styled.div`
   overflow: hidden;
   position: relative;
   height: 100%;
-  background: var(--yellow);
   video {
     width: 100%;
     height: 100%;
@@ -133,7 +132,6 @@ export default function Casestudies({ data: { cases, tags } }) {
       </Helmet>
       <h1 className="element-invisible">Case Studies</h1>
       <div style={{ background: "#000", minHeight: "100vh", width: "100%" }}>
-        <div style={{ background: "#000", height: 100, width: "100%" }} />
         <Filter
           tags={tags?.edges}
           tagFilter={tagFilter}

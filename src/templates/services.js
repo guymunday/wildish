@@ -2,11 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import CalendlyButton from "../components/CalendlyButton"
+import EmailButton from "../components/EmailButton"
+import { useMediaQuery } from "@react-hook/media-query"
 
 const LeftRightParagraphsStyles = styled.section`
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--yellow);
   padding: 150px 150px 0px 150px;
   @media (max-width: 1199px) {
     padding: 150px 120px 0px 120px;
@@ -88,7 +89,6 @@ const LeftRightParagraphsStyles = styled.section`
 `
 
 const OurProcess = styled.section`
-  background-color: var(--yellow);
   padding: 100px 150px 100px 150px;
   @media (max-width: 1199px) {
     padding: 50px 120px 100px 120px;
@@ -127,7 +127,9 @@ const Step = styled.div`
   @media (max-width: 991px) {
     flex-wrap: wrap;
   }
-
+  @media (max-width: 768px) {
+    border-bottom: 2px solid var(--white);
+  }
   .number {
     font-size: 8.3rem;
     line-height: 1;
@@ -220,39 +222,6 @@ const AboveServiceFooterContainer = styled.div`
     @media (max-width: 450px) {
       display: block;
     }
-    a {
-      border: 2px solid white;
-      border-radius: 30px;
-      background-image: none;
-      padding: 12px 20px 8px 20px;
-      margin: 0 10px;
-      font-size: 1.8rem;
-      line-height: 2rem;
-      &:hover {
-        background-color: var(--yellow);
-        color: black;
-        border-color: var(--yellow);
-      }
-      @media (max-width: 1199px) {
-        font-size: 1.4rem;
-        line-height: 1.5rem;
-        margin: 0 5px;
-      }
-      @media (max-width: 991px) {
-        font-size: 1.2rem;
-        line-height: 1.3rem;
-        padding: 10px 20px 8px 20px;
-      }
-      @media (max-width: 768px) {
-        margin: 0 15px;
-      }
-      @media (max-width: 450px) {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0 0 15px 0;
-      }
-    }
     &.content {
       @media (max-width: 991px) {
         flex: 0 40%;
@@ -274,98 +243,76 @@ const AboveServiceFooterContainer = styled.div`
         }
       }
     }
-    button {
-      border: 2px solid white;
-      font-size: 1.8rem;
-      line-height: 2rem;
-      width:240px;
-      border-radius: 30px;
-      padding:12px 20px 8px 20px;
-      @media (max-width: 1199px) {
-        font-size: 1.4rem;
-        line-height: 1.5rem;
-        margin: 0 5px;
-        width: 200px;
-      }
-      @media (max-width: 991px) {
-        font-size: 1.2rem;
-        line-height: 1.3rem;
-        padding: 10px 20px 8px 20px;
-        width: 180px;
-      }
-      @media (max-width: 768px) {
-        margin: 0 15px;
-      }
-      @media (max-width: 450px) {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0 0 15px 0;
-      }
-    }
   }
 `
 
 export default function ServicePage({ data }) {
+  const matches = useMediaQuery("(max-width: 768px)")
+
   return (
     <>
-      <LeftRightParagraphsStyles>
-        <h1>{data?.page?.title}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data?.page?.servicePages?.leftParagraph,
-          }}
-        />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data?.page?.servicePages?.rightParagraph,
-          }}
-        />
-      </LeftRightParagraphsStyles>
+      <div className={`${matches ? "black" : "yellow"}`}>
+        <LeftRightParagraphsStyles>
+          <h1>{data?.page?.title}</h1>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data?.page?.servicePages?.leftParagraph,
+            }}
+          />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data?.page?.servicePages?.rightParagraph,
+            }}
+          />
+        </LeftRightParagraphsStyles>
 
-      <OurProcess>
-        <h2>Our process</h2>
+        <OurProcess>
+          <h2>Our process</h2>
 
-        {data?.page?.servicePages?.process?.map((step, index) => {
-          return (
-            <>
-              <Step>
-                <p className="number">{step?.stepNumber}</p>
-                <div dangerouslySetInnerHTML={{ __html: step?.stepContent }} />
-              </Step>
-            </>
-          )
-        })}
-      </OurProcess>
+          {data?.page?.servicePages?.process?.map((step, index) => {
+            return (
+              <>
+                <Step>
+                  <p className="number">{step?.stepNumber}</p>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: step?.stepContent }}
+                  />
+                </Step>
+              </>
+            )
+          })}
+        </OurProcess>
 
-      <LeftRightParagraphsStyles className="bottom">
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data?.page?.servicePages?.aboveFooterLeft,
-          }}
-        />
-      </LeftRightParagraphsStyles>
+        <LeftRightParagraphsStyles className="bottom">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data?.page?.servicePages?.aboveFooterLeft,
+            }}
+          />
+        </LeftRightParagraphsStyles>
 
-      <LeftRightParagraphsStyles className="bottom right">
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data?.page?.servicePages?.aboveFooterRight,
-          }}
-        />
-      </LeftRightParagraphsStyles>
+        <LeftRightParagraphsStyles className="bottom right">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data?.page?.servicePages?.aboveFooterRight,
+            }}
+          />
+        </LeftRightParagraphsStyles>
 
-      <AboveServiceFooterContainer>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={{
-            __html: data?.page?.servicePages?.footerText,
-          }}
-        />
-        <div>
-            <CalendlyButton/> 
-            <a href="mailto:hello@wildishandco.co.uk">Email us</a>
-        </div>
-      </AboveServiceFooterContainer>
+        <AboveServiceFooterContainer>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{
+              __html: data?.page?.servicePages?.footerText,
+            }}
+          />
+          <div>
+            <CalendlyButton />
+            <span style={{ margin: 10 }} />
+            <EmailButton />
+          </div>
+        </AboveServiceFooterContainer>
+      </div>
     </>
   )
 }

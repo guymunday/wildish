@@ -1,26 +1,4 @@
-import React from "react"
-import { graphql } from "gatsby"
-import BlogPostMasonry from "../components/BlogPostsMasonry"
-import Marquee from "../components/Marquee"
-import DoubleScrollSection from "../components/homepage/DoubleScrollSection"
-import Seo from "gatsby-plugin-wpgraphql-seo"
-import CallToAction from "../components/CallToAction"
-import MobileView from "../components/homepage/MobileView"
-
-export default function IndexPage({ data }) {
-  return (
-    <>
-      <Seo post={data?.sections} />
-      <DoubleScrollSection data={data?.sections} />
-      <MobileView data={data?.sections} />
-      <Marquee />
-      <BlogPostMasonry />
-      <CallToAction />
-    </>
-  )
-}
-
-export const indexQuery = graphql`
+export const INDEX_QUERY = `
   query HomeQuery {
     sections: wpCptPage(slug: { eq: "homepage" }) {
       seo {
@@ -50,17 +28,6 @@ export const indexQuery = graphql`
           articleType
           pageType
           raw
-        }
-      }
-      homeMobile {
-        introParagraph
-        link {
-          linkText
-          linkUrl
-        }
-        words {
-          fieldGroupName
-          words
         }
       }
       homepage {

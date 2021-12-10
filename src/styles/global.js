@@ -222,7 +222,8 @@ const global = css`
     @media screen and (max-height: 600px) {
       display: none;
     }
-    iframe {
+    iframe,
+    video {
       position: absolute;
       top: 0;
       left: 0;
@@ -253,7 +254,8 @@ const global = css`
     position: relative;
     pointer-events: none;
     margin-bottom: -60px;
-    iframe {
+    iframe,
+    video {
       position: absolute;
       top: 0;
       left: 0;
@@ -273,6 +275,10 @@ const global = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
+    @media (max-width: 768px) {
+      justify-content: left;
+    }
     .services-span {
       min-width: 33%;
       font-size: 0.9rem;

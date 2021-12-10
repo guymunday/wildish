@@ -1,23 +1,29 @@
-import { Link } from "gatsby";
-import * as React from "react";
-import styled from "styled-components";
+import { Link } from "gatsby"
+import * as React from "react"
+import styled from "styled-components"
 
 const FooterStyles = styled.footer`
   width: 100%;
   background: var(--black);
+  @media (max-width: 768px) {
+    background: var(--yellow);
+  }
   .footer-inner {
     padding: 30px;
     display: flex;
-    color: var(--white);
     justify-content: space-between;
     align-items: center;
     position: relative;
     @media screen and (max-width: 650px) {
       flex-direction: column;
     }
-    p {
-      color: gray;
+    p,
+    a {
+      color: var(--white);
       font-size: 0.8rem;
+      @media (max-width: 768px) {
+        color: var(--black);
+      }
     }
     .mobile-margin {
       @media screen and (max-width: 650px) {
@@ -38,7 +44,7 @@ const FooterStyles = styled.footer`
       }
     }
   }
-`;
+`
 
 export default function Footer() {
   return (
@@ -48,9 +54,6 @@ export default function Footer() {
           <p className="mobile-margin">
             ©{new Date().getFullYear()} Wildish & Co LTD. All rights reserved.
           </p>
-          {/* <Link className="nostyle footer-logo" to="/">
-            <img src={handLogo} alt="" />
-          </Link> */}
           <p>
             <Link
               style={{ marginRight: 30, position: "relative" }}
@@ -64,5 +67,5 @@ export default function Footer() {
         </div>
       </FooterStyles>
     </>
-  );
+  )
 }

@@ -19,17 +19,14 @@ const CTAStyles = styled.button`
   color: white;
   @media (max-width: 768px) {
     bottom: 15px;
-    left: 50%;
+    left: unset;
+    right: 10px;
     width: 70px;
     height: 70px;
-    transform: translate(-50%, 0);
   }
   :active {
     box-shadow: 0px 0px 0px black;
     transform: translate(0%, 10px);
-    @media (max-width: 768px) {
-      transform: translate(-50%, 10px);
-    }
   }
   :focus {
     outline: none;
