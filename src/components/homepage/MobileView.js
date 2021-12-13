@@ -87,7 +87,7 @@ export default function MobileView({ data }) {
         <MobileViewCasestudies>
           {data?.homepage?.cases.slice(0, 3).map((c, i) => {
             return (
-              <Link key={i} to={`/case-studies/${c?.slug}`}>
+              <Link key={i} to={`/case-studies/${c?.slug}`} className="nostyle">
                 <div className="mobile-casestudy-thumbnail">
                   {c?.case_study?.heroVideoMobile ? (
                     <HeroVideo>

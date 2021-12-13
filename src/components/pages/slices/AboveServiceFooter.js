@@ -55,6 +55,14 @@ const AboveServiceFooterContainer = styled.div`
         }
       }
     }
+    &.above-services-footer__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
   }
 `
 
@@ -66,7 +74,7 @@ export default function AboveServiceFooter({ input }) {
           className="content"
           dangerouslySetInnerHTML={{ __html: input?.above }}
         />
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+        <div className="above-services-footer__buttons">
           <CalendlyButton />
           <EmailButton />
         </div>

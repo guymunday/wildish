@@ -3,6 +3,7 @@ import * as React from "react"
 import styled from "styled-components"
 import handLogo from "../assets/images/hand-logo.svg"
 import fullLogo from "../assets/images/wildish-logo-full-white.svg"
+import fullLogoBlack from "../assets/images/wildish-logo-full.svg"
 
 const LogoStyles = styled.div`
   position: fixed;
@@ -44,7 +45,7 @@ const LogoStylesMobile = styled.div`
   }
 `
 
-export default function Logo({ setMenuOpen }) {
+export default function Logo({ setMenuOpen, menuOpen }) {
   return (
     <>
       <LogoStyles id="logo">
@@ -54,7 +55,10 @@ export default function Logo({ setMenuOpen }) {
       </LogoStyles>
       <LogoStylesMobile>
         <Link to="/" onClick={() => setMenuOpen(false)}>
-          <img src={fullLogo} alt="Wildish and Co logo" />
+          <img
+            src={menuOpen ? fullLogoBlack : fullLogo}
+            alt="Wildish and Co logo"
+          />
         </Link>
       </LogoStylesMobile>
     </>

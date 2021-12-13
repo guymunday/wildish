@@ -120,7 +120,7 @@ const Layout = ({ location, children }) => {
         {menuOpen && <Menu setMenuOpen={setMenuOpen} menuOpen={menuOpen} />}
         <Hamburger setMenuOpen={setMenuOpen} />
         {!location.pathname.includes("/client/") && (
-          <Logo setMenuOpen={setMenuOpen} />
+          <Logo setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
         )}
         {location.pathname === "/" && <LogoDragger />}
         <MenuFooter />
