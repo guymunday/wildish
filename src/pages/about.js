@@ -3,10 +3,27 @@ import { graphql } from "gatsby"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import styled from "styled-components"
 
-const AboutStyles = styled.section`
+const About = styled.div`
   padding: 60px 0;
-  .about-page-section {
+  .about-inner {
     padding: 30px;
+    * {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 800px;
+    }
+    *:not(li) {
+      margin: 0 auto 20px auto;
+      &:last-child {
+        margin: 0 auto;
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
     .services-span {
       background: var(--white);
       color: var(--black);
@@ -18,10 +35,10 @@ export default function AboutPage({ data }) {
   return (
     <>
       <Seo post={data?.sections} />
-      <AboutStyles className="black">
+      <About className="black">
         {data?.sections?.homepage?.words?.slice(1).map((w, i) => {
           return (
-            <div key={i} className="about-page-section">
+            <div key={i} className="about-inner">
               <div
                 dangerouslySetInnerHTML={{ __html: w?.section }}
                 className="html"
@@ -29,7 +46,7 @@ export default function AboutPage({ data }) {
             </div>
           )
         })}
-      </AboutStyles>
+      </About>
     </>
   )
 }
