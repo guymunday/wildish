@@ -30,6 +30,9 @@ const CasestudyGrid = styled.section`
       @media (max-width: 768px) {
         height: 56.25vw;
       }
+      @media (max-width: 425px) {
+        height: 100vh;
+      }
       img,
       .gatsby-image-wrapper {
         width: 100%;

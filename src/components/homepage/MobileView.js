@@ -65,7 +65,6 @@ const HeroVideo = styled.div`
 `
 
 export default function MobileView({ data }) {
-  console.log(data)
   return (
     <>
       <MobileViewStyles className="black">
@@ -74,7 +73,6 @@ export default function MobileView({ data }) {
             <video
               title="Wildish & Co animation"
               src={data?.homepage?.picturesVideo?.wpVideo?.mediaItemUrl}
-              loading="lazy"
               playsInline
               autoPlay
               loop
