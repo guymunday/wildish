@@ -112,21 +112,26 @@ export default function Casestudies({ data: { cases, tags } }) {
     })
   }
 
-  React.useEffect(() => {
-    gsap.from(".grid-item", {
-      opacity: 0,
-      duration: 0.3,
-      stagger: {
-        each: 0.2,
-      },
-    })
-  }, [])
-
   const handleClick = async (filter) => {
     await reverseAnimation()
     await setTagFilter(filter)
     await animation()
   }
+
+  React.useEffect(() => {
+    const testUrl = new URL(window.location.href).searchParams.get("tagged")
+    if (testUrl !== "all") {
+      handleClick(testUrl)
+    } else {
+      gsap.from(".grid-item", {
+        opacity: 0,
+        duration: 0.3,
+        stagger: {
+          each: 0.2,
+        },
+      })
+    }
+  }, [])
 
   return (
     <>
