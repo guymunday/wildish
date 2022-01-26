@@ -73,5 +73,6 @@ module.exports = {
         head: false,
       },
     },
+    `gatsby-plugin-remove-trailing-slashes`,
   ],
-};
+}

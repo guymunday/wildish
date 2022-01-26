@@ -119,18 +119,13 @@ export default function Casestudies({ data: { cases, tags } }) {
   }
 
   React.useEffect(() => {
-    const testUrl = new URL(window.location.href).searchParams.get("tagged")
-    if (testUrl && testUrl !== "all") {
-      handleClick(testUrl)
-    } else {
-      gsap.from(".grid-item", {
-        opacity: 0,
-        duration: 0.3,
-        stagger: {
-          each: 0.2,
-        },
-      })
-    }
+    gsap.from(".grid-item", {
+      opacity: 0,
+      duration: 0.3,
+      stagger: {
+        each: 0.2,
+      },
+    })
   }, [])
 
   return (
