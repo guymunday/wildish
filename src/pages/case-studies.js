@@ -120,7 +120,7 @@ export default function Casestudies({ data: { cases, tags } }) {
 
   React.useEffect(() => {
     const testUrl = new URL(window.location.href).searchParams.get("tagged")
-    if (testUrl !== "all") {
+    if (testUrl && testUrl !== "all") {
       handleClick(testUrl)
     } else {
       gsap.from(".grid-item", {
