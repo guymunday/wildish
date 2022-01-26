@@ -90,6 +90,7 @@ const HeroVideo = styled.div`
 
 export default function Casestudies({ data: { cases, tags } }) {
   const [tagFilter, setTagFilter] = useQueryString("tagged", "all")
+  const [searchQuery, setSearchQuery] = React.useState("all")
 
   const animation = async () => {
     return gsap.to(".grid-item", {
@@ -128,6 +129,13 @@ export default function Casestudies({ data: { cases, tags } }) {
     })
   }, [])
 
+  React.useEffect(() => {
+    const url = new URL(window.location.href)
+    const params = new URLSearchParams(url.search).get("tagged")
+
+    params ? setSearchQuery(params) : setSearchQuery("all")
+  }, [tagFilter])
+
   return (
     <>
       <Helmet>
@@ -143,7 +151,7 @@ export default function Casestudies({ data: { cases, tags } }) {
         <CasestudyGrid>
           {cases?.edges?.map((c, i) => {
             const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name)
-            if (mappedFilter.includes(tagFilter) || tagFilter === "all") {
+            if (mappedFilter.includes(searchQuery) || searchQuery === "all") {
               return (
                 <>
                   <div key={i} className="grid-item">
