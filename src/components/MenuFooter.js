@@ -122,9 +122,9 @@ export default function MenuFooter() {
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.hireUs?.text}
               </h3>
-              <CalendlyButton className="footer-calendly-desktop" />
+              {/* <CalendlyButton className="footer-calendly-desktop" />
               <CalendlyButton alt className="footer-calendly-mobile" />
-              <br />
+              <br /> */}
               <EmailButton className="footer-calendly-desktop" />
               <EmailButton alt className="footer-calendly-mobile" />
               <h3 style={{ marginBottom: 20 }}>

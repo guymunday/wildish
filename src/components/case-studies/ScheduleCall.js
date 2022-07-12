@@ -1,6 +1,7 @@
-import * as React from "react";
-import styled from "styled-components";
-import CalendlyButton from "../CalendlyButton";
+import * as React from "react"
+import styled from "styled-components"
+import CalendlyButton from "../CalendlyButton"
+import EmailButton from "../EmailButton"
 
 const CallStyles = styled.section`
   text-align: center;
@@ -11,17 +12,17 @@ const CallStyles = styled.section`
   align-items: center;
   margin: auto;
   max-width: 600px; */
-`;
+`
 
 export default function ScheduleCall() {
   return (
     <>
       <CallStyles>
         <p>
-          For new business inquiries, please{" "}
-          <CalendlyButton alt words="Get in touch" /> with Sam to discuss.
+          For new business inquiries, please <br />
+          <EmailButton alt words="Email Sam" />
         </p>
       </CallStyles>
     </>
-  );
+  )
 }

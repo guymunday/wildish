@@ -316,8 +316,8 @@ export default function Menu({ setMenuOpen, menuOpen }) {
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.hireUs?.text}
               </h3>
-              <CalendlyButton />
-              <br />
+              {/* <CalendlyButton />
+              <br /> */}
               <EmailButton />
               <h3 style={{ marginBottom: 20 }}>
                 {data?.menu?.menu?.workWithUs?.text}

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { keyframes } from "styled-components"
-import CalendlyButton from "./CalendlyButton"
+import EmailButton from "./EmailButton"
 
 const animationMobile = keyframes`
   0%   {transform: translate(-50%, 0) scale(0.3)}
@@ -101,7 +101,8 @@ export default function AnnoyingPopup({ setPushed }) {
               __html: data?.menu?.menu?.buttonCopy?.copy,
             }}
           />
-          <CalendlyButton alt />
+          {/* <CalendlyButton alt /> */}
+          <EmailButton alt />
         </div>
       </PopupStyles>
     </>
