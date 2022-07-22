@@ -1,10 +1,9 @@
-import * as React from "react";
-import { graphql } from "gatsby";
-import SliceZone from "../components/pages/SliceZone";
-import Seo from "gatsby-plugin-wpgraphql-seo";
+import * as React from "react"
+import { graphql } from "gatsby"
+import SliceZone from "../components/pages/SliceZone"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 
 export default function PageTemplate({ data }) {
-  console.log(data)
   return (
     <>
       <Seo post={data?.page} />
@@ -12,7 +11,7 @@ export default function PageTemplate({ data }) {
         <SliceZone slices={data?.page?.contentBlocks?.contentBlocks} />
       )}
     </>
-  );
+  )
 }
 
 export const PAGE_QUERY = graphql`
@@ -71,6 +70,72 @@ export const PAGE_QUERY = graphql`
               }
             }
           }
+          ... on WpGql_page_Contentblocks_ContentBlocks_ContactForm {
+            copy
+            fieldGroupName
+            lobster {
+              mediaItemUrl
+            }
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_CaseStudies {
+            copy
+            fieldGroupName
+            caseStudies {
+              ... on WpCase_study {
+                title
+                slug
+                case_study {
+                  heroImage {
+                    altText
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        gatsbyImageData(
+                          layout: FULL_WIDTH
+                          quality: 90
+                          placeholder: BLURRED
+                        )
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_ProcessList {
+            copy
+            fieldGroupName
+            list {
+              copy
+            }
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_ClientReviews {
+            copy
+            fieldGroupName
+            reviews {
+              copy
+              clientLogo {
+                altText
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    gatsbyImageData(
+                      layout: FULL_WIDTH
+                      quality: 90
+                      placeholder: BLURRED
+                    )
+                  }
+                }
+              }
+            }
+          }
+          ... on WpGql_page_Contentblocks_ContentBlocks_FourColumns {
+            copy
+            fieldGroupName
+            columns {
+              copy
+            }
+          }
           ... on WpGql_page_Contentblocks_ContentBlocks_HoverImageBlocks {
             colour
             fieldGroupName
@@ -125,37 +190,37 @@ export const PAGE_QUERY = graphql`
             fieldGroupName
           }
           ... on WpGql_page_Contentblocks_ContentBlocks_TwoParagraphBlock {
-              fieldGroupName
-              leftParagraph
-              rightParagraph
+            fieldGroupName
+            leftParagraph
+            rightParagraph
           }
           ... on WpGql_page_Contentblocks_ContentBlocks_ServiceList {
+            fieldGroupName
+            serviceList {
               fieldGroupName
-              serviceList {
+              service {
                 fieldGroupName
-                service {
-                  fieldGroupName
-                  serviceLink
-                  serviceText
-                  serviceImage {
-                    localFile {
-                      publicURL
-                      childImageSharp {
-                        gatsbyImageData(
-                          layout: FULL_WIDTH
-                          quality: 90
-                          placeholder: BLURRED
-                        )
-                      }
+                serviceLink
+                serviceText
+                serviceImage {
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      gatsbyImageData(
+                        layout: FULL_WIDTH
+                        quality: 90
+                        placeholder: BLURRED
+                      )
                     }
                   }
                 }
               }
             }
+          }
           ... on WpGql_page_Contentblocks_ContentBlocks_AboveServiceFooter {
-              fieldGroupName
-              above
-            }
+            fieldGroupName
+            above
+          }
           ... on WpGql_page_Contentblocks_ContentBlocks_CopyAndImage {
             colour
             copy
@@ -178,4 +243,4 @@ export const PAGE_QUERY = graphql`
       }
     }
   }
-`;
+`
