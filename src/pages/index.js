@@ -89,6 +89,13 @@ export const indexQuery = graphql`
                 altText
                 localFile {
                   publicURL
+                  childImageSharp {
+                    gatsbyImageData(
+                      layout: FULL_WIDTH
+                      quality: 90
+                      placeholder: BLURRED
+                    )
+                  }
                 }
               }
               heroImage {
