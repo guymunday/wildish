@@ -161,7 +161,6 @@ export default function Casestudies({ data: { cases, tags } }) {
         />
         <CasestudyGrid>
           {cases?.edges?.map((c, i) => {
-            console.log(c)
             const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name)
             if (mappedFilter.includes(searchQuery) || searchQuery === "all") {
               return (
