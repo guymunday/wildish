@@ -86,6 +86,17 @@ const HeroVideo = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .case__studies__hero__video-desktop {
+    @media (max-width: 425px) {
+      display: none;
+    }
+  }
+  .case__studies__hero__video-mobile {
+    display: none;
+    @media (max-width: 425px) {
+      display: block;
+    }
+  }
 `
 
 export default function Casestudies({ data: { cases, tags } }) {
@@ -150,6 +161,7 @@ export default function Casestudies({ data: { cases, tags } }) {
         />
         <CasestudyGrid>
           {cases?.edges?.map((c, i) => {
+            console.log(c)
             const mappedFilter = c?.node?.tags?.nodes.map((t) => t?.name)
             if (mappedFilter.includes(searchQuery) || searchQuery === "all") {
               return (
@@ -162,12 +174,31 @@ export default function Casestudies({ data: { cases, tags } }) {
                       {c?.node?.case_study?.heroVideo?.mediaItemUrl ? (
                         <HeroVideo>
                           <video
+                            className={
+                              c?.node?.case_study?.heroVideoMobile?.mediaItemUrl
+                                ? "case__studies__hero__video-desktop"
+                                : ""
+                            }
                             src={c?.node?.case_study?.heroVideo?.mediaItemUrl}
                             loop
                             muted
                             playsInline
                             autoPlay
                           />
+                          {c?.node?.case_study?.heroVideoMobile
+                            ?.mediaItemUrl && (
+                            <video
+                              className="case__studies__hero__video-mobile"
+                              src={
+                                c?.node?.case_study?.heroVideoMobile
+                                  ?.mediaItemUrl
+                              }
+                              loop
+                              muted
+                              playsInline
+                              autoPlay
+                            />
+                          )}
                         </HeroVideo>
                       ) : (
                         <Image
