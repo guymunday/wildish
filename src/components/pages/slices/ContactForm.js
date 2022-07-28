@@ -153,7 +153,7 @@ export default function ContactForm({ input }) {
         <form
           onSubmit={(e) => submitForm(e)}
           method="POST"
-          action="http://login.wildishandco.co.uk/wp-json/contact-form-7/v1/contact-forms/2460/feedback"
+          action="https://login.wildishandco.co.uk/wp-json/contact-form-7/v1/contact-forms/2460/feedback"
         >
           <div className="contact__form__input">
             <label for="form-name">1. Your name:</label>
