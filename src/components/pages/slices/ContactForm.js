@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import useQueryString from "../../query-string/useQueryString"
 
 const StyledContactForm = styled.section`
   display: flex;
@@ -110,6 +111,7 @@ const StyledContactForm = styled.section`
 
 export default function ContactForm({ input }) {
   const [status, setStatus] = React.useState("")
+  const [param, setParam] = useQueryString("form", "")
 
   function submitForm(e) {
     e.preventDefault()
@@ -128,6 +130,8 @@ export default function ContactForm({ input }) {
       }
     }
     xhr.send(data)
+
+    setParam("submitted")
   }
 
   return (
