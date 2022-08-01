@@ -267,7 +267,9 @@ export default function ContactForm({ input }) {
           </div>
           <div className="contact__form__submit">
             {status === "SUCCESS" ? (
-              <p>We've got your message. Thanks!</p>
+              <p>
+                We've got your message. Thanks! We'll be in touch in 48 hours.
+              </p>
             ) : (
               <input type="submit" />
             )}
