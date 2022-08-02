@@ -242,7 +242,7 @@ export default function ContactForm({ input }) {
                 <input
                   type="radio"
                   name="budget"
-                  id="form-budget-2"
+                  id="form-budget-3"
                   value="£20k+"
                 />
                 <label
@@ -259,7 +259,7 @@ export default function ContactForm({ input }) {
               7. Your website (if you have one):
             </label>
             <input
-              type="url"
+              type="text"
               placeholder="www.yoursite.com"
               name="website"
               id="form-website"
